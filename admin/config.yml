@@ -2,7 +2,7 @@ backend:
   name: github
   repo: LankoFisken/Fisken-hjemmeside
   branch: main
-  base_url: https://sveltia-cms-auth.YOUR-SUBDOMAIN.workers.dev
+  base_url: https://fisken-cms-auth.lanko.workers.dev
 
 media_folder: "Photoshoot 2025"
 public_folder: "Photoshoot 2025"
