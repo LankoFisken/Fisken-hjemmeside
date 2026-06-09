@@ -10,14 +10,59 @@ public_folder: "Photoshoot 2025"
 locale: da
 
 collections:
-  - name: "indhold"
-    label: "Hjemmeside indhold"
+
+  # ── SIDENS TEKSTER ──────────────────────────────────────────
+  - name: "tekster"
+    label: "Sidens tekster"
     files:
-      - name: "forside"
-        label: "Forside tekster"
-        file: "content.json"
+
+      - name: "hero"
+        label: "Forside – Hero"
+        file: "_data/hero.json"
         fields:
-          - { label: "Hero overskrift", name: "hero_titel", widget: "string" }
-          - { label: "Hero undertekst", name: "hero_tekst", widget: "text" }
-          - { label: "Mission overskrift", name: "mission_titel", widget: "string" }
-          - { label: "Mission tekst", name: "mission_tekst", widget: "text" }
+          - { label: "Overskrift", name: "titel", widget: "string" }
+          - { label: "Undertekst", name: "tekst", widget: "text" }
+
+      - name: "mission"
+        label: "Om FISKEN – Mission"
+        file: "_data/mission.json"
+        fields:
+          - { label: "Overskrift", name: "titel", widget: "string" }
+          - { label: "Brødtekst", name: "tekst", widget: "text" }
+
+      - name: "kontakt"
+        label: "Kontakt info"
+        file: "_data/kontakt.json"
+        fields:
+          - { label: "Adresse", name: "adresse", widget: "string" }
+          - { label: "Telefon", name: "telefon", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+
+  # ── MEDARBEJDERE ────────────────────────────────────────────
+  - name: "medarbejdere"
+    label: "Medarbejdere"
+    label_singular: "Medarbejder"
+    folder: "_data/medarbejdere"
+    create: true
+    slug: "{{navn}}"
+    fields:
+      - { label: "Navn", name: "navn", widget: "string" }
+      - { label: "Titel / stilling", name: "titel", widget: "string" }
+      - { label: "Beskrivelse", name: "beskrivelse", widget: "text", required: false }
+      - { label: "E-mail", name: "email", widget: "string", required: false }
+      - { label: "Telefon", name: "telefon", widget: "string", required: false }
+      - { label: "Foto", name: "foto", widget: "image", required: false }
+
+  # ── NYHEDER ─────────────────────────────────────────────────
+  - name: "nyheder"
+    label: "Nyheder"
+    label_singular: "Nyhed"
+    folder: "_data/nyheder"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Overskrift", name: "title", widget: "string" }
+      - { label: "Dato", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false }
+      - { label: "Kort beskrivelse", name: "beskrivelse", widget: "text" }
+      - { label: "Billede", name: "billede", widget: "image", required: false }
+      - { label: "Indhold", name: "body", widget: "markdown" }

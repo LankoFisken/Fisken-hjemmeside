@@ -8,7 +8,9 @@
       "Bash(git push *)",
       "Bash(git mv *)",
       "Bash(git commit *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\LankoNooriRahman\\\\OneDrive - Foreningen FISKEN\\\\Skrivebord\\\\VS Code - hjemmeside til fisken\\\\_data\\\\medarbejdere\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\LankoNooriRahman\\\\OneDrive - Foreningen FISKEN\\\\Skrivebord\\\\VS Code - hjemmeside til fisken\\\\_data\\\\nyheder\")"
     ]
   }
 }
