@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: LankoFisken/Fisken-hjemmeside
   branch: main
+  base_url: https://sveltia-cms-auth.YOUR-SUBDOMAIN.workers.dev
 
 media_folder: "Photoshoot 2025"
 public_folder: "Photoshoot 2025"
