@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "Bash(dir \"C:\\\\Users\\\\LankoNooriRahman\\\\OneDrive - Foreningen FISKEN\\\\Skrivebord\\\\VS Code - hjemmeside til fisken\" /b)",
-      "PowerShell([Convert]::ToBase64String\\([IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\LankoNooriRahman\\\\OneDrive - Foreningen FISKEN\\\\Skrivebord\\\\VS Code - hjemmeside til fisken\\\\SamarbejdspartnereLogoer.png\"\\)\\))"
+      "PowerShell([Convert]::ToBase64String\\([IO.File]::ReadAllBytes\\(\"C:\\\\Users\\\\LankoNooriRahman\\\\OneDrive - Foreningen FISKEN\\\\Skrivebord\\\\VS Code - hjemmeside til fisken\\\\SamarbejdspartnereLogoer.png\"\\)\\))",
+      "Bash(git branch *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(git mv *)",
+      "Bash(git commit *)",
+      "Bash(git add *)"
     ]
   }
 }

@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "Photoshoot 2025"
+public_folder: "Photoshoot 2025"
+
+locale: da
+
+collections:
+  - name: "indhold"
+    label: "Hjemmeside indhold"
+    files:
+      - name: "forside"
+        label: "Forside tekster"
+        file: "content.json"
+        fields:
+          - { label: "Hero overskrift", name: "hero_titel", widget: "string" }
+          - { label: "Hero undertekst", name: "hero_tekst", widget: "text" }
+          - { label: "Mission overskrift", name: "mission_titel", widget: "string" }
+          - { label: "Mission tekst", name: "mission_tekst", widget: "text" }
