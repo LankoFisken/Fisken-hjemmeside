@@ -61,11 +61,11 @@ nav.desktop a.active{color:var(--blue)}
 .page-hero p{color:var(--grey);font-size:1.15rem;max-width:48ch;margin:0 auto}
 
 /* SEKTION */
-.team-section{padding:60px 0}
-.team-section h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:2.5rem;padding-bottom:.6rem;border-bottom:3px solid var(--lblue)}
+.team-section{padding:70px 0}
+.team-section h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:2.5rem;padding-bottom:.6rem;border-bottom:3px solid var(--lblue);text-align:center}
 
 /* GRID */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 
 /* KORT */
 .team-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 30px -20px rgba(14,53,61,.35);transition:transform .3s,box-shadow .3s}
@@ -81,7 +81,7 @@ nav.desktop a.active{color:var(--blue)}
 .team-card .kontakt-linje a:hover{text-decoration:underline}
 
 /* FRIVILLIG GRID */
-.frivillig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.frivillig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
 
 @media(max-width:900px){.team-grid,.frivillig-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.team-grid,.frivillig-grid{grid-template-columns:1fr}}
@@ -129,7 +129,7 @@ nav.desktop a.active{color:var(--blue)}
 </div>
 
 <!-- ANSATTE -->
-<section class="team-section">
+<section class="team-section" style="background:var(--tint-lblue)">
   <div class="wrap">
     <h2>Ansatte</h2>
     <div class="team-grid">
@@ -268,7 +268,7 @@ nav.desktop a.active{color:var(--blue)}
 </section>
 
 <!-- FRIVILLIGE -->
-<section class="team-section" style="background:#fff;border-radius:48px;margin:0 0 60px">
+<section class="team-section" style="background:#fff;margin:0 0 60px">
   <div class="wrap">
     <h2>Frivillige</h2>
     <div class="frivillig-grid">
