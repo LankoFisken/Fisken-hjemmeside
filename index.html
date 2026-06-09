@@ -92,6 +92,19 @@ nav.desktop a.active::after{
   content:"";position:absolute;left:50%;bottom:2px;transform:translateX(-50%);
   width:6px;height:6px;border-radius:50%;background:var(--coral);
 }
+/* dropdown */
+.nav-dropdown{position:relative}
+.nav-dropdown .dropdown-menu{
+  display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:#fff;border-radius:14px;box-shadow:0 12px 32px -10px rgba(14,53,61,.25);
+  padding:8px;min-width:160px;z-index:200;
+}
+.nav-dropdown:hover .dropdown-menu{display:block}
+.dropdown-menu a{
+  display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;
+  color:var(--ink);white-space:nowrap;transition:background .15s,color .15s;
+}
+.dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
 .nav-cta{margin-left:.5rem}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
 .burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
@@ -332,12 +345,16 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
     </a>
     <nav class="desktop">
       <a href="#forside" class="nav-link">Forside</a>
-      <a href="#om" class="nav-link">Om FISKEN</a>
+      <div class="nav-dropdown">
+        <a href="#om" class="nav-link">Om FISKEN ▾</a>
+        <div class="dropdown-menu">
+          <a href="find-en-fisk.html">🐟 Find en fisk</a>
+        </div>
+      </div>
       <a href="#tilbud" class="nav-link">Tilbud</a>
       <a href="#vaermed" class="nav-link">Vær med</a>
       <a href="#samarbejde" class="nav-link">Samarbejde</a>
       <a href="#kontakt" class="nav-link">Kontakt</a>
-      <a href="find-en-fisk.html" class="nav-link">Find en fisk</a>
     </nav>
     <a href="#vaermed" class="btn btn-coral nav-cta">Støt FISKEN</a>
     <button class="burger" id="burger" aria-label="Menu">
@@ -350,11 +367,11 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <div class="mobile-menu" id="mobileMenu">
   <a href="#forside">Forside</a>
   <a href="#om">Om FISKEN</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
   <a href="#tilbud">Tilbud</a>
   <a href="#vaermed">Vær med</a>
   <a href="#samarbejde">Samarbejde</a>
   <a href="#kontakt">Kontakt</a>
-  <a href="find-en-fisk.html">Find en fisk</a>
   <a href="#vaermed" class="btn btn-coral">Støt FISKEN</a>
 </div>
 
