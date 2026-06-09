@@ -367,10 +367,10 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
   <span class="fish f2"><svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M70 20 C55 5, 30 5, 10 20 C30 35, 55 35, 70 20Z" fill="var(--coral)" opacity=".6"/><path d="M70 20 L80 10 L78 20 L80 30 Z" fill="var(--coral)" opacity=".6"/><circle cx="18" cy="18" r="2.5" fill="#fff"/></svg></span>
   <span class="fish f3"><svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M70 20 C55 5, 30 5, 10 20 C30 35, 55 35, 70 20Z" fill="var(--lblue)" opacity=".8"/><path d="M70 20 L80 10 L78 20 L80 30 Z" fill="var(--lblue)" opacity=".8"/><circle cx="18" cy="18" r="2.5" fill="var(--blue)"/></svg></span>
   <div class="wrap">
-    <h1 class="reveal">Alle unge har ret til et
+    <h1 class="reveal" id="hero-titel">Alle unge har ret til et
       <span class="hl">godt ungdomsliv<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 C50 2, 150 2, 198 8" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span>
     </h1>
-    <p class="lead reveal">I FISKEN hjælper vi alle unge mellem 13–24 år med at finde job, fællesskab, mentorstøtte og rådgivning. Det hele er gratis – og er bygget på troen på den enkelte.</p>
+    <p class="lead reveal" id="hero-tekst">I FISKEN hjælper vi alle unge mellem 13–24 år med at finde job, fællesskab, mentorstøtte og rådgivning. Det hele er gratis – og er bygget på troen på den enkelte.</p>
     <div class="hero-cta reveal">
       <a href="#tilbud" class="btn btn-blue">Se vores tilbud →</a>
       <a href="#vaermed" class="btn btn-ghost">Bliv frivillig</a>
@@ -383,8 +383,8 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
   <div class="wrap">
     <div class="mission-card reveal">
       <div style="position:relative;z-index:1">
-        <h2>Vi bygger broer i livet</h2>
-        <p>I FISKEN arbejder vi hver dag for, at alle unge får et godt og sundt ungdomsliv. På tværs af vores tilbud styrker vi unges tro på egne evner og deltagelse i samfundet. Vi tror på, at <span class="word">fritidsjob</span>, <span class="word">uddannelse</span> og stærke <span class="word">relationer</span> kan bygge bro og øge unges følelse af medborgerskab i Danmark.</p>
+        <h2 id="mission-titel">Vi bygger broer i livet</h2>
+        <p id="mission-tekst">I FISKEN arbejder vi hver dag for, at alle unge får et godt og sundt ungdomsliv. På tværs af vores tilbud styrker vi unges tro på egne evner og deltagelse i samfundet. Vi tror på, at <span class="word">fritidsjob</span>, <span class="word">uddannelse</span> og stærke <span class="word">relationer</span> kan bygge bro og øge unges følelse af medborgerskab i Danmark.</p>
       </div>
       <div class="mission-logo-wrap">
         <img src="fiskens logo/forenings_logo.png" alt="Foreningen FISKEN">
@@ -530,9 +530,9 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
         </div>
         <div class="kontakt-box">
           <div class="kontakt-info">
-            <p>📍 Ingerslevsgade 108, 1705 København V</p>
-            <p>📞 <a href="tel:+4531644899">31 64 48 99</a></p>
-            <p>✉️ <a href="mailto:info@fisken.org">info@fisken.org</a></p>
+            <p id="kontakt-adresse">📍 Ingerslevsgade 108, 1705 København V</p>
+            <p>📞 <a id="kontakt-telefon" href="tel:+4531644899">31 64 48 99</a></p>
+            <p>✉️ <a id="kontakt-email" href="mailto:info@fisken.org">info@fisken.org</a></p>
             <p style="color:rgba(14,53,61,.45);font-size:.9rem">CVR 29 14 50 67</p>
           </div>
           <iframe class="kontakt-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.1!2d12.5584!3d55.6677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652530b2a5e9a77%3A0x0!2sIngerslevsgade+108%2C+1705+K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -626,6 +626,47 @@ const spy=new IntersectionObserver((entries)=>{
   });
 },{rootMargin:'-45% 0px -50% 0px'});
 sections.forEach(s=>spy.observe(s));
+
+// ── Hent indhold fra CMS datafiler ──────────────────────────
+async function hentData(url) {
+  try { const r = await fetch(url); return r.ok ? r.json() : null; } catch { return null; }
+}
+
+(async () => {
+  // Hero
+  const hero = await hentData('/_data/hero.json');
+  if (hero) {
+    const h1 = document.getElementById('hero-titel');
+    if (h1) {
+      // Bevar den blå understreget span
+      const hl = h1.querySelector('.hl');
+      h1.childNodes[0].textContent = hero.titel.replace(/godt ungdomsliv/i, '').trimEnd() + ' ';
+      if (hl) hl.childNodes[0].textContent = 'godt ungdomsliv';
+    }
+    const lead = document.getElementById('hero-tekst');
+    if (lead) lead.textContent = hero.tekst;
+  }
+
+  // Mission
+  const mission = await hentData('/_data/mission.json');
+  if (mission) {
+    const mt = document.getElementById('mission-titel');
+    const mp = document.getElementById('mission-tekst');
+    if (mt) mt.textContent = mission.titel;
+    if (mp) mp.textContent = mission.tekst;
+  }
+
+  // Kontakt
+  const kontakt = await hentData('/_data/kontakt.json');
+  if (kontakt) {
+    const adr = document.getElementById('kontakt-adresse');
+    const tlf = document.getElementById('kontakt-telefon');
+    const mail = document.getElementById('kontakt-email');
+    if (adr) adr.textContent = '📍 ' + kontakt.adresse;
+    if (tlf) { tlf.textContent = kontakt.telefon; tlf.href = 'tel:+45' + kontakt.telefon.replace(/\s/g,''); }
+    if (mail) { mail.textContent = kontakt.email; mail.href = 'mailto:' + kontakt.email; }
+  }
+})();
 </script>
 </body>
 </html>
