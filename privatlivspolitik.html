@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privatlivspolitik – Foreningen FISKEN</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<link rel="stylesheet" href="search.css">
+<style>
+:root{
+  --ink:#0E353D;--blue:#007A8D;--blue-deep:#00606E;--lblue:#B8D4DD;--coral:#EC605E;--yellow:#FFF7C9;--cream:#FBF8F1;--white:#FFFFFF;--grey:#51616B;--tint-teal:rgba(0,122,141,.10);--tint-lblue:rgba(184,212,221,.25);--radius:28px;--shadow:0 18px 50px -22px rgba(14,53,61,.45);--maxw:1180px;--nav-h:128px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:#B8D4DD;box-shadow:0 4px 24px -16px rgba(14,53,61,.2)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo img{height:128px;width:auto}
+nav.desktop{display:flex;align-items:center;gap:.35rem}
+nav.desktop a{font-weight:600;font-size:.97rem;padding:.5em .85em;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
+nav.desktop a:hover{background:var(--tint-teal);color:var(--blue)}
+nav.desktop a.active{color:var(--blue)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;border-top:10px solid transparent;background:#fff;background-clip:padding-box;border-radius:16px;box-shadow:0 12px 32px -12px rgba(14,53,61,.2);padding:8px;min-width:200px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .35s ease,transform .35s ease;transition-delay:.3s}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0);transition-delay:0s}
+.nav-dropdown-menu a{display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-3px)}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px var(--coral)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(0,122,141,.4)}
+.nav-cta{margin-left:.5rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--cream);display:flex;flex-direction:column;justify-content:center;gap:.5rem;padding:0 32px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.6,0,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Bricolage Grotesque';font-weight:700;font-size:2rem;color:var(--ink);padding:.3em 0}
+
+/* ── Page hero ───────────────────────────────────────────────── */
+.page-hero{padding:calc(var(--nav-h) + 70px) 0 60px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--coral);margin-bottom:.8rem;display:block}
+.page-hero h1{font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;margin-bottom:1rem;color:#fff}
+.page-hero .lead{color:rgba(255,255,255,.8);font-size:1.1rem;max-width:62ch;margin-bottom:.6rem}
+.page-hero .updated{color:rgba(255,255,255,.55);font-size:.9rem;font-weight:600}
+
+/* ── Intro tekst ─────────────────────────────────────────────── */
+.policy-intro{padding:60px 0 20px}
+.policy-intro p{color:var(--grey);font-size:1.05rem;line-height:1.8;max-width:78ch;margin-bottom:1.1rem}
+
+/* ── Accordion ───────────────────────────────────────────────── */
+.policy-section{padding:30px 0 100px}
+.policy-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.policy-item{background:#fff;border-radius:20px;box-shadow:0 8px 24px -16px rgba(14,53,61,.18);overflow:hidden}
+.policy-trigger{width:100%;display:flex;align-items:center;gap:16px;text-align:left;background:none;border:none;cursor:pointer;padding:22px 26px;font-family:'Hanken Grotesk',sans-serif}
+.policy-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.1rem;color:var(--blue);flex-shrink:0;width:1.6em}
+.policy-title{flex:1;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.08rem;color:var(--ink)}
+.policy-plus{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--tint-teal);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:400;transition:transform .3s ease,background .2s,color .2s;line-height:1}
+.policy-item.open .policy-trigger{background:var(--tint-teal)}
+.policy-item.open .policy-plus{transform:rotate(135deg);background:var(--coral);color:#fff}
+.policy-panel{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1)}
+.policy-item.open .policy-panel{grid-template-rows:1fr}
+.policy-panel-inner{min-height:0;padding:0 26px 26px 62px}
+.policy-panel-inner p{color:var(--grey);font-size:.97rem;line-height:1.75;margin-bottom:1rem}
+.policy-panel-inner h3{font-size:1rem;font-weight:800;color:var(--ink);margin:1.4rem 0 .6rem}
+.policy-panel-inner h3:first-child{margin-top:0}
+.policy-panel-inner ul{margin:0 0 1rem;padding-left:1.2rem;color:var(--grey);font-size:.95rem;line-height:1.7}
+.policy-panel-inner ul li{margin-bottom:.55rem}
+.policy-panel-inner .mini-label{font-weight:700;color:var(--ink);display:block;margin-bottom:.3rem;margin-top:1rem}
+.policy-contact-box{background:var(--tint-lblue);border-radius:16px;padding:18px 22px;margin-top:.6rem;font-size:.93rem;line-height:1.85;color:var(--ink)}
+.policy-contact-box strong{font-weight:800}
+.policy-note{background:rgba(236,96,94,.08);border-left:3px solid var(--coral);border-radius:10px;padding:14px 18px;margin:1rem 0;font-size:.92rem;color:var(--ink);line-height:1.7}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.footer-grid h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.2rem}
+.footer-grid a{display:block;color:rgba(255,255,255,.78);padding:.32em 0;font-size:.97rem;transition:color .2s,padding-left .2s}
+.footer-grid a:hover{color:#fff;padding-left:6px}
+.footer-brand p{color:rgba(255,255,255,.62);font-size:.95rem;max-width:30ch}
+.socials{display:flex;gap:12px;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.socials a svg{width:18px;height:18px}
+.socials a:hover{background:var(--blue);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.88rem}
+.footer-bottom a:hover{color:#fff}
+.footer-bottom a:hover{color:#fff}
+
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
+
+@media(max-width:900px){
+  .footer-grid{grid-template-columns:1fr 1fr}
+  nav.desktop{display:none}
+  .burger{display:flex}
+  .policy-panel-inner{padding-left:26px}
+}
+@media(max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+  .policy-trigger{padding:18px 18px}
+  .policy-title{font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN"></a>
+    <nav class="desktop">
+      <a href="index.html">Forside</a>
+      <div class="nav-dropdown">
+        <a href="index.html#tilbud">Tilbud ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#vaermed">Vær med ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="bliv-frivillig.html">Bliv frivillig</a>
+          <a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a>
+          <a href="fiskeven.html">Bliv virksomhedsmedlem</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#book-oplaeg">Book et oplæg ▾</a>
+        <div class="nav-dropdown-menu" style="min-width:260px"><a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a><a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#om">Om FISKEN ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="om-os.html">Om os</a>
+          <a href="find-en-fisk.html">Find en fisk</a>
+        </div>
+      </div>
+      <a href="index.html#kontakt">Kontakt</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+    <a href="index.html#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Forside</a>
+  <a href="index.html#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
+  <a href="index.html#vaermed">Vær med</a>
+  <a href="bliv-frivillig.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv frivillig</a>
+  <a href="bliv-samarbejdspartner.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv samarbejdspartner</a>
+  <a href="fiskeven.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv virksomhedsmedlem</a>
+  <a href="index.html#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
+  <a href="index.html#kontakt">Kontakt</a>
+  <a href="privatlivspolitik.html" style="font-size:1.4rem;color:var(--blue)">↳ Privatlivspolitik</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="wrap">
+    <span class="sec-tag">Persondata & GDPR</span>
+    <h1>Privatlivspolitik</h1>
+    <p class="lead">FISKEN behandler personoplysninger og skal overholde lovgivningen og principperne for god databehandlingsskik. Vi går højt op i at beskytte de registreredes personoplysninger og i at sikre de registreredes rettigheder. Derfor har vi vedtaget denne privatlivspolitik, der fortæller, hvordan vi behandler personoplysninger, og som sikrer en lovlig og gennemsigtig behandling.</p>
+    <p class="updated">Senest opdateret: juni 2026</p>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="policy-intro">
+  <div class="wrap">
+    <p>Vi behandler udelukkende personoplysninger til klare og saglige formål og ud fra foreningens legitime interesser. Vi behandler kun personoplysninger, der er relevante og nødvendige for at opfylde de angivne formål, og vi sletter dine oplysninger, når de ikke længere er nødvendige, eller når du beder os om det. Yderligere opbevaring kan finde sted, hvis det er nødvendigt af dokumentationshensyn, historiske hensyn eller som følge af lovgivning.</p>
+    <p style="font-weight:700;color:var(--ink)">Klik på et af punkterne nedenfor for at læse mere.</p>
+  </div>
+</section>
+
+<!-- ACCORDION -->
+<section class="policy-section">
+  <div class="wrap">
+    <div class="policy-list" id="policyList">
+
+      <!-- 1 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">1</span>
+          <span class="policy-title">Vi er ansvarlige for behandling af dine personoplysninger</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Foreningen FISKEN er dataansvarlig, og vi sikrer, at dine personoplysninger behandles i overensstemmelse med gældende lovgivning.</p>
+            <p>Du kan altid kontakte foreningens dataansvarlige kontaktperson:</p>
+            <div class="policy-contact-box">
+              <strong>Kontaktperson:</strong> Maja Thorsteinsson<br>
+              <strong>Adresse:</strong> Ingerslevsgade 108, 1705 København V<br>
+              <strong>CVR-nummer:</strong> 29 14 50 67<br>
+              <strong>Telefon:</strong> 31 64 48 99<br>
+              <strong>E-mail:</strong> <a href="mailto:maja@fisken.org">maja@fisken.org</a><br>
+              <strong>Hjemmeside:</strong> www.fisken.org
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">2</span>
+          <span class="policy-title">Hvilke personoplysninger behandler vi?</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Foreningen FISKEN behandler følgende personoplysninger afhængigt af, hvem du er:</p>
+
+            <h3>Unge og brugere af FISKEN</h3>
+            <p style="margin-bottom:.4rem"><strong>Unge i Værestedet:</strong></p>
+            <ul>
+              <li>Almindelige personoplysninger: navn og telefonnummer</li>
+              <li>I særlige tilfælde: kontaktoplysninger på forældre (navn og telefonnummer).</li>
+            </ul>
+            <p style="margin-bottom:.4rem"><strong>Unge i FISKEN Fritidsjob:</strong></p>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, telefonnummer, e-mail, alder, køn, billede, beskæftigelse/uddannelse, ansøgning, CV samt tidligere jobs.</li>
+              <li>Følsomme personoplysninger: fødeland, forældres fødeland, opholdsstatus, statsborgerskabsstatus, sprogkundskaber, trivsel i skole og hjem, helbredsoplysninger, ansættelseskontrakter, lønsedler samt kontaktperson/sagsbehandler.</li>
+              <li>CPR-nummer og strafbare forhold: CPR-nummer behandles i forbindelse med lønsedler, timesedler og ansættelseskontrakter, særligt ved lønrefusionsprojekter. Strafbare forhold behandles jf. GDPR artikel 9, stk. 2 (d).</li>
+            </ul>
+            <p style="margin-bottom:.4rem"><strong>Unge i FISKENs mentorprojekt:</strong></p>
+            <ul>
+              <li>Almindelige personoplysninger: navn, telefonnummer, e-mail, alder, uddannelsesniveau, køn og bopælskommune.</li>
+              <li>Følsomme personoplysninger: helbredsoplysninger, fødeland, trivsel i skole og hjem.</li>
+              <li>Strafbare forhold jf. GDPR artikel 9, stk. 2 (d).</li>
+            </ul>
+            <p style="margin-bottom:.4rem"><strong>Unge i Statsborgerskab og opholdstilladelse:</strong></p>
+            <ul>
+              <li>Almindelige personoplysninger: navn, alder, bopælskommune, køn, telefonnummer, e-mail.</li>
+              <li>Følsomme personoplysninger: opholdsgrundlag, dokumentation fra Udlændingestyrelsen, opholdskort, pas-oplysninger samt strafbare forhold.</li>
+              <li>CPR-nummer: i særlige tilfælde, hvor det er nødvendigt for at hjælpe den unge med sin sag.</li>
+            </ul>
+            <p style="margin-bottom:.4rem"><strong>Unge i Socialrådgivning:</strong></p>
+            <ul>
+              <li>Almindelige personoplysninger: navn, alder, køn, telefonnummer, e-mail, jobansøgning og CV.</li>
+              <li>Følsomme personoplysninger: helbredsoplysninger og trivsel i skole og hjem.</li>
+              <li>CPR-nummer: i særlige tilfælde, hvor det kræves for at hjælpe den unge med en sag.</li>
+            </ul>
+
+            <h3>Frivillige</h3>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, e-mail, telefonnummer og indmeldelsesdato.</li>
+              <li>CPR-nummer samt strafbare forhold: børneattest og straffeattest.</li>
+            </ul>
+
+            <h3>Medarbejdere</h3>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, ansættelsesdato, telefonnummer, e-mail, jobansøgning, CV, eksamenspapirer, stilling, ansættelsesområde samt tjenstlige forhold.</li>
+              <li>Følsomme personoplysninger: bankkontonummer og pensionsselskab.</li>
+              <li>CPR-nummer samt strafbare forhold: børneattest og straffeattest.</li>
+            </ul>
+
+            <h3>Medlemmer</h3>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, indmeldelsesdato, telefonnummer og e-mail.</li>
+            </ul>
+
+            <h3>Bidragsydere</h3>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, kontaktperson, telefonnummer og e-mail.</li>
+              <li>Følsomme personoplysninger: fondsansøgning, bevillingsbrev, bevillingskriterier samt udbetalingsforhold.</li>
+            </ul>
+
+            <h3>Samarbejdspartnere</h3>
+            <ul>
+              <li>Almindelige personoplysninger: navn, adresse, telefonnummer, arbejdsplads, stilling og e-mail.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">3</span>
+          <span class="policy-title">Billeder</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>For alle personer, som FISKEN indsamler personoplysninger om, kan offentliggørelse af billeder på FISKENs hjemmeside, Facebook, Instagram og LinkedIn forekomme.</p>
+            <p>Omstændighederne for offentliggørelse af billeder følger Datatilsynets praksis:</p>
+            <ul>
+              <li>Situationsbilleder (afbildning af en aktivitet eller et arrangement) kan offentliggøres uden forudgående aftale.</li>
+              <li>Portrætbilleder, hvor enkeltpersoner tydeligt fremgår og er identificerbare, offentliggøres kun på baggrund af indhentet samtykke.</li>
+            </ul>
+            <p>Ønsker du at få slettet et offentliggjort billede, kan du læse mere herom under afsnittet "Dine rettigheder".</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">4</span>
+          <span class="policy-title">Her indsamler vi oplysninger fra</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Normalt får vi oplysningerne direkte fra dig. I nogle tilfælde kan der være andre kilder, herunder:</p>
+            <ul>
+              <li>Offentlige myndigheder – fx skatteoplysninger ved udbetaling af løn, børneattest og straffeattest.</li>
+              <li>Sociale medier eller andre offentligt tilgængelige kanaler.</li>
+              <li>E-mail og digitale formularer (se afsnit 6 om hjemmesiden).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">5</span>
+          <span class="policy-title">Foreningens formål med behandling af dine personoplysninger</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Vi behandler dine personoplysninger til bestemte formål, når vi har en lovlig grund (hjemmel). Vores hjemmel til at behandle personoplysninger om dig afhænger af, hvilken relation du har til FISKEN:</p>
+
+            <h3>Som bruger af FISKEN</h3>
+            <ul>
+              <li>At vi som forening har en legitim interesse i at behandle dine oplysninger.</li>
+              <li>At det er nødvendigt for at opfylde en aftale med dig.</li>
+              <li>At loven stiller krav om, at vi behandler dine oplysninger.</li>
+              <li>At du har givet samtykke til, at vi behandler dine oplysninger.</li>
+            </ul>
+
+            <h3>Som frivillig i foreningen</h3>
+            <ul>
+              <li>At vi kan koordinere og håndtere frivilliges opgaver i foreningen.</li>
+              <li>At vi har overblik over og kan udvikle frivilliges erfaringer og kompetencer – herunder give tilbud om kurser og kompetenceudvikling.</li>
+              <li>At opfylde lovgivning, herunder krav i serviceloven (fx kravet om at indhente børneattest på frivillige, der arbejder med børn under 15 år).</li>
+              <li>At kunne udbetale transport- og rejsegodtgørelser samt refusion.</li>
+              <li>At administrere din relation til foreningen.</li>
+              <li>At du har givet samtykke til, at vi behandler dine oplysninger.</li>
+            </ul>
+
+            <h3>Som ansat i foreningen</h3>
+            <ul>
+              <li>At du og vi som arbejdsgiver kan opfylde en indgået kontrakt.</li>
+              <li>At det er nødvendigt for at sikre et lovligt ansættelsesforhold.</li>
+              <li>At loven stiller krav om, at vi behandler dine oplysninger.</li>
+              <li>At du har givet samtykke til, at vi behandler dine oplysninger.</li>
+              <li>At opfylde lovgivning, herunder krav i serviceloven (fx kravet om børneattest).</li>
+            </ul>
+
+            <h3>Som medlem af foreningen</h3>
+            <ul>
+              <li>At behandle medlemsoplysninger – herunder at opkræve kontingent og sende nyhedsbrev.</li>
+              <li>At vi kan drive foreningens aktiviteter og planlægge, gennemføre og følge op på dem.</li>
+              <li>At opfylde lovgivning, herunder krav i serviceloven.</li>
+              <li>At kunne levere ydelser du har bestilt.</li>
+              <li>At informere om foreningens virke.</li>
+              <li>At administrere din relation til foreningen.</li>
+            </ul>
+
+            <h3>Som bidragsyder</h3>
+            <ul>
+              <li>At vi som forening har en legitim interesse i at behandle dine oplysninger.</li>
+              <li>At det er nødvendigt for at opfylde en aftale med dig.</li>
+              <li>At informere om foreningens virke og tilbud.</li>
+              <li>At administrere din relation til foreningen.</li>
+            </ul>
+
+            <h3>Som samarbejdspartner</h3>
+            <ul>
+              <li>At vi som forening har en legitim interesse i at behandle dine oplysninger.</li>
+              <li>At det er nødvendigt for at opfylde en aftale med dig.</li>
+              <li>At administrere din relation til foreningen.</li>
+              <li>At loven stiller krav om, at vi behandler dine oplysninger.</li>
+              <li>At du har givet samtykke til, at vi behandler dine oplysninger.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">6</span>
+          <span class="policy-title">Hjemmesiden og digitale tjenester</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>FISKENs hjemmeside (www.fisken.org) anvender en række digitale tjenester til at håndtere booking, formularindsendelser og hosting. Nedenfor beskrives, hvilke data der behandles, og af hvem.</p>
+
+            <h3>Kontaktformularer</h3>
+            <p>På hjemmesiden findes flere kontaktformularer – bl.a. til frivilligtilmelding, samarbejdspartnere, virksomhedsmedlemsskabs-ordningen og oplægsforespørgsler. Formularerne indsamler typisk:</p>
+            <ul>
+              <li>Navn, e-mail og telefonnummer.</li>
+              <li>En besked eller uddybende oplysninger, som du selv vælger at skrive.</li>
+            </ul>
+            <p>Oplysningerne sendes direkte til den relevante medarbejder i FISKEN via e-mail. Vi opfordrer dig til ikke at inkludere følsomme personoplysninger (fx helbredsoplysninger eller CPR-nummer) i fri tekst i formularerne.</p>
+
+            <h3>Formspree (databehandler)</h3>
+            <p>Vores kontaktformularer benytter tjenesten Formspree til at videresende indsendte formularer til foreningens indbakke. Formspree fungerer som databehandler på vegne af FISKEN.</p>
+            <ul>
+              <li>Formspree opbevarer indsendte formulardata i op til 30 dage, hvorefter de slettes automatisk hos Formspree.</li>
+              <li>De oplysninger, der sendes til foreningens e-mail, opbevares herefter af FISKEN i overensstemmelse med foreningens egne opbevaringsperioder.</li>
+              <li>Formspree er GDPR-compliant og anvender Standard Contractual Clauses (SCC) ved dataoverførsler.</li>
+            </ul>
+            <p>Læs mere: <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">formspree.io/legal/privacy-policy</a></p>
+
+            <h3>Cal.com – bookingsystem (databehandler)</h3>
+            <p>Til booking af vejledningsforløb (fx fritidsjobvejledning) anvender vi bookingsystemet Cal.com. Når du booker via hjemmesiden, indsamler Cal.com:</p>
+            <ul>
+              <li>Navn, e-mail og telefonnummer.</li>
+              <li>Eventuelle kommentarer eller noter, du skriver i bookingformularen.</li>
+            </ul>
+            <p>Cal.com fungerer som databehandler på vegne af FISKEN. Data behandles og opbevares på servere inden for EU (vi anvender cal.eu). Cal.com oplyser ikke en fast opbevaringsperiode for bookingdata, men angiver at data slettes, "når det ikke længere er nødvendigt til formålet". FISKEN anbefaler, at du ikke skriver følsomme personoplysninger i kommentarfeltet ved booking.</p>
+            <div class="policy-note">
+              <strong>OBS – mindreårige og Cal.com:</strong><br>
+              Cal.coms egne vilkår angiver, at tjenesten ikke er beregnet til brug af personer under 18 år. Da FISKEN arbejder med unge fra 13 år, opfordrer vi forældre/værger til at bistå mindreårige ved booking, og vi anbefaler, at unge under 18 år kontakter os direkte pr. telefon eller e-mail frem for at bruge bookingwidgetten.
+            </div>
+            <p>Læs mere: <a href="https://cal.com/privacy" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">cal.com/privacy</a></p>
+
+            <h3>Netlify (hostingudbyder)</h3>
+            <p>FISKENs hjemmeside hostes af Netlify. Netlify fungerer som databehandler og har adgang til tekniske serverdata i forbindelse med driften af hjemmesiden. Netlify opbevarer server-adgangslogfiler, herunder IP-adresser, i op til 30 dage. Netlify indsamler ikke formularindhold direkte.</p>
+            <p>Læs mere: <a href="https://www.netlify.com/gdpr-ccpa/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700">netlify.com/gdpr-ccpa</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">7</span>
+          <span class="policy-title">Cookies</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Hjemmesiden anvender cookies og lignende teknologier. En cookie er en lille tekstfil, der lagres i din browser, når du besøger en hjemmeside. Cookies bruges til at få hjemmesiden til at fungere og til at indsamle oplysninger om brugen af siden.</p>
+
+            <h3>Nødvendige cookies</h3>
+            <p>Disse cookies er nødvendige for, at hjemmesiden fungerer korrekt. De kan ikke fravælges.</p>
+
+            <h3>Tredjepartscookies</h3>
+            <p>Hjemmesiden indlæser indhold fra tredjeparter, der sætter egne cookies. Det drejer sig om:</p>
+            <ul>
+              <li>Google Maps – Vi viser et kort på kontaktsiden via Google Maps. Google sætter cookies i forbindelse med kortvisningen. Læs Googles privatlivspolitik på policies.google.com/privacy.</li>
+              <li>Cal.com / cal.eu – Bookingwidgetten fra Cal.com sætter cookies til at huske dine præferencer og sikre, at bookingprocessen fungerer korrekt.</li>
+              <li>Snapwidget – Vi viser vores Instagram-feed via Snapwidget. Snapwidget sætter cookies i forbindelse med indlæsningen af feed'et.</li>
+            </ul>
+            <p>Du kan til enhver tid trække dit samtykke til cookies tilbage eller ændre dine indstillinger via din browsers cookie-indstillinger. Bemærk, at afvisning af visse cookies kan påvirke hjemmesidens funktionalitet.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">8</span>
+          <span class="policy-title">Børn og unge</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>FISKEN arbejder med unge mellem 13 og 24 år. Vi er særligt opmærksomme på databeskyttelse, når det drejer sig om mindreårige, og vi følger de krav, der stilles i GDPR og den danske databeskyttelseslov.</p>
+            <ul>
+              <li>Når vi indsamler personoplysninger om børn og unge under 15 år, foretager vi en konkret vurdering af, om den unge selv er i stand til at afgive de pågældende personoplysninger. Hvis ikke, indhenter vi samtykke fra en forælder eller værge.</li>
+              <li>Indsamler vi personoplysninger via digitale tjenester (apps og sociale medier), kan unge fra og med de er fyldt 13 år selv afgive samtykke jf. databeskyttelsesloven § 6, stk. 1.</li>
+              <li>Unge under 18 år anbefales at benytte telefon eller e-mail frem for Cal.com-bookingwidgetten, da Cal.coms egne vilkår angiver, at tjenesten ikke er beregnet til personer under 18 år. Forældre eller værger opfordres til at bistå ved booking for mindreårige.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">9</span>
+          <span class="policy-title">Vi behandler kun personoplysninger ud fra legitime interesser</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>I det omfang vi behandler dine oplysninger på baggrund af foreningens legitime interesser, er disse:</p>
+            <ul>
+              <li>At kunne tilbyde rådgivning og vejledning i henhold til foreningens formål og tilbud.</li>
+              <li>At kunne sikre en kontinuerlig kvalitet i foreningens tilbud tilpasset foreningens brugergruppes behov.</li>
+              <li>At kunne planlægge og afholde sociale arrangementer og aktiviteter.</li>
+              <li>At kunne vise situationsbilleder fra konkrete aktiviteter eller arrangementer i foreningen.</li>
+              <li>At bevare oplysninger med historisk værdi til statistik, bogholderi og dokumentationshensyn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">10</span>
+          <span class="policy-title">Samtykke</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Når vi behandler oplysninger om dig, sker det ofte på et andet lovligt grundlag end samtykke. Vi indhenter kun dit samtykke, når det er nødvendigt for at behandle dine personoplysninger til de formål, der er beskrevet i denne politik.</p>
+            <p>Hvis vi indhenter dit samtykke, er det frivilligt, og du kan til enhver tid trække det tilbage ved at kontakte os. Tilbagetrækning af samtykke påvirker ikke lovligheden af den behandling, der er foretaget inden tilbagetrækningen.</p>
+            <p>Når vi indhenter personoplysninger om børn og unge under 15 år, foretager vi en vurdering af, om barnet selv er i stand til at afgive de pågældende personoplysninger. Hvis ikke, indhenter vi samtykke fra en forælder eller værge. Indsamler vi personoplysninger via informationstjenester (apps og sociale medier), kan unge fra 13 år selv afgive samtykke.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">11</span>
+          <span class="policy-title">Videregivelse af dine personoplysninger</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Vi videregiver under ingen omstændigheder oplysninger om dig til andre uden for foreningen – fx til brug for markedsføring – uden dit samtykke.</p>
+            <p>Vi anvender databehandlere (Cal.com, Formspree og Netlify), som behandler personoplysninger på vegne af FISKEN og alene efter vores instruks. Vi har indgået databehandleraftaler med vores databehandlere, der sikrer, at behandlingen sker lovligt og i overensstemmelse med GDPR.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">12</span>
+          <span class="policy-title">Opbevaring og sletning af dine personoplysninger</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Vi har forskellige opbevaringsperioder afhængigt af, hvem du er, og hvilke oplysninger vi behandler:</p>
+            <p><strong>Brugere af FISKEN:</strong> Vi sletter personoplysninger om dig senest fem år efter din seneste afbenyttelse af et af FISKENs tilbud. Opbevaringsperioden er begrundet i brugernes flerårige tilbagevending til FISKENs tilbud. Vi opbevarer oplysninger i anonymiseret form til statistik og lignende, så længe de har historisk værdi.</p>
+            <p><strong>Frivillige:</strong> Vi sletter personoplysninger om dig et år efter dit frivillige arbejde er ophørt. Vi opbevarer oplysninger i anonymiseret form til statistik og lignende, så længe de har historisk værdi.</p>
+            <p><strong>Medarbejdere:</strong> Vi sletter personoplysninger om dig senest fem år efter ansættelsens ophør, jf. bogføringsloven. Vi opbevarer oplysninger i anonymiseret form til statistik og lignende, så længe de har historisk værdi.</p>
+            <p><strong>Medlemmer:</strong> Vi sletter personoplysninger om dig et år efter at dit medlemskab er ophørt.</p>
+            <p><strong>Bidragsydere:</strong> Vi sletter personoplysninger om dig senest fem år efter donationens ophør, jf. bogføringsloven.</p>
+
+            <h3>Opbevaringsperioder hos tredjeparter</h3>
+            <ul>
+              <li>Formspree: Indsendte formulardata opbevares i op til 30 dage hos Formspree, hvorefter de slettes automatisk. FISKEN opbevarer herefter de modtagne oplysninger i overensstemmelse med ovenstående perioder.</li>
+              <li>Cal.com: Bookingdata (navn, e-mail, telefonnummer og eventuelle kommentarer) opbevares hos Cal.com så længe det er nødvendigt til formålet med bookingen. Cal.com oplyser ikke en fast slettefrist. Du kan anmode om sletning ved at kontakte os eller Cal.com direkte på <a href="mailto:support@cal.com" style="color:var(--blue);font-weight:700">support@cal.com</a>.</li>
+              <li>Netlify: Serverlogfiler, herunder IP-adresser fra besøg på hjemmesiden, opbevares i op til 30 dage hos Netlify.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">13</span>
+          <span class="policy-title">Dine rettigheder</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Når vi behandler dine oplysninger, har du i henhold til GDPR en række rettigheder:</p>
+            <ul>
+              <li><strong>Ret til information:</strong> Du har ret til at blive oplyst om, at vi behandler oplysninger om dig – det er det, vi gør i denne privatlivspolitik.</li>
+              <li><strong>Ret til indsigt (artikel 15):</strong> Du har ret til at få indsigt i de oplysninger, vi behandler om dig.</li>
+              <li><strong>Ret til berigtigelse:</strong> Du har ret til at få urigtige eller ufuldstændige oplysninger om dig rettet.</li>
+              <li><strong>Ret til sletning (artikel 17):</strong> Du har ret til at få dine oplysninger slettet – "retten til at blive glemt".</li>
+              <li><strong>Ret til begrænsning af behandling:</strong> Du har ret til at anmode om, at behandlingen af dine oplysninger begrænses i visse tilfælde.</li>
+              <li><strong>Ret til indsigelse:</strong> Du har ret til at gøre indsigelse mod, at dine oplysninger anvendes til bestemte formål, herunder markedsføring.</li>
+              <li><strong>Ret til dataportabilitet:</strong> Du har ret til at modtage dine oplysninger i et struktureret, almindeligt anvendt og maskinlæsbart format.</li>
+              <li><strong>Ret til at trække samtykke tilbage:</strong> Har du afgivet samtykke, kan du til enhver tid trække det tilbage.</li>
+            </ul>
+            <p>Du kan gøre brug af dine rettigheder ved at kontakte os på de oplysninger, der fremgår øverst i denne politik. Vi behandler din henvendelse hurtigst muligt og senest inden for 30 dage.</p>
+            <p>Du kan klage over behandlingen af dine personoplysninger til Datatilsynet:</p>
+            <div class="policy-contact-box">
+              <strong>Datatilsynet</strong><br>
+              Carl Jacobsens Vej 35<br>
+              2500 Valby<br>
+              Telefon: 33 19 32 00<br>
+              E-mail: <a href="mailto:dt@datatilsynet.dk">dt@datatilsynet.dk</a><br>
+              Website: <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">www.datatilsynet.dk</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="policy-item">
+        <button class="policy-trigger" aria-expanded="false">
+          <span class="policy-num">14</span>
+          <span class="policy-title">Revision af privatlivspolitikken</span>
+          <span class="policy-plus">+</span>
+        </button>
+        <div class="policy-panel">
+          <div class="policy-panel-inner">
+            <p>Vi forbeholder os ret til at ændre foreningens privatlivspolitik. Når vi ændrer privatlivspolitikken, ændrer vi også datoen øverst i dette dokument. Ved væsentlige ændringer vil du modtage besked herom.</p>
+            <p>Den til enhver tid gældende privatlivspolitik er tilgængelig på vores hjemmeside: www.fisken.org</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
+          <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="index.html#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="index.html#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="index.html#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="index.html#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      </div>
+      <div>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
+      </div>
+      <div>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+burger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  burger.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    burger.classList.remove('open');
+  });
+});
+
+document.querySelectorAll('.policy-item').forEach(item => {
+  const trigger = item.querySelector('.policy-trigger');
+  trigger.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    item.classList.toggle('open', !isOpen);
+    trigger.setAttribute('aria-expanded', String(!isOpen));
+  });
+});
+</script>
+<script src="lang.js"></script>
+<script src="search.js"></script>
+</body>
+</html>

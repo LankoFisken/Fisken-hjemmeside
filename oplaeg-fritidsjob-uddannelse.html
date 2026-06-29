@@ -1,0 +1,617 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book et oplæg – Foreningen FISKEN</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<link rel="stylesheet" href="search.css">
+<style>
+:root{
+  --ink:#0E353D;--blue:#007A8D;--blue-deep:#00606E;--lblue:#B8D4DD;--coral:#EC605E;--yellow:#FFF7C9;--cream:#FBF8F1;--white:#FFFFFF;--grey:#51616B;--tint-teal:rgba(0,122,141,.10);--tint-lblue:rgba(184,212,221,.25);--radius:28px;--shadow:0 18px 50px -22px rgba(14,53,61,.45);--maxw:1180px;--nav-h:128px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:#B8D4DD;box-shadow:0 4px 24px -16px rgba(14,53,61,.2)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo img{height:128px;width:auto}
+nav.desktop{display:flex;align-items:center;gap:.35rem}
+nav.desktop a{font-weight:600;font-size:.97rem;padding:.5em .85em;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
+nav.desktop a:hover{background:var(--tint-teal);color:var(--blue)}
+nav.desktop a.active{color:var(--blue)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;border-top:10px solid transparent;background:#fff;background-clip:padding-box;border-radius:16px;box-shadow:0 12px 32px -12px rgba(14,53,61,.2);padding:8px;min-width:180px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .35s ease,transform .35s ease;transition-delay:.3s}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0);transition-delay:0s}
+.nav-dropdown-menu a{display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-3px)}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px var(--coral)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(0,122,141,.4)}
+.nav-cta{margin-left:.5rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--cream);display:flex;flex-direction:column;justify-content:center;gap:.5rem;padding:0 32px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.6,0,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Bricolage Grotesque';font-weight:700;font-size:2rem;color:var(--ink);padding:.3em 0}
+.page-hero{padding:calc(var(--nav-h) + 70px) 0 60px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('Billeder til hjemmeside/Photoshoot 2025/samtale med ung.jpg') center/cover no-repeat;opacity:.18}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--coral);margin-bottom:.8rem;display:block}
+.page-hero h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;margin-bottom:1rem;color:#fff}
+.page-hero .lead{color:rgba(255,255,255,.8);font-size:1.15rem;max-width:58ch;margin-bottom:1.8rem}
+.content-section{padding:80px 0}
+.content-section+.content-section{padding-top:0}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch}
+.content-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);height:100%}
+.content-img img{width:100%;height:100%;display:block;object-fit:cover}
+.content-text .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.7rem;display:block}
+.content-text h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:1rem}
+.content-text p{color:var(--grey);font-size:1.05rem;line-height:1.75;margin-bottom:1rem}
+.content-text ul{color:var(--grey);font-size:1.05rem;line-height:1.75;padding-left:1.4rem;margin-bottom:1.2rem}
+.content-text ul li{margin-bottom:.4rem}
+.info-cards{padding:70px 0;background:var(--tint-lblue)}
+.info-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:2.5rem}
+.info-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:0 8px 24px -16px rgba(14,53,61,.2)}
+.info-card .icon{font-size:32px;margin-bottom:.8rem;display:block;color:var(--blue)}
+.info-card h3{font-size:1.15rem;font-weight:800;margin-bottom:.5rem}
+.info-card p{color:var(--grey);font-size:.95rem;line-height:1.65}
+.cta-box{background:var(--ink);color:#fff;border-radius:var(--radius);padding:56px 48px;text-align:center;margin:70px 0}
+.cta-box h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:.8rem}
+.cta-box p{color:rgba(255,255,255,.75);font-size:1.1rem;max-width:48ch;margin:0 auto 2rem}
+.andre-tilbud{padding:80px 0;background:var(--ink)}
+.andre-tilbud h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:2rem;text-align:center;color:#fff;}
+.andre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.andre-card{background:#fff;border-radius:20px;padding:28px;border:2px solid transparent;transition:border-color .2s,transform .2s;box-shadow:0 6px 20px -12px rgba(14,53,61,.2);display:block}
+.andre-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.andre-card h3{font-size:1rem;font-weight:800;margin-bottom:.35rem}
+.andre-card p{font-size:.88rem;color:var(--grey);line-height:1.6;margin-bottom:.8rem}
+.andre-card .link{font-size:.9rem;font-weight:700;color:var(--blue)}
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.footer-grid h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.2rem}
+.footer-grid a{display:block;color:rgba(255,255,255,.78);padding:.32em 0;font-size:.97rem;transition:color .2s,padding-left .2s}
+.footer-grid a:hover{color:#fff;padding-left:6px}
+.footer-brand p{color:rgba(255,255,255,.62);font-size:.95rem;max-width:30ch}
+.socials{display:flex;gap:12px;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.socials a svg{width:18px;height:18px}
+.socials a:hover{background:var(--blue);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.88rem}
+.footer-bottom a:hover{color:#fff}
+
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
+
+/* ---- Kontaktformular ---- */
+.kontakt-form-section{padding:80px 0 90px}
+.kontakt-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:stretch;max-width:1280px;margin:0 auto}
+.kontakt-person{background:#fff;border-radius:var(--radius);padding:52px 44px;box-shadow:0 14px 36px -26px rgba(14,53,61,.5);text-align:center;display:flex;flex-direction:column;justify-content:center}
+.kontakt-person .foto{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 1.6rem;display:block;box-shadow:0 8px 20px -10px rgba(14,53,61,.4)}
+.kontakt-person .lead-text{color:var(--grey);font-size:1.15rem;margin-bottom:1.6rem;line-height:1.65}
+.kontakt-person .navn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:.3rem}
+.kontakt-person .stilling{font-size:1.05rem;font-weight:600;color:var(--blue);margin-bottom:1.3rem}
+.kontakt-person .kontakt-linje{font-size:1.1rem;color:var(--grey);line-height:1.9}
+.kontakt-person .kontakt-linje a{color:var(--blue);font-weight:600}
+.kontakt-person .kontakt-linje a:hover{text-decoration:underline}
+.kontakt-box{background:#B8D4DD;border-radius:var(--radius);padding:52px 56px;border:1px solid rgba(14,53,61,.07);height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.kontakt-form{display:flex;flex-direction:column;gap:30px;flex-grow:1;justify-content:space-between}
+.kontakt-form .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.kontakt-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.kontakt-form input,.kontakt-form textarea{font-family:'Hanken Grotesk',sans-serif;font-size:1.1rem;padding:1.05em 1.3em;border-radius:14px;border:2px solid rgba(14,53,61,.1);background:#fff;color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+.kontakt-form input::placeholder,.kontakt-form textarea::placeholder{font-size:.92rem;color:rgba(14,53,61,.45)}
+.kontakt-form input:focus,.kontakt-form textarea:focus{border-color:var(--blue)}
+.kontakt-form textarea{min-height:180px;resize:vertical;flex-grow:1}
+.kontakt-form .btn{font-size:1.1rem;padding:1em 1.8em}
+.kontakt-checks{background:rgba(255,255,255,.55);border-radius:14px;padding:18px 20px}
+.kontakt-checks .checks-label{display:block;font-weight:700;font-size:.93rem;margin-bottom:.9rem}
+.kontakt-checks .checks-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px}
+.kontakt-check{display:flex;align-items:center;gap:10px;font-size:.92rem;cursor:pointer;background:#fff;border-radius:10px;padding:.7em .9em;border:1.5px solid transparent;transition:border-color .2s,background .2s}
+.kontakt-check:hover{border-color:rgba(236,96,94,.3)}
+.kontakt-check input{width:18px;height:18px;accent-color:var(--coral);cursor:pointer;flex:none}
+.kontakt-check input:checked~span{font-weight:700;color:var(--coral)}
+
+/* ---- Model / oplæg-bygger ---- */
+.model-section{padding:80px 0 90px;background:var(--cream)}
+.model-section .sec-head{text-align:center;margin-bottom:2.8rem}
+.model-section .sec-head .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block}
+.model-section .sec-head h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800}
+.model-section .sec-head p{color:var(--grey);max-width:60ch;margin:.9rem auto 0;font-size:1.02rem}
+
+.model-flow{display:flex;flex-direction:column;align-items:center;gap:0}
+
+.model-step{position:relative;width:100%;max-width:760px;background:#fff;border-radius:24px;padding:30px 36px;box-shadow:0 14px 36px -18px rgba(14,53,61,.3);text-align:center}
+.model-step .badge{position:absolute;top:-18px;left:32px;background:var(--yellow);color:var(--ink);font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:.5em 1em;border-radius:999px;box-shadow:0 6px 14px -6px rgba(14,53,61,.3);transform:rotate(-4deg)}
+.model-step h3{font-size:1.25rem;font-weight:800;margin-bottom:.4rem}
+.model-step p{color:var(--grey);font-size:.95rem;max-width:54ch;margin:0 auto}
+
+.model-connector{width:4px;height:42px;background:repeating-linear-gradient(to bottom,var(--blue) 0 8px,transparent 8px 16px)}
+
+.model-choose-wrap{width:100%;position:relative;padding-top:18px;margin-top:6px}
+.model-choose-wrap .badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);background:var(--coral);color:#fff;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;padding:.55em 1.3em;border-radius:999px;box-shadow:0 8px 18px -8px rgba(236,96,94,.6);z-index:2}
+
+.theme-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:1.6rem}
+.theme-card{background:#fff;border:2px solid transparent;border-radius:22px;padding:26px 22px;box-shadow:0 10px 26px -16px rgba(14,53,61,.28);cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;text-align:left}
+.theme-card:hover{transform:translateY(-5px);border-color:var(--blue)}
+.theme-card .icon{width:46px;height:46px;border-radius:14px;background:var(--tint-teal);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:.9rem}
+.theme-card h4{font-size:1.05rem;font-weight:800;margin-bottom:.3rem}
+.theme-card .age{display:inline-block;font-size:.72rem;font-weight:700;color:var(--blue);background:var(--tint-teal);padding:.2em .7em;border-radius:999px;margin-bottom:.6rem}
+.theme-card .hint{font-size:.85rem;color:var(--grey);margin-bottom:0}
+.theme-card .more{font-size:.8rem;font-weight:700;color:var(--coral);margin-top:.8rem;display:flex;align-items:center;gap:.3em}
+.theme-card .more i{transition:transform .25s}
+.theme-card.expanded .more i{transform:rotate(180deg)}
+.theme-detail{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.theme-card.expanded .theme-detail{max-height:340px}
+.theme-detail ul{margin:.8rem 0 0;padding-left:1.1rem;color:var(--grey);font-size:.88rem;line-height:1.6}
+.theme-detail ul li{margin-bottom:.45rem}
+.theme-card.selected{border-color:var(--coral);box-shadow:0 16px 34px -16px rgba(236,96,94,.35);background:rgba(236,96,94,.05)}
+.theme-card .select-badge{position:absolute;top:14px;right:14px;width:24px;height:24px;border-radius:50%;background:var(--coral);color:#fff;display:none;align-items:center;justify-content:center;font-size:13px}
+.theme-card{position:relative}
+.theme-card.selected .select-badge{display:flex}
+.theme-pick-note{text-align:center;font-size:.88rem;color:var(--grey);margin-top:1.2rem;min-height:1.4em}
+.theme-pick-note.warn{color:var(--coral);font-weight:700}
+.book-oplaeg-btn-wrap{display:flex;justify-content:center;margin-top:2.4rem}
+#oplaegTemaWrap .kontakt-check.is-auto span{font-weight:700;color:var(--coral)}
+
+@media(max-width:980px){.theme-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.content-grid{grid-template-columns:1fr;gap:36px}.info-cards-grid{grid-template-columns:1fr 1fr}.andre-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}nav.desktop{display:none}.burger{display:flex}.kontakt-form .row3,.kontakt-form .row2,.kontakt-checks .checks-grid{grid-template-columns:1fr}.kontakt-box{padding:30px 24px}.kontakt-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.info-cards-grid,.andre-grid,.footer-grid,.theme-grid{grid-template-columns:1fr}.cta-box{padding:40px 24px}.model-step{padding:24px 22px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN"></a>
+    <nav class="desktop">
+      <a href="index.html">Forside</a>
+      <div class="nav-dropdown">
+        <a href="index.html#tilbud">Tilbud ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#vaermed">Vær med ▾</a>
+        <div class="nav-dropdown-menu"><a href="bliv-frivillig.html">Bliv frivillig</a><a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a><a href="fiskeven.html">Bliv virksomhedsmedlem</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#book-oplaeg" class="active">Book et oplæg ▾</a>
+        <div class="nav-dropdown-menu" style="min-width:260px">
+          <a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a>
+          <a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#om">Om FISKEN ▾</a>
+        <div class="nav-dropdown-menu"><a href="om-os.html">Om os</a><a href="find-en-fisk.html">Find en fisk</a></div>
+      </div>
+      <a href="index.html#kontakt">Kontakt</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+    <a href="index.html#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Forside</a>
+  <a href="index.html#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
+  <a href="index.html#vaermed">Vær med</a>
+  <a href="index.html#book-oplaeg">Book et oplæg</a>
+  <a href="oplaeg-fritidsjob-uddannelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om fritidsjob og uddannelse</a>
+  <a href="oplaeg-statsborgerskab-opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om statsborgerskab og opholdstilladelse</a>
+  <a href="index.html#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
+  <a href="index.html#kontakt">Kontakt</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <h1 data-da="Oplæg om fritidsjob og uddannelse" data-en="Presentation on part-time jobs and education">Oplæg om fritidsjob og uddannelse</h1>
+    <p class="lead" data-da="Vi kommer ud til jeres skole eller klasse med fremtidsorienterede oplæg og workshops om fritidsjob, uddannelsesvalg, praktik og overgangen fra ung til voksen – med fokus på at motivere de unge omkring uddannelse og beskæftigelse, samt regler og rettigheder." data-en="We come to your school or class with future-oriented presentations and workshops about part-time jobs, education choices, internships and the transition from young person to adult – focused on motivating young people about education and employment, as well as rules and rights.">Vi kommer ud til jeres skole eller klasse med fremtidsorienterede oplæg og workshops om fritidsjob, uddannelsesvalg, praktik og overgangen fra ung til voksen – med fokus på at motivere de unge omkring uddannelse og beskæftigelse, samt regler og rettigheder.</p>
+    <a href="#kontakt-oplaeg" class="btn btn-blue" data-da="Book et oplæg →" data-en="Book a presentation →">Book et oplæg →</a>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="wrap">
+    <div class="content-grid">
+      <div class="content-img">
+        <img src="Billeder til hjemmeside/Photoshoot 2025/oplæg om fisken.jpg" alt="Oplæg for unge">
+      </div>
+      <div class="content-text">
+        <span class="sec-tag" data-da="Hvad er det?" data-en="What is it?">Hvad er det?</span>
+        <h2 data-da="Et oplæg, der rykker noget" data-en="A presentation that makes a difference">Et oplæg, der rykker noget</h2>
+        <p data-da="FISKEN tilbyder oplæg og workshops til skoler om den gode vej til fritidsjob, uddannelse, praktik og voksenlivet. Vi laver fremtidsorienterede workshops, der skal motivere de unge i forhold til deres uddannelsesvalg og beskæftigelse – og vi gennemgår regler og rettigheder." data-en="FISKEN offers presentations and workshops for schools about the good path to part-time jobs, education, internships and adult life. We run future-oriented workshops that motivate young people about their education choices and employment – and we go through rules and rights.">FISKEN tilbyder oplæg og workshops til skoler om den gode vej til fritidsjob, uddannelse, praktik og voksenlivet. Vi laver fremtidsorienterede workshops, der skal motivere de unge i forhold til deres uddannelsesvalg og beskæftigelse – og vi gennemgår regler og rettigheder.</p>
+        <p data-da="Vi har desuden et særligt forløb om, hvordan man skriver en stærk og motiveret ansøgning til job og praktikplads." data-en="We also have a dedicated session on how to write a strong, motivated application for jobs and internships.">Vi har desuden et særligt forløb om, hvordan man skriver en stærk og motiveret ansøgning til job og praktikplads.</p>
+        <ul>
+          <li data-da="Bygget op om en fast ramme + 1-2 valgfrie temaer" data-en="Built around a fixed frame + 1-2 optional themes">Bygget op om en fast ramme + 1-2 valgfrie temaer</li>
+          <li data-da="Vekslen mellem oplæg, quizzer og øvelser" data-en="A mix of presentations, quizzes and exercises">Vekslen mellem oplæg, quizzer og øvelser</li>
+          <li data-da="De unge er aktivt deltagende hele vejen" data-en="Young people participate actively throughout">De unge er aktivt deltagende hele vejen</li>
+          <li data-da="Helt gratis for skolen" data-en="Completely free for the school">Helt gratis for skolen</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERAKTIV MODEL -->
+<section class="model-section">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag" data-da="Byg jeres oplæg" data-en="Build your presentation">Byg jeres oplæg</span>
+      <h2 data-da="Sådan sætter vi oplægget sammen" data-en="How we put the presentation together">Sådan sætter vi oplægget sammen</h2>
+      <p data-da="Skolen kan selv sammensætte sit oplæg. Klik på et tema nedenfor og se, hvad det indeholder." data-en="Schools can compose their own presentation. Click a theme below to see what it includes.">Skolen kan selv sammensætte sit oplæg. Klik på et tema nedenfor og se, hvad det indeholder.</p>
+    </div>
+
+    <div class="model-flow">
+
+      <div class="model-step">
+        <span class="badge" data-da="Fast del" data-en="Fixed part">Fast del</span>
+        <h3 data-da="Præsentation af FISKENs gratis tilbud" data-en="Presentation of FISKEN's free offers">Præsentation af FISKENs gratis tilbud</h3>
+        <p data-da="Mentorordning, hjælp til fritidsjob, uddannelse og praktik, fællesspisning og Ungerummet på Vesterbro." data-en="Mentorship, help with part-time jobs, education and internships, communal meals and a youth space on Vesterbro.">Mentorordning, hjælp til fritidsjob, uddannelse og praktik, fællesspisning og Ungerummet på Vesterbro.</p>
+      </div>
+
+      <div class="model-connector"></div>
+
+      <div class="model-choose-wrap">
+        <span class="badge" data-da="Vælg 1-2 temaer" data-en="Choose 1-2 themes">Vælg 1-2 temaer</span>
+        <div class="theme-grid">
+
+          <div class="theme-card" data-theme="1" data-theme-name="Fremtidsværksted">
+            <span class="select-badge"><i class="ti ti-check"></i></span>
+            <span class="icon"><i class="ti ti-bulb"></i></span>
+            <h4 data-da="Fremtidsværksted" data-en="Future workshop">Fremtidsværksted</h4>
+            <p class="hint" data-da="En øvelse om drømme, kompetencer og vejen videre." data-en="An exercise about dreams, skills and the way forward.">En øvelse om drømme, kompetencer og vejen videre.</p>
+            <span class="more"><span data-da="Se indhold" data-en="See content">Se indhold</span> <i class="ti ti-chevron-down"></i></span>
+            <div class="theme-detail">
+              <ul>
+                <li data-da="Hvad drømmer du om? En øvelse om fremtidsdrømme." data-en="What do you dream about? An exercise about future dreams.">Hvad drømmer du om? En øvelse om fremtidsdrømme.</li>
+                <li data-da="Mine kompetencer: en øvelse i at fremskrive kompetencer og tro på egne evner." data-en="My skills: an exercise in describing skills and believing in your own abilities.">Mine kompetencer: en øvelse i at fremskrive kompetencer og tro på egne evner.</li>
+                <li data-da="Min vej: vi kobler de to ovenstående øvelser og taler om forskellige veje at gå i livet." data-en="My path: we connect the two exercises above and talk about different paths in life.">Min vej: vi kobler de to ovenstående øvelser og taler om forskellige veje at gå i livet.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme="2" data-theme-name="Jobkursus">
+            <span class="select-badge"><i class="ti ti-check"></i></span>
+            <span class="icon"><i class="ti ti-file-text"></i></span>
+            <h4 data-da="Jobkursus" data-en="Job course">Jobkursus</h4>
+            <p class="hint" data-da="Ansøgninger, jobsamtaler og arbejdsmarkedets normer." data-en="Applications, job interviews and norms of the labour market.">Ansøgninger, jobsamtaler og arbejdsmarkedets normer.</p>
+            <span class="more"><span data-da="Se indhold" data-en="See content">Se indhold</span> <i class="ti ti-chevron-down"></i></span>
+            <div class="theme-detail">
+              <ul>
+                <li data-da="Den gode ansøgning – med motivationsøvelse." data-en="The good application – with a motivation exercise.">Den gode ansøgning – med motivationsøvelse.</li>
+                <li data-da="Workshop med ansøgningsskrivning." data-en="Workshop on writing applications.">Workshop med ansøgningsskrivning.</li>
+                <li data-da="Normer og regler på arbejdsmarkedet med dilemmaøvelse." data-en="Norms and rules of the labour market, with a dilemma exercise.">Normer og regler på arbejdsmarkedet med dilemmaøvelse.</li>
+                <li data-da="Jobsamtalen som rollespil." data-en="The job interview as roleplay.">Jobsamtalen som rollespil.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme="3" data-theme-name="Uddannelsesvalg og praktik">
+            <span class="select-badge"><i class="ti ti-check"></i></span>
+            <span class="icon"><i class="ti ti-school"></i></span>
+            <h4 data-da="Uddannelsesvalg og praktik" data-en="Education choices & internships">Uddannelsesvalg og praktik</h4>
+            <p class="hint" data-da="Overblik over praktik- og uddannelsesmuligheder." data-en="An overview of internship and education options.">Overblik over praktik- og uddannelsesmuligheder.</p>
+            <span class="more"><span data-da="Se indhold" data-en="See content">Se indhold</span> <i class="ti ti-chevron-down"></i></span>
+            <div class="theme-detail">
+              <ul>
+                <li data-da="Øvelse om at orientere sig i muligheder for praktik og uddannelse." data-en="Exercise in navigating internship and education options.">Øvelse om at orientere sig i muligheder for praktik og uddannelse.</li>
+                <li data-da="Den gode praktikansøgning." data-en="The good internship application.">Den gode praktikansøgning.</li>
+                <li data-da="Workshop med ansøgningsskrivning." data-en="Workshop on writing applications.">Workshop med ansøgningsskrivning.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="theme-card" data-theme="4" data-theme-name="Mentor">
+            <span class="select-badge"><i class="ti ti-check"></i></span>
+            <span class="icon"><i class="ti ti-users"></i></span>
+            <h4 data-da="Mentor" data-en="Mentor">Mentor</h4>
+            <span class="age" data-da="18-24 år" data-en="18-24 years">18-24 år</span>
+            <p class="hint" data-da="Snak om relationer og hvad en mentor kan hjælpe med." data-en="A talk about relationships and how a mentor can help.">Snak om relationer og hvad en mentor kan hjælpe med.</p>
+            <span class="more"><span data-da="Se indhold" data-en="See content">Se indhold</span> <i class="ti ti-chevron-down"></i></span>
+            <div class="theme-detail">
+              <ul>
+                <li data-da="Hvad kan en mentor hjælpe dig med? Fælles snak om relationer." data-en="What can a mentor help you with? A shared talk about relationships.">Hvad kan en mentor hjælpe dig med? Fælles snak om relationer.</li>
+                <li data-da="Betydningen af at anerkende og blive anerkendt." data-en="The importance of recognising and being recognised.">Betydningen af at anerkende og blive anerkendt.</li>
+                <li data-da="Lyt og lær at lytte. En ung fortæller om, hvordan det er at have en mentor." data-en="Listen and learn to listen. A young person shares what it's like to have a mentor.">Lyt og lær at lytte. En ung fortæller om, hvordan det er at have en mentor.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+        <p class="theme-pick-note" id="themePickNote" data-da="Vælg 1-2 temaer ovenfor – tryk på et kort for at vælge det." data-en="Choose 1-2 themes above – click a card to select it.">Vælg 1-2 temaer ovenfor – tryk på et kort for at vælge det.</p>
+      </div>
+
+      <div class="model-connector"></div>
+
+      <div class="model-step">
+        <span class="badge" data-da="Fast del" data-en="Fixed part">Fast del</span>
+        <h3 data-da="Afslutning og spørgehjørnet" data-en="Wrap-up and Q&A corner">Afslutning og spørgehjørnet</h3>
+        <p data-da="Vi samler op på dagen, og de unge kan booke en-til-en samtaler med FISKEN ift. mentor, fritidsjob, praktik og uddannelse." data-en="We wrap up the day, and young people can book one-on-one talks with FISKEN about mentorship, part-time jobs, internships and education.">Vi samler op på dagen, og de unge kan booke en-til-en samtaler med FISKEN ift. mentor, fritidsjob, praktik og uddannelse.</p>
+      </div>
+
+      <div class="book-oplaeg-btn-wrap">
+        <button type="button" class="btn btn-coral" id="bookOplaegBtn" data-da="Book jeres oplæg →" data-en="Book your presentation →">Book jeres oplæg →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="info-cards" id="kontakt-oplaeg">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Sådan booker du" data-en="How to book">Sådan booker du</span>
+      <div style="display:inline-block">
+        <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Det er nemt at komme i gang" data-en="It's easy to get started">Det er nemt at komme i gang</h2>
+        <svg viewBox="0 0 200 12" preserveAspectRatio="none" style="display:block;width:100%;height:10px;margin:.6rem 0 0"><path d="M2 3 C50 10, 150 10, 198 4" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="info-cards-grid">
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-message-circle"></i></span>
+        <h3 data-da="1. I tager kontakt" data-en="1. You reach out">1. I tager kontakt</h3>
+        <p data-da="Udfyld formularen nedenfor eller ring til os, og fortæl lidt om jeres klasse eller årgang." data-en="Fill out the form below or give us a call and tell us a bit about your class or year group.">Udfyld formularen nedenfor eller ring til os, og fortæl lidt om jeres klasse eller årgang.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-puzzle"></i></span>
+        <h3 data-da="2. I sætter oplægget sammen" data-en="2. You build the presentation">2. I sætter oplægget sammen</h3>
+        <p data-da="I vælger 1-2 temaer ud fra modellen ovenfor – vi rådgiver gerne om, hvad der passer bedst." data-en="You choose 1-2 themes from the model above – we're happy to advise on what fits best.">I vælger 1-2 temaer ud fra modellen ovenfor – vi rådgiver gerne om, hvad der passer bedst.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-calendar-event"></i></span>
+        <h3 data-da="3. Vi finder en dato" data-en="3. We find a date">3. Vi finder en dato</h3>
+        <p data-da="Vi finder en dato, der passer, og kommer ud og holder oplægget – helt gratis for skolen." data-en="We find a date that works and come hold the presentation – completely free for the school.">Vi finder en dato, der passer, og kommer ud og holder oplægget – helt gratis for skolen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kontakt-form-section" id="kontakt-oplaeg-form">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:2.2rem">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Book et oplæg" data-en="Book a presentation">Book et oplæg</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Skal vi komme forbi jeres skole?" data-en="Should we visit your school?">Skal vi komme forbi jeres skole?</h2>
+      <p style="color:var(--grey);font-size:1.05rem;max-width:56ch;margin:.6rem auto 0" data-da="Udfyld formularen, og vi vender tilbage hurtigst muligt og finder det rigtige oplæg til jeres elever." data-en="Fill out the form and we'll get back to you as soon as possible to put together the right presentation for your students.">Udfyld formularen, og vi vender tilbage hurtigst muligt og finder det rigtige oplæg til jeres elever.</p>
+    </div>
+    <div class="kontakt-grid">
+      <div class="kontakt-box">
+        <form class="kontakt-form" id="oplaegForm">
+          <div class="row3">
+            <input type="text" id="op-navn" placeholder="Navn" data-da-ph="Navn" data-en-ph="Name" required>
+            <input type="email" id="op-email" placeholder="E-mail" data-da-ph="E-mail" data-en-ph="Email" required>
+            <input type="tel" id="op-tlf" placeholder="Telefonnummer" data-da-ph="Telefonnummer" data-en-ph="Phone number">
+          </div>
+          <div class="row2">
+            <input type="text" id="op-skole" placeholder="Skole / institution" data-da-ph="Skole / institution" data-en-ph="School / institution" required>
+            <input type="text" id="op-klasse" placeholder="Klasse / årgang" data-da-ph="Klasse / årgang" data-en-ph="Class / year group">
+          </div>
+          <div class="kontakt-checks" id="oplaegTemaWrap">
+            <span class="checks-label" data-da="Valgte temaer (vælg 1-2):" data-en="Selected themes (choose 1-2):">Valgte temaer (vælg 1-2):</span>
+            <div class="checks-grid">
+              <label class="kontakt-check"><input type="checkbox" name="tema" value="Fremtidsværksted" data-tema="Fremtidsværksted"><span data-da="Fremtidsværksted" data-en="Future workshop">Fremtidsværksted</span></label>
+              <label class="kontakt-check"><input type="checkbox" name="tema" value="Jobkursus" data-tema="Jobkursus"><span data-da="Jobkursus" data-en="Job course">Jobkursus</span></label>
+              <label class="kontakt-check"><input type="checkbox" name="tema" value="Uddannelsesvalg og praktik" data-tema="Uddannelsesvalg og praktik"><span data-da="Uddannelsesvalg og praktik" data-en="Education choices & internships">Uddannelsesvalg og praktik</span></label>
+              <label class="kontakt-check"><input type="checkbox" name="tema" value="Mentor" data-tema="Mentor"><span data-da="Mentor" data-en="Mentor">Mentor</span></label>
+            </div>
+          </div>
+          <textarea id="op-besked" placeholder="Fortæl lidt om klassen og hvad I gerne vil have ud af oplægget…" data-da-ph="Fortæl lidt om klassen og hvad I gerne vil have ud af oplægget…" data-en-ph="Tell us a bit about the class and what you'd like to get out of the presentation…"></textarea>
+          <button class="btn btn-blue" type="submit" data-da="Send →" data-en="Send →">Send →</button>
+        </form>
+      </div>
+      <div class="kontakt-person">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Klara.png" alt="Klara Nedergaard">
+        <p class="lead-text" data-da="Eller ring til Klara, og hør nærmere om mulighederne for at booke et oplæg til jeres skole." data-en="Or call Klara to hear more about booking a presentation for your school.">Eller ring til Klara, og hør nærmere om mulighederne for at booke et oplæg til jeres skole.</p>
+        <div class="navn">Klara Nedergaard</div>
+        <div class="stilling" data-da="Projektleder, Fritidsjob" data-en="Project Manager, Part-time Jobs">Projektleder, Fritidsjob</div>
+        <div class="kontakt-linje">
+          <a href="mailto:klara@fisken.org">klara@fisken.org</a><br>
+          <a href="tel:+4523842326">23 84 23 26</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="andre-tilbud">
+  <div class="wrap">
+    <h2 data-da="Se også vores andre tilbud" data-en="See our other offers">Se også vores andre tilbud</h2>
+    <div class="andre-grid">
+      <a href="fritidsjob.html" class="andre-card">
+        <h3 data-da="Fritidsjob" data-en="Part-time job">Fritidsjob</h3>
+        <p data-da="Vi hjælper dig med at søge, få og fastholde et fritidsjob." data-en="We help you apply for, get and keep a part-time job.">Vi hjælper dig med at søge, få og fastholde et fritidsjob.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="mentor.html" class="andre-card">
+        <h3 data-da="Mentorordning" data-en="Mentorship">Mentorordning</h3>
+        <p data-da="En frivillig mentor der støtter dig i overgangen fra ung til voksen." data-en="A volunteer mentor who supports you in the transition to adulthood.">En frivillig mentor der støtter dig i overgangen fra ung til voksen.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="socialfaglig-raadgivning.html" class="andre-card">
+        <h3 data-da="Socialfaglig rådgivning" data-en="Social Counselling">Socialfaglig rådgivning</h3>
+        <p data-da="Gratis og uvildig hjælp til at navigere i det offentlige system." data-en="Free and impartial help navigating the public system.">Gratis og uvildig hjælp til at navigere i det offentlige system.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
+          <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="index.html#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="index.html#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="index.html#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="index.html#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      </div>
+      <div>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
+      </div>
+      <div>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger');
+const menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');menu.classList.toggle('open')});
+
+// ── Vælg 1-2 temaer i modellen ─────────────────────────────────
+const MAX_TEMAER = 2;
+const themeCards = document.querySelectorAll('.theme-card');
+const themePickNote = document.getElementById('themePickNote');
+const lang = () => localStorage.getItem('fisken-lang') === 'en' ? 'en' : 'da';
+
+function selectedThemeNames(){
+  return [...themeCards].filter(c=>c.classList.contains('selected')).map(c=>c.dataset.themeName);
+}
+function syncThemeCheckboxes(){
+  const names = selectedThemeNames();
+  document.querySelectorAll('#oplaegTemaWrap input[type="checkbox"]').forEach(cb=>{
+    cb.checked = names.includes(cb.dataset.tema);
+  });
+}
+function syncThemeCardsFromCheckboxes(changedCheckbox){
+  const checked = [...document.querySelectorAll('#oplaegTemaWrap input[type="checkbox"]:checked')];
+  if (checked.length > MAX_TEMAER){
+    changedCheckbox.checked = false;
+    updateThemeNote(true);
+    return;
+  }
+  const names = checked.map(cb=>cb.dataset.tema);
+  themeCards.forEach(card=>{
+    card.classList.toggle('selected', names.includes(card.dataset.themeName));
+  });
+  updateThemeNote(false);
+}
+function updateThemeNote(warn){
+  const count = selectedThemeNames().length;
+  if (warn){
+    themePickNote.textContent = lang()==='en' ? 'You can choose a maximum of 2 themes.' : 'Du kan højst vælge 2 temaer.';
+    themePickNote.classList.add('warn');
+    return;
+  }
+  themePickNote.classList.remove('warn');
+  if (count===0){
+    themePickNote.textContent = lang()==='en' ? 'Choose 1-2 themes above – click a card to select it.' : 'Vælg 1-2 temaer ovenfor – tryk på et kort for at vælge det.';
+  } else {
+    const names = selectedThemeNames().join(lang()==='en' ? ' and ' : ' og ');
+    themePickNote.textContent = (lang()==='en' ? 'Selected: ' : 'Valgt: ') + names;
+  }
+}
+
+themeCards.forEach(card=>{
+  const moreBtn = card.querySelector('.more');
+  if (moreBtn){
+    moreBtn.addEventListener('click', e=>{
+      e.stopPropagation();
+      card.classList.toggle('expanded');
+    });
+  }
+  card.addEventListener('click', ()=>{
+    if (card.classList.contains('selected')){
+      card.classList.remove('selected');
+      updateThemeNote(false);
+    } else {
+      if (selectedThemeNames().length >= MAX_TEMAER){
+        updateThemeNote(true);
+        return;
+      }
+      card.classList.add('selected');
+      updateThemeNote(false);
+    }
+    syncThemeCheckboxes();
+  });
+});
+
+document.getElementById('bookOplaegBtn').addEventListener('click', ()=>{
+  syncThemeCheckboxes();
+  document.getElementById('kontakt-oplaeg-form').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+document.querySelectorAll('#oplaegTemaWrap input[type="checkbox"]').forEach(cb=>{
+  cb.addEventListener('change', ()=>syncThemeCardsFromCheckboxes(cb));
+});
+
+document.getElementById('oplaegForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const navn = document.getElementById('op-navn').value;
+  const email = document.getElementById('op-email').value;
+  const tlf = document.getElementById('op-tlf').value;
+  const skole = document.getElementById('op-skole').value;
+  const klasse = document.getElementById('op-klasse').value;
+  const besked = document.getElementById('op-besked').value;
+  const temaer = [...document.querySelectorAll('#oplaegTemaWrap input:checked')].map(cb=>cb.value);
+  const subject = encodeURIComponent('Forespørgsel om oplæg – ' + skole);
+  const body = encodeURIComponent(
+    'Navn: ' + navn + '\n' +
+    'Skole: ' + skole + '\n' +
+    'Klasse / årgang: ' + (klasse || '-') + '\n' +
+    'Valgte temaer: ' + (temaer.length ? temaer.join(', ') : '-') + '\n' +
+    'E-mail: ' + email + '\n' +
+    'Telefon: ' + (tlf || '-') + '\n\n' +
+    'Besked:\n' + (besked || '-')
+  );
+  window.location.href = 'mailto:klara@fisken.org?subject=' + subject + '&body=' + body;
+});
+</script>
+<script src="lang.js"></script>
+<script src="search.js"></script>
+</body>
+</html>

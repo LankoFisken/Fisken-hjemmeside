@@ -1,0 +1,771 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ungerummet – Foreningen FISKEN</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<link rel="stylesheet" href="search.css">
+<style>
+:root{--ink:#0E353D;--blue:#007A8D;--blue-deep:#00606E;--lblue:#B8D4DD;--coral:#EC605E;--yellow:#FFF7C9;--cream:#FBF8F1;--white:#FFFFFF;--grey:#51616B;--tint-teal:rgba(0,122,141,.10);--tint-lblue:rgba(184,212,221,.25);--radius:28px;--shadow:0 18px 50px -22px rgba(14,53,61,.45);--maxw:1180px;--nav-h:128px;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:#B8D4DD;box-shadow:0 4px 24px -16px rgba(14,53,61,.2)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo img{height:128px;width:auto}
+nav.desktop{display:flex;align-items:center;gap:.35rem}
+nav.desktop a{font-weight:600;font-size:.97rem;padding:.5em .85em;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
+nav.desktop a:hover{background:var(--tint-teal);color:var(--blue)}
+nav.desktop a.active{color:var(--blue)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;border-top:10px solid transparent;background:#fff;background-clip:padding-box;border-radius:16px;box-shadow:0 12px 32px -12px rgba(14,53,61,.2);padding:8px;min-width:180px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .35s ease,transform .35s ease;transition-delay:.3s}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0);transition-delay:0s}
+.nav-dropdown-menu a{display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-3px)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;box-shadow:none!important}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px var(--coral)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(0,122,141,.4)}
+.nav-cta{margin-left:.5rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--cream);display:flex;flex-direction:column;justify-content:center;gap:.5rem;padding:0 32px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.6,0,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Bricolage Grotesque';font-weight:700;font-size:2rem;color:var(--ink);padding:.3em 0}
+.page-hero{padding:calc(var(--nav-h) + 70px) 0 60px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('Billeder til hjemmeside/Photoshoot 2025/hygge i værested2.jpg') center/cover no-repeat;opacity:.2}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--coral);margin-bottom:.8rem;display:block}
+.page-hero h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;margin-bottom:1rem;color:#fff}
+.page-hero .lead{color:rgba(255,255,255,.8);font-size:1.15rem;max-width:52ch;margin-bottom:1.8rem}
+.page-hero .age-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:700;font-size:.9rem;padding:.4em 1.2em;border-radius:999px;margin-bottom:1.2rem}
+.content-section{padding:80px 0}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.content-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.content-img img{width:100%;display:block;object-fit:cover;max-height:420px}
+.content-text .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.7rem;display:block}
+.content-text h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:1rem}
+.content-text p{color:var(--grey);font-size:1.05rem;line-height:1.75;margin-bottom:1rem}
+.content-text ul{color:var(--grey);font-size:1.05rem;line-height:1.75;padding-left:1.4rem;margin-bottom:1.2rem}
+.content-text ul li{margin-bottom:.4rem}
+.info-cards{padding:70px 0;background:var(--tint-lblue)}
+.info-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:2.5rem}
+.info-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:0 8px 24px -16px rgba(14,53,61,.2)}
+.info-card .icon{font-size:32px;margin-bottom:.8rem;display:block;color:var(--blue)}
+.info-card h3{font-size:1.15rem;font-weight:800;margin-bottom:.5rem}
+.info-card p{color:var(--grey);font-size:.95rem;line-height:1.65}
+.cta-box{background:var(--ink);color:#fff;border-radius:var(--radius);padding:56px 48px;text-align:center;margin:70px 0}
+.cta-box h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:.8rem}
+.cta-box p{color:rgba(255,255,255,.75);font-size:1.1rem;max-width:48ch;margin:0 auto 2rem}
+.andre-tilbud{padding:80px 0;background:var(--ink)}
+.andre-tilbud h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:2rem;text-align:center;color:#fff;}
+.andre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.andre-card{background:#fff;border-radius:20px;padding:28px;border:2px solid transparent;transition:border-color .2s,transform .2s;box-shadow:0 6px 20px -12px rgba(14,53,61,.2);display:block}
+.andre-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.andre-card h3{font-size:1rem;font-weight:800;margin-bottom:.35rem}
+.andre-card p{font-size:.88rem;color:var(--grey);line-height:1.6;margin-bottom:.8rem}
+.andre-card .link{font-size:.9rem;font-weight:700;color:var(--blue)}
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.footer-grid h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.2rem}
+.footer-grid a{display:block;color:rgba(255,255,255,.78);padding:.32em 0;font-size:.97rem;transition:color .2s,padding-left .2s}
+.footer-grid a:hover{color:#fff;padding-left:6px}
+.footer-brand p{color:rgba(255,255,255,.62);font-size:.95rem;max-width:30ch}
+.socials{display:flex;gap:12px;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.socials a svg{width:18px;height:18px}
+.socials a:hover{background:var(--blue);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.88rem}
+.footer-bottom a:hover{color:#fff}
+
+@media(max-width:900px){.content-grid{grid-template-columns:1fr;gap:36px}.info-cards-grid{grid-template-columns:1fr 1fr}.andre-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}nav.desktop{display:none}.burger{display:flex}}
+@media(max-width:560px){.info-cards-grid,.andre-grid,.footer-grid{grid-template-columns:1fr}.cta-box{padding:40px 24px}}
+.moed-os{padding:70px 0;background:#fff}
+.moed-os-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;margin-top:2.5rem}
+.person-card{background:var(--tint-lblue);border-radius:16px;overflow:hidden;box-shadow:0 6px 18px -12px rgba(14,53,61,.2);transition:transform .3s}
+.person-card:hover{transform:translateY(-4px)}
+.person-card .foto{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top;display:block}
+.person-card .foto-blank{width:100%;aspect-ratio:1/1;background:linear-gradient(135deg,var(--lblue),#d6e8ef);display:flex;align-items:center;justify-content:center}
+.person-card .foto-blank svg{width:36px;height:36px;opacity:.4;color:var(--blue)}
+.person-card .info{padding:10px 12px 12px}
+.person-card .navn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.1rem}
+.person-card .stilling{font-size:.75rem;font-weight:600;color:var(--blue);line-height:1.3}
+.person-card .tlf{font-size:.72rem;color:var(--ink);opacity:.65;margin-top:.2rem}
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
+
+/* KALENDER */
+.kalender-section{padding:80px 0;background:#fff}
+.kalender-head{position:relative;text-align:center;margin-bottom:2.5rem}
+.kalender-month-nav{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:1.2rem}
+.kalender-month-nav button{background:var(--tint-teal);border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--blue);transition:background .2s}
+.kalender-month-nav button:hover{background:var(--blue);color:#fff}
+.kalender-month-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.3rem;min-width:16ch;text-align:center}
+.ke-today-btn{position:absolute;right:0;bottom:0;font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.85rem;line-height:1;white-space:nowrap;background:#fff;border:1.5px solid var(--blue);color:var(--blue);height:40px;padding:0 1.3em;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .2s,color .2s,transform .2s,box-shadow .2s}
+.ke-today-btn:hover{background:var(--blue);color:#fff;transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(0,122,141,.5)}
+.kalender-loading{text-align:center;color:var(--grey);padding:2rem 0}
+
+/* Uge-tidsgitter */
+.kalender-week-wrap{margin-top:2.5rem;background:var(--cream);border-radius:var(--radius);box-shadow:0 12px 36px -20px rgba(14,53,61,.25);overflow:hidden;padding:18px}
+.kalender-week-scroll{overflow-x:auto}
+.kalender-week-grid{display:grid;grid-template-columns:64px repeat(5,1fr);min-width:680px}
+.ke-corner{grid-row:1}
+.ke-day-head{text-align:center;padding:.6em 0 .8em;border-bottom:2px solid rgba(14,53,61,.1)}
+.ke-day-head .dow{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--blue)}
+.ke-day-head .dom{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.4rem;margin-top:.1rem}
+.ke-day-head.is-today .dom{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--coral);color:#fff}
+.ke-time-col{position:relative}
+.ke-time-label{font-size:.72rem;color:var(--grey);text-align:right;padding-right:8px;transform:translateY(-7px)}
+.ke-day-col{position:relative;border-left:1px solid rgba(14,53,61,.08)}
+.ke-hour-line{position:absolute;left:0;right:0;border-top:1px solid rgba(14,53,61,.07)}
+.kalender-event{position:absolute;left:4px;right:4px;border-radius:12px;padding:5px 9px;cursor:pointer;overflow:hidden;box-shadow:0 6px 14px -8px rgba(14,53,61,.35);transition:transform .15s,box-shadow .15s,z-index 0s;z-index:1;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.kalender-event:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 10px 20px -8px rgba(14,53,61,.45);z-index:3;overflow:visible}
+.kalender-event .ke-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.76rem;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kalender-event .ke-time{font-size:.66rem;font-weight:600;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kalender-event .ke-pladser-badge{font-size:.64rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;opacity:.95}
+.kalender-event.is-full .ke-pladser-badge{background:var(--ink);color:#fff}
+.kalender-event.c-blue{background:var(--lblue);color:var(--ink)}
+.kalender-event.c-coral{background:var(--coral);color:#fff}
+.kalender-event.c-yellow{background:var(--yellow);color:var(--ink)}
+.kalender-event.c-ink{background:var(--ink);color:#fff}
+.kalender-event.c-pink{background:#F4C9D6;color:var(--ink)}
+
+/* MODAL / FLIP */
+.ke-modal-overlay{position:fixed;inset:0;background:rgba(14,53,61,.55);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(3px)}
+.ke-modal-overlay.open{display:flex}
+.ke-flip-card{width:100%;max-width:560px;perspective:1800px}
+.ke-flip-inner{position:relative;width:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.6,0,.25,1)}
+.ke-flip-card.flipped .ke-flip-inner{transform:rotateY(180deg)}
+.ke-flip-face{background:#fff;border-radius:var(--radius);padding:40px;box-shadow:0 30px 70px -20px rgba(14,53,61,.5);backface-visibility:hidden;max-height:82vh;overflow-y:auto}
+.ke-flip-front{position:relative}
+.ke-flip-back{position:absolute;top:0;left:0;width:100%;transform:rotateY(180deg)}
+.ke-close{position:absolute;top:18px;right:18px;background:var(--tint-teal);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--ink);z-index:2}
+.ke-close:hover{background:var(--coral);color:#fff}
+.ke-flip-front .ke-badge{display:inline-block;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em;color:var(--coral);margin-bottom:.6rem}
+.ke-flip-front h3{font-size:1.6rem;font-weight:800;margin-bottom:.4rem}
+.ke-flip-front .ke-meta{font-size:.95rem;color:var(--blue);font-weight:700;margin-bottom:1rem}
+.ke-pladser-info{display:inline-block;font-size:.85rem;font-weight:700;padding:.35em .9em;border-radius:999px;background:var(--tint-teal);color:var(--blue);margin-bottom:1rem}
+.ke-pladser-info.is-full{background:var(--coral);color:#fff}
+.ke-flip-front p{color:var(--grey);font-size:1rem;line-height:1.7;margin-bottom:1.6rem}
+.ke-flip-front .ke-actions{display:flex;gap:12px;flex-wrap:wrap}
+.ke-flip-back h3{font-size:1.3rem;font-weight:800;margin-bottom:.3rem}
+.ke-flip-back .ke-sub{color:var(--grey);font-size:.92rem;margin-bottom:1.4rem}
+.ke-form{display:flex;flex-direction:column;gap:.7rem;margin-bottom:1.6rem}
+.ke-form input,.ke-form textarea{font-family:'Hanken Grotesk',sans-serif;font-size:.95rem;padding:.8em 1em;border-radius:12px;border:1px solid rgba(14,53,61,.18);background:var(--cream)}
+.ke-form textarea{resize:vertical;min-height:70px}
+.ke-form button{align-self:flex-start}
+.ke-phone-box{background:var(--tint-lblue);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px}
+.ke-phone-box a{font-weight:800;font-size:1.1rem;color:var(--ink)}
+#keSignupView{transition:opacity .35s ease;}
+#keSignupView.ke-hidden{display:none}
+.ke-thanks-view{display:none;text-align:center;padding:1.6rem 0 .4rem;animation:keFadeIn .45s ease}
+.ke-thanks-view.ke-visible{display:block}
+.ke-thanks-icon{width:64px;height:64px;border-radius:50%;background:var(--tint-teal);color:var(--blue);font-size:2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.ke-thanks-view h3{font-size:1.4rem;font-weight:800;margin-bottom:.6rem}
+.ke-thanks-view p{color:var(--grey);font-size:.97rem;line-height:1.65;max-width:38ch;margin:0 auto 1.6rem}
+@keyframes keFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.kalender-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.kalender-grid{grid-template-columns:1fr}.ke-flip-face{padding:28px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN"></a>
+    <nav class="desktop">
+      <a href="index.html">Forside</a>
+      <div class="nav-dropdown">
+        <a href="index.html#tilbud" class="active">Tilbud ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#vaermed">Vær med ▾</a>
+        <div class="nav-dropdown-menu"><a href="bliv-frivillig.html">Bliv frivillig</a><a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a><a href="fiskeven.html">Bliv virksomhedsmedlem</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#book-oplaeg">Book et oplæg ▾</a>
+        <div class="nav-dropdown-menu" style="min-width:260px"><a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a><a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#om">Om FISKEN ▾</a>
+        <div class="nav-dropdown-menu"><a href="om-os.html">Om os</a><a href="find-en-fisk.html">Find en fisk</a></div>
+      </div>
+      <a href="index.html#kontakt">Kontakt</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+    <a href="index.html#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Forside</a>
+  <a href="index.html#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
+  <a href="index.html#vaermed">Vær med</a>
+  <a href="index.html#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
+  <a href="index.html#kontakt">Kontakt</a>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <h1 data-da="Ungerummet" data-en="The Youth Room">Ungerummet</h1>
+    <p class="lead" data-da="Ungerummet er et gratis sted at være – vi hygger, hjælper med lektier, spiller brætspil og PlayStation og laver mad sammen i et trygt fællesskab." data-en="The Youth Room is a free place to be – we hang out, help with homework, play board games and PlayStation and cook food together in a safe community.">Ungerummet er et gratis sted at være – vi hygger, hjælper med lektier, spiller brætspil og PlayStation og laver mad sammen i et trygt fællesskab.</p>
+    <a href="index.html#kontakt" class="btn btn-blue" data-da="Kom forbi →" data-en="Come by →">Kom forbi →</a>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="wrap">
+    <div class="content-grid">
+      <div class="content-img">
+        <img src="Billeder til hjemmeside/Photoshoot 2025/hygge i værested2.jpg" alt="Ungerummet">
+      </div>
+      <div class="content-text">
+        <span class="sec-tag" data-da="Hvad er det?" data-en="What is it?">Hvad er det?</span>
+        <h2 data-da="Et hjem væk fra hjemmet" data-en="A home away from home">Et hjem væk fra hjemmet</h2>
+        <p data-da="Ungerummet er et trygt og varmt sted for alle unge mellem 13 og 24 år. Uanset om du har brug for ro til lektier, selskab til et spil, eller bare et sted at være – er du velkommen." data-en="The Youth Room is a safe and warm place for all young people between 13 and 24 years old. Whether you need peace and quiet for homework, company for a game, or just a place to be – you are welcome.">Ungerummet er et trygt og varmt sted for alle unge mellem 13 og 24 år. Uanset om du har brug for ro til lektier, selskab til et spil, eller bare et sted at være – er du velkommen.</p>
+        <p data-da="Vi tror på, at gode rammer skaber gode mennesker. I Ungerummet mødes unge på tværs af baggrunde og bygger venskaber, der varer." data-en="We believe that a good environment creates good people. In the Youth Room young people from all backgrounds meet and build lasting friendships.">Vi tror på, at gode rammer skaber gode mennesker. I Ungerummet mødes unge på tværs af baggrunde og bygger venskaber, der varer.</p>
+        <ul>
+          <li data-da="Åbent mandag til onsdag 14:00 - 21:00" data-en="Open Monday to Wednesday 14:00 – 21:00">Åbent mandag til onsdag 14:00 - 21:00</li>
+          <li data-da="Lektiestøtte og hjælp til skolearbejde" data-en="Homework support and help with schoolwork">Lektiestøtte og hjælp til skolearbejde</li>
+          <li data-da="Brætspil, PlayStation og aktiviteter - også ud af huset" data-en="Board games, PlayStation and activities – including trips out">Brætspil, PlayStation og aktiviteter - også ud af huset</li>
+          <li data-da="Fælles madlavning og aftensmad" data-en="Communal cooking and dinner together">Fælles madlavning og aftensmad</li>
+          <li data-da="Kom som du er – det er helt gratis" data-en="Come as you are – it is completely free">Kom som du er – det er helt gratis  </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info-cards">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="En typisk aften" data-en="A typical evening">En typisk aften</span>
+      <div style="display:inline-block">
+        <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Hvad sker der i Ungerummet?" data-en="What happens in the Youth Room?">Hvad sker der i Ungerummet?</h2>
+        <svg viewBox="0 0 200 12" preserveAspectRatio="none" style="display:block;width:100%;height:10px;margin:.6rem 0 0"><path d="M2 3 C50 10, 150 10, 198 4" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="info-cards-grid">
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-device-gamepad-2"></i></span>
+        <h3 data-da="Spil & aktivitet" data-en="Games & activity">Spil & aktivitet</h3>
+        <p data-da="PlayStation, brætspil, kreaprojekter og meget mere – der er altid gang i noget sjovt, hvis du har lyst til at koble af." data-en="PlayStation, board games, creative projects and much more – there is always something fun going on if you want to unwind.">PlayStation, brætspil, kreaprojekter og meget mere – der er altid gang i noget sjovt, hvis du har lyst til at koble af.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-soup"></i></span>
+        <h3 data-da="Mad & fællesskab" data-en="Food & community">Mad & fællesskab</h3>
+        <p data-da="Der er aftensmad hver dag. Et fælles måltid er et godt udgangspunkt for nye venskaber." data-en="There is dinner every day. A shared meal is a great starting point for new friendships.">Der er aftensmad hver dag. Et fælles måltid er et godt udgangspunkt for nye venskaber.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-book"></i></span>
+        <h3 data-da="Lektier & læring" data-en="Homework & learning">Lektier & læring</h3>
+        <p data-da="Vi hjælper med skolearbejde, rapporter og afleveringer. Der er altid nogen klar til at give en hånd." data-en="We help with schoolwork, reports and assignments. There is always someone ready to lend a hand.">Vi hjælper med skolearbejde, rapporter og afleveringer. Der er altid nogen klar til at give en hånd.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALENDER -->
+<section class="kalender-section" id="kalender">
+  <div class="wrap">
+    <div class="kalender-head">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Hvad sker der" data-en="What's on">Hvad sker der</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Arrangementer i Ungerummet" data-en="Events in the Youth Room">Arrangementer i Ungerummet</h2>
+      <p style="color:var(--grey);max-width:50ch;margin:.8rem auto 0" data-da="Workshops, udflugter og sjove aftener – tryk på et arrangement for at læse mere og tilmelde dig." data-en="Workshops, trips and fun evenings – click an event to read more and sign up.">Workshops, udflugter og sjove aftener – tryk på et arrangement for at læse mere og tilmelde dig.</p>
+      <div class="kalender-month-nav">
+        <button id="keMonthPrev" aria-label="Forrige uge">‹</button>
+        <span class="kalender-month-label" id="keMonthLabel">–</span>
+        <button id="keMonthNext" aria-label="Næste uge">›</button>
+        <button id="keTodayBtn" class="ke-today-btn" data-da="I dag" data-en="Today">I dag</button>
+      </div>
+    </div>
+    <div class="kalender-week-wrap">
+      <div class="kalender-week-scroll">
+        <div id="keGrid" class="kalender-week-grid">
+          <div class="kalender-loading" style="grid-column:1/-1" data-da="Henter arrangementer …" data-en="Loading events …">Henter arrangementer …</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KALENDER MODAL -->
+<div class="ke-modal-overlay" id="keModalOverlay">
+  <div class="ke-flip-card" id="keFlipCard">
+    <div class="ke-flip-inner">
+      <div class="ke-flip-face ke-flip-front">
+        <button class="ke-close" id="keCloseFront" aria-label="Luk">✕</button>
+        <span class="ke-badge" id="keFrontBadge"></span>
+        <h3 id="keFrontTitle"></h3>
+        <div class="ke-meta" id="keFrontMeta"></div>
+        <div class="ke-pladser-info" id="keFrontPladser" style="display:none"></div>
+        <p id="keFrontDesc"></p>
+        <div class="ke-actions">
+          <button class="btn btn-blue" id="keGoTilmeld" data-da="Tilmeld dig →" data-en="Sign up →">Tilmeld dig →</button>
+        </div>
+      </div>
+      <div class="ke-flip-face ke-flip-back">
+        <button class="ke-close" id="keCloseBack" aria-label="Luk">✕</button>
+        <div id="keSignupView">
+          <h3 data-da="Tilmelding" data-en="Sign up">Tilmelding</h3>
+          <p class="ke-sub" data-da="Udfyld formularen, og vi sender en bekræftelse til dig." data-en="Fill in the form and we'll send you a confirmation.">Udfyld formularen, og vi sender en bekræftelse til dig.</p>
+          <form class="ke-form" id="keForm">
+            <input type="hidden" name="_subject" value="Ny tilmelding – Ungerummet">
+            <input type="hidden" id="keFormEvent" name="arrangement">
+            <input type="text" placeholder="Dit navn" data-da-ph="Dit navn" data-en-ph="Your name" name="navn" required>
+            <input type="email" placeholder="Din e-mail" data-da-ph="Din e-mail" data-en-ph="Your email" name="email" required>
+            <input type="tel" placeholder="Dit telefonnummer" data-da-ph="Dit telefonnummer" data-en-ph="Your phone number" name="telefon" required>
+            <textarea placeholder="Besked (valgfrit)" data-da-ph="Besked (valgfrit)" data-en-ph="Message (optional)" name="besked"></textarea>
+            <button class="btn btn-blue" type="submit" data-da="Send tilmelding →" data-en="Send sign-up →">Send tilmelding →</button>
+          </form>
+          <div class="ke-phone-box">
+            <i class="ti ti-phone" style="font-size:1.4rem;color:var(--blue)"></i>
+            <div>
+              <div style="font-size:.82rem;color:var(--grey)" data-da="Vil du hellere ringe?" data-en="Prefer to call?">Vil du hellere ringe?</div>
+              <a href="tel:+4593840656">93 84 06 56</a>
+            </div>
+          </div>
+        </div>
+        <div id="keThanksView" class="ke-thanks-view">
+          <div class="ke-thanks-icon"><i class="ti ti-check"></i></div>
+          <h3 data-da="Tak for din tilmelding!" data-en="Thanks for signing up!">Tak for din tilmelding!</h3>
+          <p data-da="Vi har modtaget din tilmelding og glæder os til at se dig. Du hører fra os, hvis der er noget vi skal vide." data-en="We've received your sign-up and look forward to seeing you. We'll be in touch if there's anything you need to know.">Vi har modtaget din tilmelding og glæder os til at se dig. Du hører fra os, hvis der er noget vi skal vide.</p>
+          <button class="btn btn-blue" id="keThanksClose" data-da="Luk" data-en="Close">Luk</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MØD OS -->
+<section class="moed-os">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Teamet" data-en="The Team">Teamet</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Her kan du møde" data-en="Here you can meet">Her kan du møde</h2>
+    </div>
+    <div class="moed-os-grid" style="grid-template-columns:repeat(5,1fr);justify-content:center;">
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Jakob</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Dea</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Charlotte</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede af Celine.jpg" alt="Céline With Suhard">
+        <div class="info"><div class="navn">Céline</div><div class="stilling">Projektleder, Ungerummet</div><div class="tlf">93 84 06 56</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Helen</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Anna Petrina</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Ida</div><div class="stilling">Frivillig</div></div>
+      </div>
+      <div class="person-card">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="FISKEN" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info"><div class="navn">Laura V</div><div class="stilling">Frivillig</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cta-box">
+    <h2 data-da="Hvad venter du på?" data-en="What are you waiting for?">Hvad venter du på?</h2>
+    <p data-da="Du behøver ikke tilmelde dig. Bare møde op – døren er åben for alle unge mellem 13 og 24 år." data-en="You do not need to sign up. Just show up – the door is open for all young people between 13 and 24 years old.">Du behøver ikke tilmelde dig. Bare møde op – døren er åben for alle unge mellem 13 og 24 år.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:1.8rem">
+      <button class="btn btn-coral" id="komForbiBtn">Kom forbi →</button>
+      <a href="tel:+4593840656" class="btn btn-coral">93 84 06 56</a>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div style="background:var(--coral);border-radius:16px;padding:20px 28px;text-align:center;display:inline-block">
+        <p style="color:rgba(255,255,255,.8);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.7rem" data-da="Åbningstider" data-en="Opening hours">Åbningstider</p>
+        <div style="display:flex;flex-direction:column;gap:.3rem">
+          <span style="color:#fff;font-weight:700;font-size:.97rem" data-da="Mandag &nbsp;&nbsp;&nbsp;&nbsp;15:00 – 21:00" data-en="Monday &nbsp;&nbsp;&nbsp;&nbsp;15:00 – 21:00">Mandag &nbsp;&nbsp;&nbsp;&nbsp;15:00 – 21:00</span>
+          <span style="color:#fff;font-weight:700;font-size:.97rem" data-da="Tirsdag &nbsp;&nbsp;&nbsp;14:00 – 21:00" data-en="Tuesday &nbsp;&nbsp;&nbsp;14:00 – 21:00">Tirsdag &nbsp;&nbsp;&nbsp;14:00 – 21:00</span>
+          <span style="color:#fff;font-weight:700;font-size:.97rem" data-da="Onsdag &nbsp;&nbsp;&nbsp;14:00 – 21:00" data-en="Wednesday 14:00 – 21:00">Onsdag &nbsp;&nbsp;&nbsp;14:00 – 21:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="andre-tilbud">
+  <div class="wrap">
+    <h2 data-da="Se også vores andre tilbud" data-en="See our other offers">Se også vores andre tilbud</h2>
+    <div class="andre-grid">
+      <a href="fritidsjob.html" class="andre-card">
+        <h3 data-da="Fritidsjob" data-en="Part-time job">Fritidsjob</h3>
+        <p data-da="Vi hjælper dig med at søge, få og fastholde et fritidsjob." data-en="We help you apply for, get and keep a part-time job.">Vi hjælper dig med at søge, få og fastholde et fritidsjob.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="mentor.html" class="andre-card">
+        <h3 data-da="Mentorordning" data-en="Mentorship">Mentorordning</h3>
+        <p data-da="En frivillig mentor der støtter dig i overgangen fra ung til voksen." data-en="A volunteer mentor who supports you in the transition from young person to adult.">En frivillig mentor der støtter dig i overgangen fra ung til voksen.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="socialfaglig-raadgivning.html" class="andre-card">
+        <h3 data-da="Socialfaglig rådgivning" data-en="Social Counselling">Socialfaglig rådgivning</h3>
+        <p data-da="Gratis og uvildig hjælp til at navigere i det offentlige system." data-en="Free and impartial help navigating the public system.">Gratis og uvildig hjælp til at navigere i det offentlige system.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
+          <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="index.html#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="index.html#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="index.html#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="index.html#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      </div>
+      <div>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
+      </div>
+      <div>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger');
+const menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');menu.classList.toggle('open')});
+
+const tooltip=document.createElement('div');
+tooltip.innerHTML='<span style="font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;opacity:.7;font-weight:700">Vi holder til på</span><br>Ingerslevsgade 108<br>1705 København V';
+tooltip.style.cssText='position:fixed;background:var(--ink);color:#fff;padding:12px 18px;border-radius:14px;font-family:\'Hanken Grotesk\',sans-serif;font-size:.93rem;font-weight:600;line-height:1.55;pointer-events:none;opacity:0;transition:opacity .2s ease;box-shadow:0 12px 32px -10px rgba(14,53,61,.45);white-space:nowrap;z-index:9999;transform:translate(16px,-50%)';
+document.body.appendChild(tooltip);
+
+const btn=document.getElementById('komForbiBtn');
+btn.addEventListener('mouseenter',()=>{tooltip.style.opacity='1'});
+btn.addEventListener('mouseleave',()=>{tooltip.style.opacity='0'});
+btn.addEventListener('mousemove',e=>{tooltip.style.left=e.clientX+'px';tooltip.style.top=e.clientY+'px'});
+</script>
+
+<script>
+/* ===== UNGERUMMET KALENDER =====
+   Datakilde: et Excel-/Google-ark publiceret til web som CSV.
+   Kolonner (præcis disse navne i første række):
+   Dato | Titel | Tidspunkt | Beskrivelse | Farve
+   - Dato: ÅÅÅÅ-MM-DD (f.eks. 2026-08-12)
+   - Farve: blue / coral / yellow / ink (valgfrit, default blue)
+   Sæt jeres publicerede CSV-link herunder, når arket er klar. */
+const KE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpkZGxJw4x4zbAdDQV8kdraq9wQEp5V9enyCk-8uqMQTfwOHj67MUb28SsLvg3X8SpRucjgjKjE2ia/pub?gid=0&single=true&output=csv";
+const KE_FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjknjzv";
+
+const KE_FALLBACK_EVENTS = [
+  {dato:"2026-07-06",titel:"Spil & dyst med Skurk4nur",tidspunkt:"16:00 – 19:00",beskrivelse:"En hyggelig aften med brætspil, konsoller og en lille turnering. Alle er velkomne, uanset niveau.",farve:"blue"},
+  {dato:"2026-07-08",titel:"Pizzaaften",tidspunkt:"17:30",beskrivelse:"Vi bager pizza sammen og snakker om ugens highlights. Tag gerne en ven med.",farve:"coral"},
+  {dato:"2026-07-13",titel:"Filmaften",tidspunkt:"18:00",beskrivelse:"Vi ser en film sammen i fællesrummet med popcorn og slik.",farve:"yellow"},
+  {dato:"2026-07-15",titel:"Udflugt til byen",tidspunkt:"14:00 – 18:00",beskrivelse:"Vi tager ud i byen sammen – mere info følger på dagen.",farve:"blue"},
+  {dato:"2026-07-22",titel:"Kreativ workshop",tidspunkt:"16:00",beskrivelse:"Mal, teg eller lav smykker – vi har materialerne, du har idéerne.",farve:"ink",pladser:null},
+  {dato:"2026-07-15",titel:"Udflugt til Tivoli",tidspunkt:"14:00 – 18:00",beskrivelse:"Begrænset antal pladser – book i god tid!",farve:"coral",pladser:0}
+];
+
+let keEvents = [];
+const KE_DAY_START = 13; // kalenderen starter kl. 13:00
+const KE_DAY_END   = 22; // og slutter kl. 22:00
+const KE_ROW_H      = 56; // px pr. time
+const KE_DEFAULT_DURATION_MIN = 90; // standard-varighed hvis kun starttid er angivet
+
+function keMonday(d){
+  const date = new Date(d);
+  const day = date.getDay();
+  const diff = day===0 ? -6 : 1-day;
+  date.setDate(date.getDate()+diff);
+  date.setHours(0,0,0,0);
+  return date;
+}
+let keCurrentWeekStart = keMonday(new Date());
+
+function keParseTime(str){
+  const m = (str||'').match(/(\d{1,2})[:.](\d{2})/);
+  if (!m) return null;
+  return parseInt(m[1],10)*60 + parseInt(m[2],10);
+}
+function keParseTidspunkt(str){
+  if (!str) return {start:null,end:null};
+  const parts = str.split(/-|–|til/i).map(s=>s.trim());
+  const start = keParseTime(parts[0]);
+  let end = parts[1] ? keParseTime(parts[1]) : null;
+  if (start!==null && end===null) end = start + KE_DEFAULT_DURATION_MIN;
+  return {start,end};
+}
+function keFormatMinutes(min){
+  const h = Math.floor(min/60), m = min%60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`;
+}
+function keFormatRange(start,end){
+  return `${keFormatMinutes(start)} – ${keFormatMinutes(end)}`;
+}
+
+function keParseCSV(text){
+  const lines = text.trim().split(/\r?\n/);
+  const headers = lines[0].split(',').map(h=>h.trim().toLowerCase());
+  return lines.slice(1).filter(l=>l.trim()).map(line=>{
+    const cells = line.split(',').map(c=>c.trim());
+    const obj = {};
+    headers.forEach((h,i)=>obj[h]=cells[i]||'');
+    const farveRaw = (obj.farve||'blue').trim().toLowerCase();
+    const farve = ['blue','coral','yellow','ink','pink'].includes(farveRaw) ? farveRaw : 'blue';
+    const pladserRaw = (obj.pladser||'').trim();
+    const pladserNum = parseInt(pladserRaw,10);
+    const pladser = (pladserRaw==='' || isNaN(pladserNum)) ? null : Math.max(0, pladserNum);
+    return {dato:obj.dato,titel:obj.titel,tidspunkt:obj.tidspunkt,beskrivelse:obj.beskrivelse,farve,pladser};
+  });
+}
+
+async function keLoadEvents(){
+  if (KE_CSV_URL) {
+    try {
+      const res = await fetch(KE_CSV_URL);
+      const text = await res.text();
+      keEvents = keParseCSV(text);
+      keRenderWeek();
+      return;
+    } catch(e) { console.warn('Kunne ikke hente kalenderdata, viser eksempel-arrangementer.', e); }
+  }
+  keEvents = KE_FALLBACK_EVENTS;
+  keRenderWeek();
+}
+
+function keRenderWeek(){
+  const lang = localStorage.getItem('fisken-lang') === 'en' ? 'en' : 'da';
+  const weekEnd = new Date(keCurrentWeekStart); weekEnd.setDate(weekEnd.getDate()+4);
+  const fmt = d => d.toLocaleDateString(lang==='en'?'en-GB':'da-DK',{day:'numeric',month:'short'});
+  document.getElementById('keMonthLabel').textContent = `${fmt(keCurrentWeekStart)} – ${fmt(weekEnd)}`;
+
+  const dayNames = lang==='en'
+    ? ['MON','TUE','WED','THU','FRI']
+    : ['MAN','TIR','ONS','TOR','FRE'];
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const totalMinutes = (KE_DAY_END-KE_DAY_START)*60;
+  const gridHeight = (KE_DAY_END-KE_DAY_START)*KE_ROW_H;
+
+  const cols = [[],[],[],[],[]];
+  keEvents.forEach(ev=>{
+    const d = new Date(ev.dato+'T00:00:00');
+    const diffDays = Math.round((d-keCurrentWeekStart)/86400000);
+    if (diffDays>=0 && diffDays<=4){
+      cols[diffDays].push({...ev,_date:d});
+    }
+  });
+
+  const grid = document.getElementById('keGrid');
+  grid.innerHTML = '';
+
+  // Hjørne (tom celle over tidskolonnen)
+  const corner = document.createElement('div');
+  corner.className='ke-corner';
+  grid.appendChild(corner);
+
+  // Dag-headers
+  const headDates = [];
+  for(let i=0;i<5;i++){
+    const d = new Date(keCurrentWeekStart); d.setDate(d.getDate()+i);
+    headDates.push(d);
+    const head = document.createElement('div');
+    head.className = 'ke-day-head' + (d.getTime()===today.getTime() ? ' is-today' : '');
+    head.innerHTML = `<div class="dow">${dayNames[i]}</div><div class="dom">${d.getDate()}</div>`;
+    grid.appendChild(head);
+  }
+
+  // Tidskolonne
+  const timeCol = document.createElement('div');
+  timeCol.className='ke-time-col';
+  timeCol.style.height = gridHeight+'px';
+  for(let h=KE_DAY_START;h<=KE_DAY_END;h++){
+    const lbl = document.createElement('div');
+    lbl.className='ke-time-label';
+    lbl.style.position='absolute';
+    lbl.style.top = ((h-KE_DAY_START)*KE_ROW_H)+'px';
+    lbl.style.right='0';
+    lbl.textContent = h+':00';
+    timeCol.appendChild(lbl);
+  }
+  grid.appendChild(timeCol);
+
+  // Dag-kolonner
+  let anyEvents = false;
+  cols.forEach((events,i)=>{
+    const col = document.createElement('div');
+    col.className='ke-day-col';
+    col.style.height = gridHeight+'px';
+    for(let h=KE_DAY_START;h<=KE_DAY_END;h++){
+      const line = document.createElement('div');
+      line.className='ke-hour-line';
+      line.style.top = ((h-KE_DAY_START)*KE_ROW_H)+'px';
+      col.appendChild(line);
+    }
+    events.forEach(ev=>{
+      const {start,end} = keParseTidspunkt(ev.tidspunkt);
+      if (start===null) return;
+      anyEvents = true;
+      const clampedStart = Math.max(start, KE_DAY_START*60);
+      const clampedEnd = Math.min(end, KE_DAY_END*60);
+      const top = ((clampedStart-KE_DAY_START*60)/totalMinutes)*gridHeight;
+      const height = Math.max(((clampedEnd-clampedStart)/totalMinutes)*gridHeight, ev.pladser==null ? 38 : 54);
+      const isFull = ev.pladser===0;
+      const block = document.createElement('div');
+      block.className = `kalender-event c-${ev.farve||'blue'}${isFull?' is-full':''}`;
+      block.style.top = top+'px';
+      block.style.height = height+'px';
+      const pladserBadge = ev.pladser==null ? '' :
+        `<span class="ke-pladser-badge">${isFull ? (lang==='en'?'Full':'Fuldt booket') : (lang==='en'?`${ev.pladser} spots left`:`${ev.pladser} ledige pladser`)}</span>`;
+      block.innerHTML = `<div class="ke-title">${ev.titel}</div><span class="ke-time">${keFormatRange(start,end)}</span>${pladserBadge}`;
+      block.addEventListener('click',()=>keOpenModal({...ev,_start:start,_end:end}));
+      col.appendChild(block);
+    });
+    grid.appendChild(col);
+  });
+}
+
+function keOpenModal(ev){
+  const lang = localStorage.getItem('fisken-lang') === 'en' ? 'en' : 'da';
+  document.getElementById('keFrontBadge').textContent = ev._date.toLocaleDateString(lang==='en'?'en-GB':'da-DK',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('keFrontTitle').textContent = ev.titel;
+  document.getElementById('keFrontMeta').textContent = (ev._start!=null && ev._end!=null) ? keFormatRange(ev._start,ev._end) : (ev.tidspunkt||'');
+  document.getElementById('keFrontDesc').textContent = ev.beskrivelse||'';
+
+  const pladserEl = document.getElementById('keFrontPladser');
+  const goBtn = document.getElementById('keGoTilmeld');
+  if (ev.pladser==null){
+    pladserEl.style.display='none';
+  } else {
+    const isFull = ev.pladser===0;
+    pladserEl.style.display='inline-block';
+    pladserEl.classList.toggle('is-full', isFull);
+    pladserEl.textContent = isFull
+      ? (lang==='en' ? 'Fully booked' : 'Fuldt booket')
+      : (lang==='en' ? `${ev.pladser} spots left` : `${ev.pladser} ledige pladser`);
+  }
+  goBtn.disabled = ev.pladser===0;
+  goBtn.textContent = ev.pladser===0
+    ? (lang==='en' ? 'Fully booked' : 'Fuldt booket')
+    : (lang==='en' ? 'Sign up →' : 'Tilmeld dig →');
+
+  document.getElementById('keFormEvent').value = `${ev.titel} (${ev.dato})`;
+  document.getElementById('keFlipCard').classList.remove('flipped');
+  document.getElementById('keForm').reset();
+  document.getElementById('keFormEvent').value = `${ev.titel} (${ev.dato})`;
+  document.getElementById('keSignupView').classList.remove('ke-hidden');
+  document.getElementById('keThanksView').classList.remove('ke-visible');
+  document.getElementById('keModalOverlay').classList.add('open');
+}
+function keCloseModal(){ document.getElementById('keModalOverlay').classList.remove('open'); }
+
+document.getElementById('keCloseFront').addEventListener('click',keCloseModal);
+document.getElementById('keCloseBack').addEventListener('click',keCloseModal);
+document.getElementById('keModalOverlay').addEventListener('click',e=>{ if(e.target.id==='keModalOverlay') keCloseModal(); });
+document.getElementById('keGoTilmeld').addEventListener('click',()=>document.getElementById('keFlipCard').classList.add('flipped'));
+document.getElementById('keMonthPrev').addEventListener('click',()=>{ keCurrentWeekStart.setDate(keCurrentWeekStart.getDate()-7); keRenderWeek(); });
+document.getElementById('keMonthNext').addEventListener('click',()=>{ keCurrentWeekStart.setDate(keCurrentWeekStart.getDate()+7); keRenderWeek(); });
+document.getElementById('keTodayBtn').addEventListener('click',()=>{ keCurrentWeekStart = keMonday(new Date()); keRenderWeek(); });
+
+function keShowThanks(){
+  document.getElementById('keSignupView').classList.add('ke-hidden');
+  document.getElementById('keThanksView').classList.add('ke-visible');
+}
+document.getElementById('keThanksClose').addEventListener('click', keCloseModal);
+
+document.getElementById('keForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  if (KE_FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')){
+    keShowThanks();
+    return;
+  }
+  try {
+    await fetch(KE_FORMSPREE_ENDPOINT, {
+      method:'POST',
+      headers:{'Accept':'application/json'},
+      body:new FormData(form)
+    });
+    form.reset();
+    keShowThanks();
+  } catch(err){
+    alert('Der gik noget galt – ring i stedet på 93 84 06 56.');
+  }
+});
+
+keLoadEvents();
+</script>
+
+<script src="lang.js"></script>
+<script src="search.js"></script>
+</body>
+</html>

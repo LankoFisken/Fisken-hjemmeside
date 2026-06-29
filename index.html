@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="search.css">
 <style>
 :root{
   /* === FISKEN FARVER === */
@@ -29,7 +30,7 @@
   --radius:28px;
   --shadow:0 18px 50px -22px rgba(14,53,61,.45);
   --maxw:1180px;
-  --nav-h:78px;
+  --nav-h:128px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -95,11 +96,14 @@ nav.desktop a.active::after{
 /* dropdown */
 .nav-dropdown{position:relative}
 .nav-dropdown .dropdown-menu{
-  display:none;position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);
-  background:#fff;border-radius:14px;box-shadow:0 12px 32px -10px rgba(14,53,61,.25);
-  padding:8px;min-width:160px;z-index:200;
+  position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);
+  border-top:10px solid transparent;background:#fff;background-clip:padding-box;
+  border-radius:14px;box-shadow:0 12px 32px -10px rgba(14,53,61,.25);
+  padding:8px;min-width:220px;z-index:200;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease,transform .35s ease;transition-delay:.3s;
 }
-.nav-dropdown:hover .dropdown-menu{display:block}
+.nav-dropdown:hover .dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0);transition-delay:0s}
 .dropdown-menu a{
   display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;
   color:var(--ink);white-space:nowrap;transition:background .15s,color .15s;
@@ -142,7 +146,7 @@ nav.desktop a.active::after{
 .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
 
 /* floating blobs */
-.blob{position:absolute;border-radius:48% 52% 60% 40%/55% 45% 55% 45%;z-index:1;filter:blur(.5px);opacity:.92}
+.blob{position:absolute;border-radius:48% 52% 60% 40%/55% 45% 55% 45%;z-index:1;filter:blur(.5px);opacity:.5}
 .blob.b1{width:340px;height:340px;background:radial-gradient(circle at 30% 30%,#d6e6eb,var(--lblue));top:-40px;right:-80px;animation:float 9s ease-in-out infinite}
 .blob.b2{width:200px;height:200px;background:radial-gradient(circle at 30% 30%,var(--coral),#EC605E);bottom:60px;right:18%;animation:float 7s ease-in-out infinite reverse}
 .blob.b3{width:130px;height:130px;background:radial-gradient(circle at 30% 30%,#1ba0b3,var(--blue));top:34%;right:36%;animation:float 11s ease-in-out infinite}
@@ -167,7 +171,7 @@ nav.desktop a.active::after{
 .hero{position:relative}
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('Photoshoot 2025/Spil i værested2.jpg');
+  background-image:url('Billeder til hjemmeside/Photoshoot 2025/Spil i værested2.jpg');
   background-size:cover;background-position:60% 45%;
 }
 .hero-bg::after{
@@ -223,7 +227,7 @@ nav.desktop a.active::after{
 .card{
   border-radius:var(--radius);padding:34px 30px;position:relative;overflow:hidden;
   border:1px solid rgba(14,53,61,.05);transition:transform .3s,box-shadow .3s;
-  color:var(--white);
+  color:var(--white);display:block;cursor:pointer;
 }
 .card:nth-child(1){background:var(--blue)}
 .card:nth-child(2){background:var(--blue-deep)}
@@ -239,6 +243,14 @@ nav.desktop a.active::after{
 .card .more{margin-top:1.1rem;font-weight:700;color:rgba(255,255,255,.9);display:inline-flex;align-items:center;gap:.3em;transition:gap .2s}
 .card:hover .more{gap:.7em}
 
+/* ---------- INSTAGRAM ---------- */
+.instagram-section{padding:90px 0;background:var(--white)}
+.insta-feed-wrap{position:relative;background:var(--cream);border-radius:var(--radius);padding:20px;box-shadow:0 14px 36px -26px rgba(14,53,61,.3);min-height:280px}
+.insta-feed-wrap iframe{min-height:280px}
+.insta-corner-btn{position:absolute;top:14px;right:14px;z-index:5;display:inline-flex;align-items:center;gap:.4em;background:var(--coral);color:#fff;font-weight:700;font-size:.85rem;padding:.55em 1.1em;border-radius:999px;box-shadow:0 8px 20px -8px var(--coral);transition:transform .2s,box-shadow .2s}
+.insta-corner-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -8px var(--coral)}
+@media(max-width:780px){.insta-feed-wrap{padding:12px}.insta-corner-btn{top:8px;right:8px;font-size:.78rem;padding:.45em .9em}}
+
 /* ---------- BAND ---------- */
 .band{background:var(--blue);color:#fff;padding:64px 0}
 .band-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
@@ -246,7 +258,7 @@ nav.desktop a.active::after{
 .band-item .small{font-size:1rem;color:rgba(255,255,255,.82);margin-top:.4rem}
 
 /* ---------- VÆR MED ---------- */
-.vaermed{padding:90px 0;background:#fff}
+.vaermed{padding:32px 0;background:var(--tint-lblue)}
 .vm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .vm{
   border-radius:var(--radius);padding:40px 34px;color:#fff;position:relative;overflow:hidden;
@@ -264,7 +276,17 @@ nav.desktop a.active::after{
 .vm .btn{align-self:flex-start}
 
 /* ---------- SAMARBEJDE ---------- */
-.samarbejde{padding:90px 0;background:var(--tint-lblue)}
+.samarbejde{padding:50px 0 60px;background:var(--tint-lblue)}
+.samarbejde .sec-head{margin-bottom:1.5rem}
+
+/* Logo-stribe */
+.logo-ticker{overflow:hidden;margin-top:1rem;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logo-track{display:flex;gap:80px;width:max-content;will-change:transform;align-items:center}
+.logo-item{flex:0 0 auto;height:110px;width:200px;display:flex;align-items:center;justify-content:center}
+.logo-item img{height:90px;width:180px;object-fit:contain;filter:grayscale(100%) opacity(.6);transition:filter .3s}
+.logo-item img[src*="ych-pizza"]{filter:grayscale(100%) opacity(.6) invert(1)}
+.logo-ticker:hover .logo-item img{filter:grayscale(0%) opacity(1)}
+.logo-ticker:hover .logo-item img[src*="ych-pizza"]{filter:grayscale(0%) opacity(1) invert(1)}
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .quote{
   background:#fff;border-radius:var(--radius);padding:34px;position:relative;
@@ -276,8 +298,11 @@ nav.desktop a.active::after{
 .quote .who small{display:block;font-weight:500;color:var(--grey);font-size:.85rem}
 
 /* ---------- KONTAKT ---------- */
-.kontakt{padding:90px 0 110px;background:#fff;border-radius:48px;margin-top:20px}
-.kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.kontakt{padding:90px 0 110px;background:#fff;border-radius:48px;margin-top:0}
+.kontakt-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+.kontakt-right-col{display:flex;flex-direction:column}
+.kontakt-right-col .kontakt-box{flex:1;display:flex;flex-direction:column}
+.kontakt-right-col .kontakt-map{flex:1;min-height:140px;height:auto}
 /* venstre: emoji + form */
 .kontakt-left-head{text-align:center;margin-bottom:1.4rem}
 .kontakt-left-head h3{font-size:1.5rem;font-weight:800;color:var(--ink)}
@@ -286,7 +311,8 @@ nav.desktop a.active::after{
 .kontakt-emoji{font-size:5rem;line-height:1;padding-top:8px}
 /* formular */
 .kontakt-form{display:flex;flex-direction:column;gap:20px}
-.kontakt-form input,.kontakt-form textarea{
+.kontakt-form select{appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2351616B' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center;cursor:pointer}
+.kontakt-form input,.kontakt-form select,.kontakt-form textarea{
   width:100%;padding:14px 18px;border-radius:14px;border:1.5px solid rgba(14,53,61,.14);
   font-family:'Hanken Grotesk',sans-serif;font-size:1rem;color:var(--ink);background:#B8D4DD;
   outline:none;transition:border-color .2s;resize:none;
@@ -302,7 +328,7 @@ nav.desktop a.active::after{
 .kontakt-info p{color:var(--grey);font-size:1rem;line-height:1.7}
 .kontakt-info a{color:var(--blue);font-weight:600}
 .kontakt-info a:hover{text-decoration:underline}
-.kontakt-map{width:100%;height:220px;border-radius:16px;border:none;margin-top:16px}
+.kontakt-map{width:100%;height:340px;border-radius:16px;border:none;margin-top:16px}
 .map-card h3{font-size:2rem;margin-bottom:.4rem}
 .map-card .blob-sm{position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.14);bottom:-40px;right:-30px}
 
@@ -333,6 +359,9 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
   .mission-card{padding:34px}
   .blob.b1{width:220px;height:220px;right:-60px}
 }
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
 </style>
 </head>
 <body>
@@ -341,22 +370,44 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <header id="header">
   <div class="wrap">
     <a href="#forside" class="logo">
-      <img src="fiskens logo/forenings_logo.png" alt="Foreningen FISKEN" style="height:64px;width:auto;">
+      <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN" style="height:128px;width:auto;">
     </a>
     <nav class="desktop">
       <a href="#forside" class="nav-link">Forside</a>
       <div class="nav-dropdown">
-        <a href="#om" class="nav-link">Om FISKEN ▾</a>
+        <a href="#tilbud" class="nav-link">Tilbud ▾</a>
         <div class="dropdown-menu">
-          <a href="find-en-fisk.html">🐟 Find en fisk</a>
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
         </div>
       </div>
-      <a href="#tilbud" class="nav-link">Tilbud</a>
-      <a href="#vaermed" class="nav-link">Vær med</a>
-      <a href="#samarbejde" class="nav-link">Samarbejde</a>
+      <div class="nav-dropdown">
+        <a href="#vaermed" class="nav-link">Vær med ▾</a>
+        <div class="dropdown-menu"><a href="bliv-frivillig.html">Bliv frivillig</a><a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a><a href="fiskeven.html">Bliv virksomhedsmedlem</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="#book-oplaeg" class="nav-link">Book et oplæg ▾</a>
+        <div class="dropdown-menu"><a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a><a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="#om" class="nav-link">Om FISKEN ▾</a>
+        <div class="dropdown-menu">
+          <a href="om-os.html">Om os</a>
+          <a href="find-en-fisk.html">Find en fisk</a>
+        </div>
+      </div>
       <a href="#kontakt" class="nav-link">Kontakt</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
-    <a href="#vaermed" class="btn btn-coral nav-cta">Støt FISKEN</a>
+    <a href="#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
     <button class="burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -366,11 +417,23 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <!-- mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#forside">Forside</a>
-  <a href="#om">Om FISKEN</a>
-  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
   <a href="#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
   <a href="#vaermed">Vær med</a>
-  <a href="#samarbejde">Samarbejde</a>
+  <a href="bliv-frivillig.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv frivillig</a>
+  <a href="bliv-samarbejdspartner.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv samarbejdspartner</a>
+  <a href="fiskeven.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv virksomhedsmedlem</a>
+  <a href="#book-oplaeg">Book et oplæg</a>
+  <a href="oplaeg-fritidsjob-uddannelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om fritidsjob og uddannelse</a>
+  <a href="oplaeg-statsborgerskab-opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om statsborgerskab og opholdstilladelse</a>
+  <a href="#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
   <a href="#kontakt">Kontakt</a>
   <a href="#vaermed" class="btn btn-coral">Støt FISKEN</a>
 </div>
@@ -379,20 +442,20 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <section class="hero" id="forside">
   <div class="hero-bg"></div>
   <span class="blob b1"></span>
-  <span class="blob b2"></span>
-  <span class="blob b3"></span>
   <!-- svømmende fisk -->
   <span class="fish f1"><svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M70 20 C55 5, 30 5, 10 20 C30 35, 55 35, 70 20Z" fill="var(--blue)" opacity=".7"/><path d="M70 20 L80 10 L78 20 L80 30 Z" fill="var(--blue)" opacity=".7"/><circle cx="18" cy="18" r="2.5" fill="#fff"/></svg></span>
   <span class="fish f2"><svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M70 20 C55 5, 30 5, 10 20 C30 35, 55 35, 70 20Z" fill="var(--coral)" opacity=".6"/><path d="M70 20 L80 10 L78 20 L80 30 Z" fill="var(--coral)" opacity=".6"/><circle cx="18" cy="18" r="2.5" fill="#fff"/></svg></span>
   <span class="fish f3"><svg viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M70 20 C55 5, 30 5, 10 20 C30 35, 55 35, 70 20Z" fill="var(--lblue)" opacity=".8"/><path d="M70 20 L80 10 L78 20 L80 30 Z" fill="var(--lblue)" opacity=".8"/><circle cx="18" cy="18" r="2.5" fill="var(--blue)"/></svg></span>
   <div class="wrap">
-    <h1 class="reveal" id="hero-titel">Alle unge har ret til et
-      <span class="hl">godt ungdomsliv<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 C50 2, 150 2, 198 8" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span>
+    <h1 class="reveal" id="hero-titel"><span data-da="Alle unge har ret til et" data-en="Every young person deserves a">Alle unge har ret til et</span>
+      <span class="hl"><span data-da="godt ungdomsliv" data-en="a great youth">godt ungdomsliv</span><svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 C50 2, 150 2, 198 8" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg></span>
     </h1>
-    <p class="lead reveal" id="hero-tekst">I FISKEN hjælper vi alle unge mellem 13–24 år med at finde job, fællesskab, mentorstøtte og rådgivning. Det hele er gratis – og er bygget på troen på den enkelte.</p>
+    <p class="lead reveal" id="hero-tekst"
+      data-da="I FISKEN hjælper vi alle unge mellem 13–24 år med at finde job, fællesskab, mentorstøtte og rådgivning. Det hele er gratis – og er bygget på troen på den enkelte."
+      data-en="At FISKEN we help all young people aged 13–24 find jobs, community, mentorship and counselling. Everything is free – built on belief in every individual.">I FISKEN hjælper vi alle unge mellem 13–24 år med at finde job, fællesskab, mentorstøtte og rådgivning. Det hele er gratis – og er bygget på troen på den enkelte.</p>
     <div class="hero-cta reveal">
-      <a href="#tilbud" class="btn btn-blue">Se vores tilbud →</a>
-      <a href="#vaermed" class="btn btn-ghost">Bliv frivillig</a>
+      <a href="#tilbud" class="btn btn-blue" data-da="Se vores tilbud →" data-en="Explore our programs →">Se vores tilbud →</a>
+      <a href="bliv-frivillig.html" class="btn btn-coral" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
     </div>
   </div>
 </section>
@@ -403,14 +466,19 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
     <div class="mission-card reveal">
       <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center">
         <div style="max-width:52ch">
-          <h2 id="mission-titel">Vi bygger broer i livet</h2>
-          <p id="mission-tekst" style="margin-top:.6rem">I FISKEN arbejder vi hver dag for, at alle unge får et godt og sundt ungdomsliv. På tværs af vores tilbud styrker vi unges tro på egne evner og deltagelse i samfundet. Vi tror på, at <span class="word">fritidsjob</span>, <span class="word">uddannelse</span> og stærke <span class="word">relationer</span> kan bygge bro og øge unges følelse af medborgerskab i Danmark.</p>
+          <h2 id="mission-titel" data-da="Vi bygger broer i livet" data-en="We build bridges in life">Vi bygger broer i livet</h2>
+          <p id="mission-tekst" style="margin-top:.6rem"
+            data-da="I FISKEN arbejder vi hver dag for, at alle unge får et godt og sundt ungdomsliv. På tværs af vores tilbud styrker vi unges tro på egne evner og deltagelse i samfundet. Vi tror på, at <span class=&quot;word&quot;>fritidsjob</span>, <span class=&quot;word&quot;>uddannelse</span> og stærke <span class=&quot;word&quot;>relationer</span> kan bygge bro og øge unges følelse af medborgerskab i Danmark."
+            data-en="At FISKEN we work every day for all young people to have a good and healthy youth. Across our programmes we build young people's belief in their own abilities and participation in society. We believe that <span class=&quot;word&quot;>part-time jobs</span>, <span class=&quot;word&quot;>education</span> and strong <span class=&quot;word&quot;>relationships</span> can build bridges and strengthen young people's sense of belonging in Denmark.">I FISKEN arbejder vi hver dag for, at alle unge får et godt og sundt ungdomsliv. På tværs af vores tilbud styrker vi unges tro på egne evner og deltagelse i samfundet. Vi tror på, at <span class="word">fritidsjob</span>, <span class="word">uddannelse</span> og stærke <span class="word">relationer</span> kan bygge bro og øge unges følelse af medborgerskab i Danmark.</p>
         </div>
-        <a href="find-en-fisk.html" style="margin-top:1.6rem;font-weight:800;color:var(--yellow);font-size:1.25rem;letter-spacing:.01em;display:inline-flex;align-items:center;gap:.4em;border:2px solid rgba(255,255,255,.2);padding:.6em 1.4em;border-radius:999px;transition:background .2s,gap .2s" onmouseover="this.style.background='rgba(255,255,255,.1)'" onmouseout="this.style.background='transparent'">Find en fisk 🐟 →</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:1.6rem">
+          <a href="om-os.html" style="font-weight:800;color:var(--ink);font-size:1.25rem;letter-spacing:.01em;display:inline-flex;align-items:center;gap:.4em;background:var(--yellow);padding:.6em 1.4em;border-radius:999px;transition:opacity .2s,gap .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" data-da="Læs mere om FISKEN →" data-en="Learn more about FISKEN →">Læs mere om FISKEN →</a>
+          <a href="find-en-fisk.html" style="font-weight:800;color:#fff;font-size:1.25rem;letter-spacing:.01em;display:inline-flex;align-items:center;gap:.4em;background:var(--coral);padding:.6em 1.4em;border-radius:999px;transition:opacity .2s,gap .2s" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'" data-da="Find en fisk →" data-en="Meet the team →">Find en fisk →</a>
+        </div>
       </div>
       <div class="mission-logo-wrap">
-        <img src="fiskens logo/forenings_logo.png" alt="Foreningen FISKEN">
-        <span>Siden 1984</span>
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN">
+        <span data-da="Siden 1984" data-en="Since 1984">Siden 1984</span>
       </div>
       <span class="corner"></span>
       <span class="corner2"></span>
@@ -422,59 +490,74 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <section class="tilbud" id="tilbud">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="sec-tag">Det tilbyder vi</span>
-      <h2>Gratis hjælp – på de unges præmisser</h2>
-      <p>Alle vores tilbud er gratis og bygger på frivillighed, tryghed og tro på den enkelte unge.</p>
+      <span class="sec-tag" data-da="Det tilbyder vi" data-en="What we offer">Det tilbyder vi</span>
+      <h2 data-da="Gratis hjælp – på de unges præmisser" data-en="Free support – on the young people's terms">Gratis hjælp – på de unges præmisser</h2>
+      <p data-da="Alle vores tilbud er gratis og bygger på frivillighed, tryghed og tro på den enkelte unge." data-en="All our programmes are free and built on volunteering, safety and belief in each young person.">Alle vores tilbud er gratis og bygger på frivillighed, tryghed og tro på den enkelte unge.</p>
     </div>
     <div class="cards">
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/jobvejledning.jpg" alt="Fritidsjob">
+      <a href="fritidsjob.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/jobvejledning.jpg" alt="Fritidsjob">
         <span class="icon" style="background:var(--tint-teal);color:var(--blue)"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M3 12h18"/></svg></span>
-        <span class="age">13–24 år</span>
-        <h3>Få et fritidsjob</h3>
-        <p>Vi hjælper unge med at søge, få og fastholde et fritidsjob – med personlig vejledning og match til virksomheder.</p>
-        <span class="more">Læs mere →</span>
-      </div>
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/hygge i værested2.jpg" alt="Ungerummet">
+        <h3 data-da="Få et fritidsjob" data-en="Find a Part-time Job">Få et fritidsjob</h3>
+        <p data-da="Vi hjælper unge med at søge, få og fastholde et fritidsjob – med personlig vejledning og match til virksomheder." data-en="We help young people find, get and keep a part-time job – with personal guidance and business matching.">Vi hjælper unge med at søge, få og fastholde et fritidsjob – med personlig vejledning og match til virksomheder.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="ungerummet.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/hygge i værested2.jpg" alt="Ungerummet">
         <span class="icon" style="background:var(--yellow);color:var(--coral)"><svg viewBox="0 0 24 24"><path d="M3 11h18a9 9 0 0 1-18 0Z"/><line x1="2" y1="11" x2="22" y2="11"/><path d="M9.5 3c-.7.8-.7 1.7 0 2.5"/><path d="M14.5 3c-.7.8-.7 1.7 0 2.5"/></svg></span>
-        <span class="age">13–24 år</span>
-        <h3>Ungerummet, Det bar´ hygge</h3>
-        <p>Et gratis sted at være. Vi hjælper med lektier, spiller brætspil, playstation og laver mad sammen hver aften i et trygt fællesskab.</p>
-        <span class="more">Læs mere →</span>
-      </div>
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/samtale med ung.jpg" alt="Mentor">
+        <h3 data-da="Ungerummet, Det bar´ hygge" data-en="The Youth Space, Just chilling">Ungerummet, Det bar´ hygge</h3>
+        <p data-da="Et gratis sted at være. Vi hjælper med lektier, spiller brætspil, playstation og laver mad sammen hver aften i et trygt fællesskab." data-en="A free space to be. We help with homework, play board games, PlayStation and cook dinner together every evening in a safe community.">Et gratis sted at være. Vi hjælper med lektier, spiller brætspil, playstation og laver mad sammen hver aften i et trygt fællesskab.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="mentor.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/samtale med ung.jpg" alt="Mentor">
         <span class="icon" style="background:var(--tint-coral);color:var(--coral)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.2 6L8 16l2.2-6L16 8Z"/></svg></span>
-        <span class="age">18–24 år</span>
-        <h3>Få en mentor</h3>
-        <p>En frivillig mentor, der støtter dig i overgangen fra ung til voksen – og hjælper dig med at få overblik.</p>
-        <span class="more">Læs mere →</span>
-      </div>
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/vejledning azra.jpg" alt="Statsborgerskab">
+        <span class="age" data-da="18–24 år" data-en="18–24 years">18–24 år</span>
+        <h3 data-da="Få en mentor" data-en="Get a Mentor">Få en mentor</h3>
+        <p data-da="En frivillig mentor, der støtter dig i overgangen fra ung til voksen – og hjælper dig med at få overblik." data-en="A volunteer mentor who supports you in the transition from young person to adult – and helps you find direction.">En frivillig mentor, der støtter dig i overgangen fra ung til voksen – og hjælper dig med at få overblik.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="opholdstilladelse.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/vejledning azra.jpg" alt="Statsborgerskab">
         <span class="icon" style="background:var(--tint-lblue);color:var(--blue)"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></span>
-        <span class="age">17–24 år</span>
-        <h3>Statsborgerskab & ophold</h3>
-        <p>Gratis vejledning og sparring til dig, der skal søge dansk opholdstilladelse eller statsborgerskab.</p>
-        <span class="more">Læs mere →</span>
-      </div>
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/Vejledning1.jpg" alt="Rådgivning">
+        <span class="age" data-da="17–24 år" data-en="17–24 years">17–24 år</span>
+        <h3 data-da="Statsborgerskab &amp; ophold" data-en="Citizenship &amp; Residence">Statsborgerskab & ophold</h3>
+        <p data-da="Gratis vejledning og sparring til dig, der skal søge dansk opholdstilladelse eller statsborgerskab." data-en="Free guidance for those applying for Danish residence permit or citizenship.">Gratis vejledning og sparring til dig, der skal søge dansk opholdstilladelse eller statsborgerskab.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="socialfaglig-raadgivning.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/Vejledning1.jpg" alt="Rådgivning">
         <span class="icon" style="background:var(--tint-teal);color:var(--blue)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2Z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12.5" x2="13" y2="12.5"/></svg></span>
-        <span class="age">Gratis & uvildig</span>
-        <h3>Socialfaglig rådgivning</h3>
-        <p>Hjælp til uddannelse, at forstå breve fra kommunen, kende dine rettigheder og navigere i det offentlige system.</p>
-        <span class="more">Læs mere →</span>
-      </div>
-      <div class="card reveal">
-        <img class="card-img" src="Photoshoot 2025/ungeaktivitet .jpg" alt="Make My Friday">
+        <h3 data-da="Socialfaglig rådgivning" data-en="Social Counselling">Socialfaglig rådgivning</h3>
+        <p data-da="Hjælp til uddannelse, at forstå breve fra kommunen, kende dine rettigheder og navigere i det offentlige system." data-en="Help with education, understanding letters from the municipality, knowing your rights and navigating the public system.">Hjælp til uddannelse, at forstå breve fra kommunen, kende dine rettigheder og navigere i det offentlige system.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="make-my-friday.html" class="card reveal">
+        <img class="card-img" src="Billeder til hjemmeside/Photoshoot 2025/ungeaktivitet .jpg" alt="Make My Friday">
         <span class="icon" style="background:var(--yellow);color:var(--coral)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></span>
         <span class="age">New in Denmark</span>
         <h3>Make My Friday</h3>
-        <p>An informal community for young people who are new in Denmark. Creative workshops and language practice every second Friday.</p>
-        <span class="more">Læs mere →</span>
-      </div>
+        <p data-da="Et uformelt fællesskab for unge, der er nye i Danmark. Kreative workshops og sprogøvelse hver anden fredag." data-en="An informal community for young people who are new in Denmark. Creative workshops and language practice every second Friday.">An informal community for young people who are new in Denmark. Creative workshops and language practice every second Friday.</p>
+        <span class="more" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="instagram-section" id="instagram">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="sec-tag" data-da="Følg med" data-en="Follow along">Følg med</span>
+      <h2 data-da="Det sker lige nu på Instagram" data-en="Happening right now on Instagram">Det sker lige nu på Instagram</h2>
+      <p data-da="Et indblik i hverdagen i FISKEN – aktiviteter, arrangementer og de unge, der gør det hele muligt." data-en="A glimpse into everyday life at FISKEN – activities, events and the young people who make it all possible.">Et indblik i hverdagen i FISKEN – aktiviteter, arrangementer og de unge, der gør det hele muligt.</p>
+    </div>
+    <div class="insta-feed-wrap reveal">
+      <a href="https://www.instagram.com/foreningen_fisken" target="_blank" rel="noopener" class="insta-corner-btn" data-da="Gå til Instagram →" data-en="Go to Instagram →">Gå til Instagram →</a>
+      <iframe src="https://snapwidget.com/embed/1126034" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" sandbox="allow-scripts" style="border:none;overflow:hidden;width:100%;display:block" title="Posts from Instagram"></iframe>
+    </div>
+    <div style="text-align:center;margin-top:2.2rem" class="reveal">
+      <a href="https://www.instagram.com/foreningen_fisken" target="_blank" rel="noopener" class="btn btn-coral" data-da="Følg os på Instagram →" data-en="Follow us on Instagram →">Følg os på Instagram →</a>
     </div>
   </div>
 </section>
@@ -483,29 +566,54 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <section class="vaermed" id="vaermed">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="sec-tag">Vær med</span>
-      <h2>Du kan gøre en forskel</h2>
-      <p>Der er mange måder at være med på – som frivillig, samarbejdspartner eller økonomisk støtte.</p>
+      <span class="sec-tag" data-da="Vær med" data-en="Get Involved">Vær med</span>
+      <h2 data-da="Du kan gøre en forskel" data-en="You can make a difference">Du kan gøre en forskel</h2>
+      <p data-da="Der er mange måder at være med på – som frivillig, samarbejdspartner eller virksomhedsmedlem." data-en="There are many ways to get involved – as a volunteer, partner or Corporate member of FISKEN .">Der er mange måder at være med på – som frivillig, samarbejdspartner eller virksomhedsmedlem.</p>
     </div>
     <div class="vm-grid">
       <div class="vm v1 reveal">
         <span class="vm-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17.5" cy="9" r="2.2"/><path d="M16.5 14.2A5 5 0 0 1 21 19"/></svg></span>
-        <h3>Bliv frivillig</h3>
-        <p>Brug dine evner og din tid på at gøre en konkret forskel i én ung persons liv.</p>
-        <a href="#kontakt" class="btn btn-white">Bliv frivillig →</a>
+        <h3 data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</h3>
+        <p data-da="Brug dine evner og din tid på at gøre en konkret forskel i én ung persons liv." data-en="Use your skills and time to make a real difference in a young person's life.">Brug dine evner og din tid på at gøre en konkret forskel i én ung persons liv.</p>
+        <a href="bliv-frivillig.html" class="btn btn-white" data-da="Bliv frivillig →" data-en="Become a volunteer →">Bliv frivillig →</a>
       </div>
       <div class="vm v2 reveal">
         <span class="vm-ic"><svg viewBox="0 0 24 24"><circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/></svg></span>
-        <h3>Bliv samarbejdspartner</h3>
-        <p>Er I en virksomhed eller institution? Lad os matche unge med jeres muligheder.</p>
-        <a href="#kontakt" class="btn btn-white">Kontakt os →</a>
+        <h3 data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</h3>
+        <p data-da="Er I en virksomhed eller institution? Lad os matche unge med jeres muligheder." data-en="Are you a company or institution? Let us match young people with your opportunities.">Er I en virksomhed eller institution? Lad os matche unge med jeres muligheder.</p>
+        <a href="bliv-samarbejdspartner.html" class="btn btn-white" data-da="Bliv samarbejdspartner →" data-en="Become a partner →">Bliv samarbejdspartner →</a>
       </div>
       <div class="vm v3 reveal">
         <span class="vm-ic"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 5C19 15.4 12 20 12 20Z"/></svg></span>
-        <h3>Støt FISKEN</h3>
-        <p>Bliv FiskeVen eller giv et bidrag – hver en krone går til de unge.</p>
-        <a href="#kontakt" class="btn btn-white">Støt arbejdet →</a>
+        <h3 data-da="Bliv virksomhedsmedlem" data-en="Become a Corporate Member">Bliv virksomhedsmedlem</h3>
+        <p data-da="Gør jeres virksomhed til en fast brik i kampen for et bedre ungdomsliv." data-en="Make your company a permanent part of the fight for a better youth.">Gør jeres virksomhed til en fast brik i kampen for et bedre ungdomsliv.</p>
+        <a href="fiskeven.html" class="btn btn-white" data-da="Bliv virksomhedsmedlem →" data-en="Become a corporate member →">Bliv virksomhedsmedlem →</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ET OPLÆG ============ -->
+<section style="padding:70px 0;background:#fff" id="book-oplaeg">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="sec-tag" data-da="Book et oplæg" data-en="Book a presentation">Book et oplæg</span>
+      <h2 data-da="Vi kommer ud til jer" data-en="We come to you">Vi kommer ud til jer</h2>
+      <p data-da="FISKEN tilbyder gratis oplæg og workshops til skoler, fagfolk og institutioner. Vælg det oplæg, der passer til jer." data-en="FISKEN offers free presentations and workshops for schools, professionals and institutions. Choose the presentation that suits you.">FISKEN tilbyder gratis oplæg og workshops til skoler, fagfolk og institutioner. Vælg det oplæg, der passer til jer.</p>
+    </div>
+    <div class="vm-grid" style="grid-template-columns:1fr 1fr;margin-top:2.5rem">
+      <a href="oplaeg-fritidsjob-uddannelse.html" class="vm v2 reveal" style="text-decoration:none">
+        <span class="vm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+        <h3 data-da="Oplæg om fritidsjob og uddannelse" data-en="Presentation: Part-time jobs & education">Oplæg om fritidsjob og uddannelse</h3>
+        <p data-da="Fremtidsorienterede workshops om fritidsjob, uddannelsesvalg, praktik og overgangen til voksenlivet. Sammensæt selv jeres program." data-en="Future-oriented workshops about part-time jobs, education choices, internships and the transition to adult life. Compose your own programme.">Fremtidsorienterede workshops om fritidsjob, uddannelsesvalg, praktik og overgangen til voksenlivet. Sammensæt selv jeres program.</p>
+        <span class="btn btn-white" data-da="Book oplæg →" data-en="Book presentation →">Book oplæg →</span>
+      </a>
+      <a href="oplaeg-statsborgerskab-opholdstilladelse.html" class="vm v3 reveal" style="text-decoration:none">
+        <span class="vm-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg></span>
+        <h3 data-da="Oplæg om statsborgerskab og opholdstilladelse" data-en="Presentation: Citizenship & residence permit">Oplæg om statsborgerskab og opholdstilladelse</h3>
+        <p data-da="Et oplæg om regler, rettigheder, krav og muligheder ift. statsborgerskab og opholdstilladelse – til unge og/eller fagfolk." data-en="A presentation about rules, rights, requirements and options regarding citizenship and residence permits – for young people and/or professionals.">Et oplæg om regler, rettigheder, krav og muligheder ift. statsborgerskab og opholdstilladelse – til unge og/eller fagfolk.</p>
+        <span class="btn btn-white" data-da="Book oplæg →" data-en="Book presentation →">Book oplæg →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -514,12 +622,13 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <section class="samarbejde" id="samarbejde">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="sec-tag">Vores samarbejdspartnere</span>
-      <h2>Vi løfter i flok</h2>
-      <p>FISKEN samarbejder med skoler, jobcentre og virksomheder om at give unge de bedste muligheder.</p>
+      <span class="sec-tag" data-da="Vores samarbejdspartnere" data-en="Our partners">Vores samarbejdspartnere</span>
+      <h2 data-da="Vi løfter i flok" data-en="Better together">Vi løfter i flok</h2>
+      <p data-da="FISKEN samarbejder med skoler, jobcentre og virksomheder om at give unge de bedste muligheder." data-en="FISKEN works with schools, job centres and businesses to give young people the best opportunities.">FISKEN samarbejder med skoler, jobcentre og virksomheder om at give unge de bedste muligheder.</p>
     </div>
-    <div class=”reveal” style=”text-align:center”>
-    </div>
+  </div>
+  <div class="logo-ticker" id="logoTicker">
+    <div class="logo-track" id="logoTrack"></div>
   </div>
 </section>
 
@@ -527,34 +636,47 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
 <section class="kontakt" id="kontakt">
   <div class="wrap">
     <div class="sec-head center reveal">
-      <span class="sec-tag">Kontakt</span>
-      <h2>Kontakt os</h2>
-      <p>Vi svarer hurtigst muligt – du er altid velkommen til at række ud.</p>
+      <span class="sec-tag" data-da="Kontakt" data-en="Contact">Kontakt</span>
+      <h2 data-da="Kontakt os" data-en="Contact us">Kontakt os</h2>
+      <p data-da="Vi svarer hurtigst muligt – du er altid velkommen til at række ud." data-en="We respond as soon as possible – you are always welcome to reach out.">Vi svarer hurtigst muligt – du er altid velkommen til at række ud.</p>
     </div>
     <div class="kontakt-grid">
       <!-- Venstre: emoji + formular -->
       <div class="reveal">
         <div class="kontakt-left-head">
-          <h3>Skriv til os</h3>
+          <h3 data-da="Skriv til os" data-en="Write to us">Skriv til os</h3>
         </div>
-        <form class="kontakt-form" onsubmit="return false">
-            <input type="text" placeholder="Dit navn">
-            <input type="email" placeholder="Din e-mail">
-            <input type="tel" placeholder="Dit telefonnummer (valgfrit)">
-            <textarea placeholder="Din besked…"></textarea>
-            <button class="btn btn-blue" type="submit">Send besked →</button>
+        <form class="kontakt-form" id="kontaktForm">
+            <input type="text" id="kf-navn" placeholder="Dit navn" data-da-ph="Dit navn" data-en-ph="Your name">
+            <input type="email" id="kf-email" placeholder="Din e-mail" data-da-ph="Din e-mail" data-en-ph="Your email">
+            <input type="tel" id="kf-tlf" placeholder="Dit telefonnummer" data-da-ph="Dit telefonnummer" data-en-ph="Your phone number">
+            <select id="kf-indsats">
+              <option value="" disabled selected data-da="Hvad handler din henvendelse om?" data-en="What is your enquiry about?">Hvad handler din henvendelse om?</option>
+              <option value="fritidsjob" data-da="Fritidsjob" data-en="Part-time job">Fritidsjob</option>
+              <option value="mentor" data-da="Mentorordning" data-en="Mentoring">Mentorordning</option>
+              <option value="ungerummet" data-da="Ungerummet" data-en="Youth Room">Ungerummet</option>
+              <option value="make-my-friday" data-da="Make My Friday" data-en="Make My Friday">Make My Friday</option>
+              <option value="ophold" data-da="Opholdstilladelse og statsborgerskab" data-en="Residence permit and citizenship">Opholdstilladelse og statsborgerskab</option>
+              <option value="raadgivning" data-da="Socialfaglig rådgivning" data-en="Social counselling">Socialfaglig rådgivning</option>
+              <option value="oplaeg" data-da="Oplæg" data-en="Talk">Oplæg</option>
+              <option value="frivillighed" data-da="Frivillighed" data-en="Volunteering">Frivillighed</option>
+              <option value="samarbejde" data-da="Samarbejde" data-en="Partnership">Samarbejde</option>
+              <option value="andet" data-da="Andet" data-en="Other">Andet</option>
+            </select>
+            <textarea id="kf-besked" placeholder="Din besked…" data-da-ph="Din besked…" data-en-ph="Your message…"></textarea>
+            <button class="btn btn-blue" type="submit" data-da="Send besked →" data-en="Send message →">Send besked →</button>
         </form>
       </div>
       <!-- Højre: adresse + kort -->
-      <div class="reveal">
+      <div class="reveal kontakt-right-col">
         <div class="kontakt-right-head">
-          <h3>Kom forbi</h3>
+          <h3 data-da="Kom forbi" data-en="Visit us">Kom forbi</h3>
         </div>
         <div class="kontakt-box">
           <div class="kontakt-info">
-            <p id="kontakt-adresse">📍 Ingerslevsgade 108, 1705 København V</p>
-            <p>📞 <a id="kontakt-telefon" href="tel:+4531644899">31 64 48 99</a></p>
-            <p>✉️ <a id="kontakt-email" href="mailto:info@fisken.org">info@fisken.org</a></p>
+            <p id="kontakt-adresse">Ingerslevsgade 108, 1705 København V</p>
+            <p><a id="kontakt-telefon" href="tel:+4531644899">31 64 48 99</a></p>
+            <p><a id="kontakt-email" href="mailto:info@fisken.org">info@fisken.org</a></p>
             <p style="color:rgba(14,53,61,.45);font-size:.9rem">CVR 29 14 50 67</p>
           </div>
           <iframe class="kontakt-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.1!2d12.5584!3d55.6677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4652530b2a5e9a77%3A0x0!2sIngerslevsgade+108%2C+1705+K%C3%B8benhavn!5e0!3m2!1sda!2sdk!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -569,50 +691,49 @@ footer{background:var(--ink);color:#fff;padding:70px 0 36px}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="logo">
-          <span class="mark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2.5 12c2.6-4.2 7.4-5.4 11.2-3.2L17 5.6l.9 4.1 3.1 1.1c.6.2.6 1 0 1.2l-3.1 1.1-.9 4.1-3.3-3.2C9.9 16.4 5.1 15.2 2.5 12Z"/><circle cx="8.2" cy="11" r="1.1" fill="var(--ink)"/></svg></span>
-          FISKEN
-        </div>
-        <p>Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
         <div class="socials">
           <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
           <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
         </div>
       </div>
       <div>
-        <h4>Om FISKEN</h4>
-        <a href="#om">Historien</a>
-        <a href="#om">Mission og værdier</a>
-        <a href="#om">Hvem er vi</a>
-        <a href="#kontakt">Kontakt</a>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
       </div>
       <div>
-        <h4>Tilbud</h4>
-        <a href="#tilbud">Fritidsjob</a>
-        <a href="#tilbud">Ungerummet</a>
-        <a href="#tilbud">Mentor</a>
-        <a href="#tilbud">Rådgivning</a>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
       </div>
       <div>
-        <h4>Vær med</h4>
-        <a href="#vaermed">Bliv frivillig</a>
-        <a href="#vaermed">Bliv samarbejdspartner</a>
-        <a href="#vaermed">Støt FISKEN</a>
-        <a href="#vaermed">Bliv FiskeVen</a>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
-      <span>Lavet med ♥ til byens unge</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
     </div>
   </div>
 </footer>
 
 <script>
 // sticky header
-const header=document.getElementById('header');
+const header=document.querySelector('header');
 window.addEventListener('scroll',()=>{
-  header.classList.toggle('scrolled',window.scrollY>20);
+  if(header) header.classList.toggle('scrolled',window.scrollY>20);
 },{passive:true});
 
 // mobile menu
@@ -627,6 +748,7 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   burger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';
 }));
 
+
 // reveal on scroll
 const io=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
@@ -635,6 +757,57 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
   el.style.transitionDelay=(i%4)*0.07+'s';
   io.observe(el);
 });
+
+// ── Logo-ticker ─────────────────────────────────────────────
+const tickerLogos=[
+  "Billeder til hjemmeside/partner-logoer/Faetter-br-logo.png",
+  "Billeder til hjemmeside/partner-logoer/GoBoat-logo-off-black.png",
+  "Billeder til hjemmeside/partner-logoer/KK-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Netto-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Parken-Logo.png",
+  "Billeder til hjemmeside/partner-logoer/Royal_Arena_logo.png",
+  "Billeder til hjemmeside/partner-logoer/Salling-group-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Vega-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Villa-Copenhagen-Logo.png",
+  "Billeder til hjemmeside/partner-logoer/admiral-hotel-logo.png",
+  "Billeder til hjemmeside/partner-logoer/bilka-logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/fotex-logo.png",
+  "Billeder til hjemmeside/partner-logoer/frak-logo.png",
+  "Billeder til hjemmeside/partner-logoer/hvidovre-kommune-logo.png",
+  "Billeder til hjemmeside/partner-logoer/jagger_copenhagen_logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/kaffeKarma_logo_.png",
+  "Billeder til hjemmeside/partner-logoer/logo-normal.jpg",
+  "Billeder til hjemmeside/partner-logoer/maximum-logo.png",
+  "Billeder til hjemmeside/partner-logoer/nordisk-film-biografer-logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/real-care-logo.png",
+  "Billeder til hjemmeside/partner-logoer/sosuH-logo.png",
+  "Billeder til hjemmeside/partner-logoer/starbucks-logo.png",
+  "Billeder til hjemmeside/partner-logoer/ych-pizza-logo.png"
+];
+const tickerTrack=document.getElementById('logoTrack');
+if(tickerTrack){
+  // Byg dobbelt sæt for sømløs loop
+  [...tickerLogos,...tickerLogos].forEach(src=>{
+    const div=document.createElement('div');
+    div.className='logo-item';
+    const img=document.createElement('img');
+    img.src=src; img.alt='';
+    div.appendChild(img);
+    tickerTrack.appendChild(div);
+  });
+  // Vent på at alt er loaded/fejlet, start derefter animation
+  const allImgs=[...tickerTrack.querySelectorAll('img')];
+  let pending=allImgs.length;
+  const onDone=()=>{ if(--pending===0) runTicker(); };
+  allImgs.forEach(img=>{ img.complete?onDone():img.addEventListener('load',onDone)||img.addEventListener('error',onDone); });
+  function runTicker(){
+    const half=tickerTrack.scrollWidth/2;
+    let pos=0, paused=false;
+    document.getElementById('logoTicker').addEventListener('mouseenter',()=>paused=true);
+    document.getElementById('logoTicker').addEventListener('mouseleave',()=>paused=false);
+    (function tick(){ if(!paused){ pos+=0.5; if(pos>=half) pos=0; tickerTrack.style.transform='translateX(-'+pos+'px)'; } requestAnimationFrame(tick); })();
+  }
+}
 
 // scroll-spy active nav
 const sections=document.querySelectorAll('section[id]');
@@ -688,6 +861,56 @@ async function hentData(url) {
     if (tlf) { tlf.textContent = kontakt.telefon; tlf.href = 'tel:+45' + kontakt.telefon.replace(/\s/g,''); }
     if (mail) { mail.textContent = kontakt.email; mail.href = 'mailto:' + kontakt.email; }
   }
+})();
+</script>
+<script src="lang.js"></script>
+<script src="search.js"></script>
+<script>
+(function(){
+  const emails = {
+    'fritidsjob':      'klara@fisken.org',
+    'mentor':          'emilie@fisken.org',
+    'ungerummet':      'Celine@fisken.org',
+    'make-my-friday':  'Celine@fisken.org',
+    'ophold':          'azra@fisken.org',
+    'raadgivning':     'marcus@fisken.org',
+    'oplaeg':          'info@fisken.org',
+    'frivillighed':    'info@fisken.org',
+    'samarbejde':      'info@fisken.org',
+    'andet':           'info@fisken.org'
+  };
+  const emner = {
+    'fritidsjob':      'Henvendelse om fritidsjob',
+    'mentor':          'Henvendelse om mentorordning',
+    'ungerummet':      'Henvendelse om Ungerummet',
+    'make-my-friday':  'Henvendelse om Make My Friday',
+    'ophold':          'Henvendelse om opholdstilladelse og statsborgerskab',
+    'raadgivning':     'Henvendelse om socialfaglig rådgivning',
+    'oplaeg':          'Henvendelse om oplæg',
+    'frivillighed':    'Henvendelse om frivillighed',
+    'samarbejde':      'Henvendelse om samarbejde',
+    'andet':           'Henvendelse via hjemmeside'
+  };
+
+  document.getElementById('kontaktForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const navn    = document.getElementById('kf-navn').value.trim();
+    const email   = document.getElementById('kf-email').value.trim();
+    const tlf     = document.getElementById('kf-tlf').value.trim();
+    const indsats = document.getElementById('kf-indsats').value;
+    const besked  = document.getElementById('kf-besked').value.trim();
+
+    if (!navn || !email || !indsats || !besked) {
+      alert('Udfyld venligst navn, e-mail, emne og besked.');
+      return;
+    }
+
+    const til    = emails[indsats] || 'info@fisken.org';
+    const emne   = emner[indsats]  || 'Henvendelse via hjemmeside';
+    const body   = `Navn: ${navn}\nE-mail: ${email}${tlf ? '\nTelefon: ' + tlf : ''}\n\n${besked}`;
+
+    window.location.href = `mailto:${til}?subject=${encodeURIComponent(emne)}&body=${encodeURIComponent(body)}`;
+  });
 })();
 </script>
 </body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="da">
 <head>
 <meta charset="UTF-8">
@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="search.css">
 <style>
 :root{
   --ink:#0E353D;
@@ -23,7 +24,7 @@
   --radius:28px;
   --shadow:0 18px 50px -22px rgba(14,53,61,.45);
   --maxw:1180px;
-  --nav-h:78px;
+  --nav-h:128px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
@@ -36,11 +37,16 @@ a{color:inherit;text-decoration:none}
 header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:#B8D4DD;box-shadow:0 4px 24px -16px rgba(14,53,61,.2)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
 .logo{display:flex;align-items:center}
-.logo img{height:64px;width:auto}
+.logo img{height:128px;width:auto}
 nav.desktop{display:flex;align-items:center;gap:.35rem}
 nav.desktop a{font-weight:600;font-size:.97rem;padding:.5em .85em;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
 nav.desktop a:hover{background:var(--tint-teal);color:var(--blue)}
 nav.desktop a.active{color:var(--blue)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;border-top:10px solid transparent;background:#fff;background-clip:padding-box;border-radius:16px;box-shadow:0 12px 32px -12px rgba(14,53,61,.2);padding:8px;min-width:180px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .35s ease,transform .35s ease;transition-delay:.3s}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0);transition-delay:0s}
+.nav-dropdown-menu a{display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
 .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;white-space:nowrap}
 .btn:hover{transform:translateY(-3px)}
 .btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px var(--coral)}
@@ -85,6 +91,25 @@ nav.desktop a.active{color:var(--blue)}
 
 @media(max-width:900px){.team-grid,.frivillig-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:500px){.team-grid,.frivillig-grid{grid-template-columns:1fr}}
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.footer-grid h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.2rem}
+.footer-grid a{display:block;color:rgba(255,255,255,.78);padding:.32em 0;font-size:.97rem;transition:color .2s,padding-left .2s}
+.footer-grid a:hover{color:#fff;padding-left:6px}
+.footer-brand p{color:rgba(255,255,255,.62);font-size:.95rem;max-width:30ch}
+.socials{display:flex;gap:12px;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.socials a svg{width:18px;height:18px}
+.socials a:hover{background:var(--blue);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.88rem}
+.footer-bottom a:hover{color:#fff}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -93,52 +118,84 @@ nav.desktop a.active{color:var(--blue)}
 <header>
   <div class="wrap">
     <a href="index.html" class="logo">
-      <img src="fiskens logo/forenings_logo.png" alt="Foreningen FISKEN">
+      <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN">
     </a>
     <nav class="desktop">
       <a href="index.html">Forside</a>
-      <a href="index.html#om">Om FISKEN</a>
-      <a href="index.html#tilbud">Tilbud</a>
-      <a href="index.html#vaermed">Vær med</a>
-      <a href="index.html#samarbejde">Samarbejde</a>
+      <div class="nav-dropdown">
+        <a href="index.html#tilbud">Tilbud ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#vaermed">Vær med ▾</a>
+        <div class="nav-dropdown-menu"><a href="bliv-frivillig.html">Bliv frivillig</a><a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a><a href="fiskeven.html">Bliv virksomhedsmedlem</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#book-oplaeg">Book et oplæg ▾</a>
+        <div class="nav-dropdown-menu" style="min-width:260px"><a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a><a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#om" class="active">Om FISKEN ▾</a>
+        <div class="nav-dropdown-menu"><a href="om-os.html">Om os</a><a href="find-en-fisk.html">Find en fisk</a></div>
+      </div>
       <a href="index.html#kontakt">Kontakt</a>
-      <a href="find-en-fisk.html" class="active">Find en fisk</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </nav>
-    <a href="index.html#vaermed" class="btn btn-coral nav-cta">Støt FISKEN</a>
+    <a href="index.html#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Forside</a>
-  <a href="index.html#om">Om FISKEN</a>
   <a href="index.html#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
   <a href="index.html#vaermed">Vær med</a>
-  <a href="index.html#samarbejde">Samarbejde</a>
+  <a href="index.html#book-oplaeg">Book et oplæg</a>
+  <a href="oplaeg-fritidsjob-uddannelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om fritidsjob og uddannelse</a>
+  <a href="oplaeg-statsborgerskab-opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Oplæg om statsborgerskab og opholdstilladelse</a>
+  <a href="index.html#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
   <a href="index.html#kontakt">Kontakt</a>
-  <a href="find-en-fisk.html">Find en fisk</a>
 </div>
 
 <!-- HERO BANNER -->
 <div class="page-hero">
   <div class="wrap">
-    <span class="sec-tag">Hvem er vi</span>
-    <h1>Find en fisk 🐟</h1>
-    <p>Mød holdet bag FISKEN – de ansatte og frivillige der hver dag arbejder for byens unge.</p>
+    <span class="sec-tag" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</span>
+    <h1 data-da="Find en fisk" data-en="People in FISKEN">Find en fisk</h1>
+    <p data-da="Mød holdet bag FISKEN – de ansatte, frivillige og bestyrelsen der hver dag arbejder for byens unge." data-en="Meet the team behind FISKEN – the staff and volunteers who work every day for the city's young people.">Mød holdet bag FISKEN – de ansatte, frivillige og bestyrelsen der hver dag arbejder for byens unge.</p>
   </div>
 </div>
 
 <!-- ANSATTE -->
 <section class="team-section" style="background:var(--tint-lblue)">
   <div class="wrap">
-    <h2>Ansatte</h2>
+    <h2 data-da="Ansatte" data-en="Staff">Ansatte</h2>
     <div class="team-grid">
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Maja.png" alt="Maja Thorsteinsson">
+      <div class="team-card" id="person-maja-thorsteinsson">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Maja.png" alt="Maja Thorsteinsson">
         <div class="info">
           <div class="navn">Maja Thorsteinsson</div>
-          <div class="stilling">Leder</div>
+          <div class="stilling" data-da="Leder" data-en="Director">Leder</div>
           <div class="kontakt-linje">
             <a href="mailto:maja@fisken.org">maja@fisken.org</a><br>
             <a href="tel:+4527577587">27 57 75 87</a>
@@ -146,11 +203,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Marcus.png" alt="Marcus Aakerlund">
+      <div class="team-card" id="person-marcus-aakerlund">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Marcus.png" alt="Marcus Aakerlund">
         <div class="info">
           <div class="navn">Marcus Aakerlund</div>
-          <div class="stilling">Socialrådgiver</div>
+          <div class="stilling" data-da="Socialrådgiver" data-en="Social Counsellor">Socialrådgiver</div>
           <div class="kontakt-linje">
             <a href="mailto:marcus@fisken.org">marcus@fisken.org</a><br>
             <a href="tel:+4525387588">25 38 75 88</a>
@@ -158,11 +215,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Emilie.png" alt="Emilie Borup">
+      <div class="team-card" id="person-emilie-borup">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Emilie.png" alt="Emilie Borup">
         <div class="info">
           <div class="navn">Emilie Borup</div>
-          <div class="stilling">Projektleder, Mentor</div>
+          <div class="stilling" data-da="Projektleder, Mentor" data-en="Project Manager, Mentor">Projektleder, Mentor</div>
           <div class="kontakt-linje">
             <a href="mailto:emilie@fisken.org">emilie@fisken.org</a><br>
             <a href="tel:+4522229985">22 22 99 85</a>
@@ -170,20 +227,12 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Carla.jpg" alt="Carla">
-        <div class="info">
-          <div class="navn">Carla</div>
-          <div class="stilling">Projektmedarbejder, Værestedet</div>
-          <div class="kontakt-linje"></div>
-        </div>
-      </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede af Celine.jpg" alt="Céline With Suhard">
+      <div class="team-card" id="person-celine-with-suhard">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede af Celine.jpg" alt="Céline With Suhard">
         <div class="info">
           <div class="navn">Céline With Suhard</div>
-          <div class="stilling">Projektleder, Værestedet</div>
+          <div class="stilling" data-da="Projektleder, Ungerummet" data-en="Project Manager, Youth Room">Projektleder, Ungerummet</div>
           <div class="kontakt-linje">
             <a href="mailto:Celine@fisken.org">Celine@fisken.org</a><br>
             <a href="tel:+4593840656">93 84 06 56</a>
@@ -191,11 +240,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Pernille.png" alt="Pernille Høier">
+      <div class="team-card" id="person-pernille-h-ier">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Pernille.png" alt="Pernille Høier">
         <div class="info">
           <div class="navn">Pernille Høier</div>
-          <div class="stilling">Virksomhedskonsulent</div>
+          <div class="stilling" data-da="Virksomhedskonsulent" data-en="Business Consultant">Virksomhedskonsulent</div>
           <div class="kontakt-linje">
             <a href="mailto:pernille@fisken.org">pernille@fisken.org</a><br>
             <a href="tel:+4522424130">22 42 41 30</a>
@@ -203,11 +252,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Lanko.jpg" alt="Lanko Rahman">
+      <div class="team-card" id="person-lanko-rahman">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Lanko.jpg" alt="Lanko Rahman">
         <div class="info">
           <div class="navn">Lanko Rahman</div>
-          <div class="stilling">Projektleder for digital udvikling</div>
+          <div class="stilling" data-da="Projektleder for digital udvikling" data-en="Project Manager, Digital Development">Projektleder for digital udvikling</div>
           <div class="kontakt-linje">
             <a href="mailto:Lanko@fisken.org">Lanko@fisken.org</a><br>
             <a href="tel:+4542942453">42 94 24 53</a>
@@ -215,11 +264,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Laura.jpg" alt="Laura Risum">
+      <div class="team-card" id="person-laura-risum">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Laura.jpg" alt="Laura Risum">
         <div class="info">
           <div class="navn">Laura Risum</div>
-          <div class="stilling">Projektmedarbejder, Fritidsjob</div>
+          <div class="stilling" data-da="Projektmedarbejder, Fritidsjob" data-en="Project Worker, Part-time Jobs">Projektmedarbejder, Fritidsjob</div>
           <div class="kontakt-linje">
             <a href="mailto:Laura@fisken.org">Laura@fisken.org</a><br>
             <a href="tel:+4542925894">42 92 58 94</a>
@@ -227,11 +276,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/billede af Azra.jpg" alt="Azra Basic">
+      <div class="team-card" id="person-azra-basic">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/billede af Azra.jpg" alt="Azra Basic">
         <div class="info">
           <div class="navn">Azra Basic</div>
-          <div class="stilling">Projektleder, Statsborgerskab & Ophold</div>
+          <div class="stilling" data-da="Projektleder, Statsborgerskab & Ophold" data-en="Project Manager, Citizenship & Residence">Projektleder, Statsborgerskab & Ophold</div>
           <div class="kontakt-linje">
             <a href="mailto:azra@fisken.org">azra@fisken.org</a><br>
             <a href="tel:+4550277711">50 27 77 11</a>
@@ -239,11 +288,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/Billede Klara.png" alt="Klara Nedergaard">
+      <div class="team-card" id="person-klara-nedergaard">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Klara.png" alt="Klara Nedergaard">
         <div class="info">
           <div class="navn">Klara Nedergaard</div>
-          <div class="stilling">Projektleder, Fritidsjob</div>
+          <div class="stilling" data-da="Projektleder, Fritidsjob" data-en="Project Manager, Part-time Jobs">Projektleder, Fritidsjob</div>
           <div class="kontakt-linje">
             <a href="mailto:klara@fisken.org">klara@fisken.org</a><br>
             <a href="tel:+4523842326">23 84 23 26</a>
@@ -251,11 +300,11 @@ nav.desktop a.active{color:var(--blue)}
         </div>
       </div>
 
-      <div class="team-card">
-        <img class="foto" src="billeder af medarbejdere/billede af Zara.jpg" alt="Zara Thustrup">
+      <div class="team-card" id="person-zara-thustrup">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/billede af Zara.jpg" alt="Zara Thustrup">
         <div class="info">
           <div class="navn">Zara Thustrup</div>
-          <div class="stilling">Projektmedarbejder, Fritidsjob</div>
+          <div class="stilling" data-da="Projektmedarbejder, Fritidsjob" data-en="Project Worker, Part-time Jobs">Projektmedarbejder, Fritidsjob</div>
           <div class="kontakt-linje">
             <a href="mailto:Zara@fisken.org">Zara@fisken.org</a><br>
             <a href="tel:+4525149148">25 14 91 48</a>
@@ -270,22 +319,155 @@ nav.desktop a.active{color:var(--blue)}
 <!-- FRIVILLIGE -->
 <section class="team-section" style="background:#fff;margin:0 0 60px">
   <div class="wrap">
-    <h2>Frivillige</h2>
+    <h2 data-da="Frivillige" data-en="Volunteers">Frivillige</h2>
     <div class="frivillig-grid">
 
-      <!-- 8 blanke pladsholdere -->
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
-      <div class="team-card"><div class="foto-blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="info"><div class="navn">Frivillig</div><div class="stilling">Kommer snart</div></div></div>
+      <!-- Frivillige med billeder -->
+      <div class="team-card" id="person-anna-petrina"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Anna petrina.png" alt="Anna Petrina"><div class="info"><div class="navn">Anna Petrina</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-charlotte"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Charlotte.png" alt="Charlotte"><div class="info"><div class="navn">Charlotte</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-dea"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Dea.png" alt="Dea"><div class="info"><div class="navn">Dea</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-erik"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Erik.jpg" alt="Erik"><div class="info"><div class="navn">Erik</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-helen"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Helen.png" alt="Helen"><div class="info"><div class="navn">Helen</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-jacob"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Jacob.png" alt="Jacob"><div class="info"><div class="navn">Jacob</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-jakob"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Jakob.jpg" alt="Jakob"><div class="info"><div class="navn">Jakob</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-jesper"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Jesper.jpg" alt="Jesper"><div class="info"><div class="navn">Jesper</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-louise-k"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Louise K.jpeg" alt="Louise K."><div class="info"><div class="navn">Louise K.</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-mays"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Mays.png" alt="Mays"><div class="info"><div class="navn">Mays</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-poul"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Poul.png" alt="Poul"><div class="info"><div class="navn">Poul</div><div class="stilling" data-da="Frivillig, Fritidsjob" data-en="Volunteer, Part-time Jobs">Fritidsjob</div></div></div>
+      <div class="team-card" id="person-thomas"><img class="foto" src="Billeder til hjemmeside/billeder af frivillige/Frivillig Thomas.png" alt="Thomas"><div class="info"><div class="navn">Thomas</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-bo"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Bo" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Bo</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-susanne"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Susanne" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Susanne</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-frederikke"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Frederikke" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Frederikke</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-lars"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Lars" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Lars</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-kasper"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Kasper" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Kasper</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-morten"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Morten" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Morten</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-kim"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Kim" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Kim</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-terese"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Terese" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Terese</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-brian"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Brian" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Brian</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-line"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Line" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Line</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-cenia-l"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Cenia L" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Cenia L</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-minea"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Minea" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Minea</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-katrine"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Katrine" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Katrine</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-laura"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Laura" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Laura</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-sofie"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Sofie" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Sofie</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-kitte"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Kitte" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Kitte</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-caroline-e"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Caroline E" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Caroline E</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-simon"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Simon" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Simon</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-christian"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Christian" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Christian</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-cecilie"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Cecilie" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Cecilie</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-lise"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Lise" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Lise</div><div class="stilling" data-da="Frivillig, Mentorordning" data-en="Volunteer, Mentor">Mentorordning</div></div></div>
+      <div class="team-card" id="person-laura-v"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Laura V" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Laura V</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-ida"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Ida" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Ida</div><div class="stilling" data-da="Frivillig, Ungerummet" data-en="Volunteer, Youth Room">Ungerummet</div></div></div>
+      <div class="team-card" id="person-mikkel"><img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Mikkel" style="object-fit:contain;padding:24px;background:var(--tint-teal)"><div class="info"><div class="navn">Mikkel</div><div class="stilling" data-da="Frivillig, Fritidsjob" data-en="Volunteer, Part-time Jobs">Fritidsjob</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BESTYRELSE -->
+<section class="team-section" style="background:var(--tint-lblue);margin:0 0 60px">
+  <div class="wrap">
+    <h2 data-da="Bestyrelse" data-en="Board of Directors">Bestyrelse</h2>
+    <div class="team-grid">
+
+      <div class="team-card" id="person-flemming-bert-midtgaard">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Flemming Bert Midtgaard" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Flemming Bert Midtgaard</div>
+          <div class="stilling" data-da="Forperson" data-en="Chair">Forperson</div>
+          <div class="kontakt-linje">Advokat</div>
+        </div>
+      </div>
+
+      <div class="team-card" id="person-badar-shah">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Badar Shah" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Badar Shah</div>
+          <div class="stilling" data-da="Bestyrelsesmedlem" data-en="Board Member">Bestyrelsesmedlem</div>
+          <div class="kontakt-linje">Jurist</div>
+        </div>
+      </div>
+
+      <div class="team-card" id="person-dina-murad">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Dina Murad" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Dina Murad</div>
+          <div class="stilling" data-da="Bestyrelsesmedlem" data-en="Board Member">Bestyrelsesmedlem</div>
+          <div class="kontakt-linje">Rådgiver i Dansk Flygtningehjælp</div>
+        </div>
+      </div>
+
+      <div class="team-card" id="person-helle-wallentin">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Helle Wallentin" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Helle Wallentin</div>
+          <div class="stilling" data-da="Bestyrelsesmedlem" data-en="Board Member">Bestyrelsesmedlem</div>
+          <div class="kontakt-linje">Chef for Kommunikation og Marketing i Coor</div>
+        </div>
+      </div>
+
+      <div class="team-card" id="person-helle-hygum-espersen">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Helle Hygum Espersen" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Helle Hygum Espersen</div>
+          <div class="stilling" data-da="Bestyrelsesmedlem" data-en="Board Member">Bestyrelsesmedlem</div>
+          <div class="kontakt-linje">Chefanalytiker i VIVE</div>
+        </div>
+      </div>
+
+      <div class="team-card" id="person-steen-lybke-smith">
+        <img class="foto" src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Steen Lybke Smith" style="object-fit:contain;padding:24px;background:var(--tint-teal)">
+        <div class="info">
+          <div class="navn">Steen Lybke Smith</div>
+          <div class="stilling" data-da="Bestyrelsesmedlem" data-en="Board Member">Bestyrelsesmedlem</div>
+          <div class="kontakt-linje">Sociolog og ph.d.-stipendiat</div>
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
+          <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="index.html#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="index.html#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="index.html#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="index.html#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      </div>
+      <div>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
+      </div>
+      <div>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
+    </div>
+  </div>
+</footer>
 
 <script>
 const burger=document.getElementById('burger');
@@ -298,5 +480,7 @@ mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
   burger.classList.remove('open');mobileMenu.classList.remove('open');
 }));
 </script>
+<script src="lang.js"></script>
+<script src="search.js"></script>
 </body>
 </html>

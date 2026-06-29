@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bliv samarbejdspartner – Foreningen FISKEN</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<link rel="stylesheet" href="search.css">
+<style>
+:root{
+  --ink:#0E353D;--blue:#007A8D;--blue-deep:#00606E;--lblue:#B8D4DD;--coral:#EC605E;--yellow:#FFF7C9;--cream:#FBF8F1;--white:#FFFFFF;--grey:#51616B;--tint-teal:rgba(0,122,141,.10);--tint-lblue:rgba(184,212,221,.25);--radius:28px;--shadow:0 18px 50px -22px rgba(14,53,61,.45);--maxw:1180px;--nav-h:128px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Hanken Grotesk',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+header{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);display:flex;align-items:center;background:#B8D4DD;box-shadow:0 4px 24px -16px rgba(14,53,61,.2)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo img{height:128px;width:auto}
+nav.desktop{display:flex;align-items:center;gap:.35rem}
+nav.desktop a{font-weight:600;font-size:.97rem;padding:.5em .85em;border-radius:999px;color:var(--ink);transition:background .2s,color .2s}
+nav.desktop a:hover{background:var(--tint-teal);color:var(--blue)}
+nav.desktop a.active{color:var(--blue)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{position:absolute;top:100%;left:0;border-top:10px solid transparent;background:#fff;background-clip:padding-box;border-radius:16px;box-shadow:0 12px 32px -12px rgba(14,53,61,.2);padding:8px;min-width:200px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .35s ease,transform .35s ease;transition-delay:.3s}
+.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateY(0);transition-delay:0s}
+.nav-dropdown-menu a{display:block;padding:.55em 1em;border-radius:10px;font-weight:600;font-size:.93rem;white-space:nowrap}
+.nav-dropdown-menu a:hover{background:var(--tint-teal);color:var(--blue)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Hanken Grotesk';font-weight:700;font-size:1rem;padding:.85em 1.5em;border-radius:999px;cursor:pointer;border:none;transition:transform .25s,box-shadow .25s;white-space:nowrap}
+.btn:hover{transform:translateY(-3px)}
+.btn-coral{background:var(--coral);color:#fff;box-shadow:0 10px 24px -10px var(--coral)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 10px 24px -10px rgba(0,122,141,.4)}
+.nav-cta{margin-left:.5rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.burger span{width:26px;height:3px;background:var(--ink);border-radius:3px;transition:.3s}
+.mobile-menu{position:fixed;inset:0;z-index:99;background:var(--cream);display:flex;flex-direction:column;justify-content:center;gap:.5rem;padding:0 32px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.6,0,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Bricolage Grotesque';font-weight:700;font-size:2rem;color:var(--ink);padding:.3em 0}
+.page-hero{padding:calc(var(--nav-h) + 70px) 0 60px;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('Billeder til hjemmeside/Photoshoot 2025/bordfodbold.jpg') center/cover no-repeat;opacity:.18}
+.page-hero .wrap{position:relative;z-index:1}
+.page-hero .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--coral);margin-bottom:.8rem;display:block}
+.page-hero h1{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;margin-bottom:1rem;color:#fff}
+.page-hero .lead{color:rgba(255,255,255,.8);font-size:1.15rem;max-width:52ch;margin-bottom:1.8rem}
+.content-section{padding:80px 0}
+.content-section+.content-section{padding-top:0}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.content-img{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.content-img img{width:100%;display:block;object-fit:cover;max-height:420px}
+.content-text .sec-tag{font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.7rem;display:block}
+.content-text h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;margin-bottom:1rem}
+.content-text p{color:var(--grey);font-size:1.05rem;line-height:1.75;margin-bottom:1rem}
+.content-text ul{color:var(--grey);font-size:1.05rem;line-height:1.75;padding-left:1.4rem;margin-bottom:1.2rem}
+.content-text ul li{margin-bottom:.4rem}
+.info-cards{padding:70px 0;background:var(--tint-lblue)}
+.info-cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:2.5rem}
+.info-card{background:#fff;border-radius:var(--radius);padding:32px;box-shadow:0 8px 24px -16px rgba(14,53,61,.2)}
+.info-card .icon{font-size:32px;margin-bottom:.8rem;display:block;color:var(--blue)}
+.info-card h3{font-size:1.15rem;font-weight:800;margin-bottom:.5rem}
+.info-card p{color:var(--grey);font-size:.95rem;line-height:1.65}
+.samarbejde{padding:70px 0 50px}
+.samarbejde .sec-head{margin-bottom:1.5rem}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.quote{background:#fff;border-radius:var(--radius);padding:34px;position:relative;border:1px solid rgba(14,53,61,.05);box-shadow:0 14px 36px -26px rgba(14,53,61,.5)}
+.quote .mark{font-family:'Bricolage Grotesque';font-size:4rem;color:var(--coral);line-height:.6;height:.5em}
+.quote p{font-size:1rem;color:var(--ink);margin:1rem 0 1.4rem}
+.quote .who{font-weight:700;color:var(--blue)}
+.quote .who small{display:block;font-weight:500;color:var(--grey);font-size:.85rem}
+.logo-ticker{overflow:hidden;margin-top:2.5rem;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.logo-track{display:flex;gap:80px;width:max-content;will-change:transform;align-items:center}
+.logo-item{flex:0 0 auto;height:110px;width:200px;display:flex;align-items:center;justify-content:center}
+.logo-item img{height:90px;width:180px;object-fit:contain;filter:grayscale(100%) opacity(.6);transition:filter .3s}
+.logo-item img[src*="ych-pizza"]{filter:grayscale(100%) opacity(.6) invert(1)}
+.logo-ticker:hover .logo-item img{filter:grayscale(0%) opacity(1)}
+.logo-ticker:hover .logo-item img[src*="ych-pizza"]{filter:grayscale(0%) opacity(1) invert(1)}
+.kontakt-form-section{padding:80px 0 90px}
+.kontakt-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:stretch;max-width:1280px;margin:0 auto}
+.kontakt-person{background:#fff;border-radius:var(--radius);padding:52px 44px;box-shadow:0 14px 36px -26px rgba(14,53,61,.5);text-align:center;display:flex;flex-direction:column;justify-content:center}
+.kontakt-person .foto{width:200px;height:200px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto 1.6rem;display:block;box-shadow:0 8px 20px -10px rgba(14,53,61,.4)}
+.kontakt-person .lead-text{color:var(--grey);font-size:1.15rem;margin-bottom:1.6rem;line-height:1.65}
+.kontakt-person .navn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.5rem;margin-bottom:.3rem}
+.kontakt-person .stilling{font-size:1.05rem;font-weight:600;color:var(--blue);margin-bottom:1.3rem}
+.kontakt-person .kontakt-linje{font-size:1.1rem;color:var(--grey);line-height:1.9}
+.kontakt-person .kontakt-linje a{color:var(--blue);font-weight:600}
+.kontakt-person .kontakt-linje a:hover{text-decoration:underline}
+.kontakt-box{background:#B8D4DD;border-radius:var(--radius);padding:52px 56px;border:1px solid rgba(14,53,61,.07);height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.kontakt-form{display:flex;flex-direction:column;gap:30px;flex-grow:1;justify-content:space-between}
+.kontakt-form .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.kontakt-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.kontakt-form input,.kontakt-form textarea{font-family:'Hanken Grotesk',sans-serif;font-size:1.1rem;padding:1.05em 1.3em;border-radius:14px;border:2px solid rgba(14,53,61,.1);background:#fff;color:var(--ink);outline:none;transition:border-color .2s;width:100%}
+.kontakt-form input:focus,.kontakt-form textarea:focus{border-color:var(--blue)}
+.kontakt-form textarea{min-height:180px;resize:vertical;flex-grow:1}
+.kontakt-form .btn{font-size:1.1rem;padding:1em 1.8em}
+.cta-box{background:var(--ink);color:#fff;border-radius:var(--radius);padding:56px 48px;text-align:center;margin:70px 0 130px}
+.cta-box h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:.8rem}
+.cta-box p{color:rgba(255,255,255,.75);font-size:1.1rem;max-width:48ch;margin:0 auto 2rem}
+.andre-tilbud{padding:80px 0;background:var(--ink)}
+.andre-tilbud h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:2rem;text-align:center;color:#fff;}
+.andre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.andre-card{background:#fff;border-radius:20px;padding:28px;border:2px solid transparent;transition:border-color .2s,transform .2s;box-shadow:0 6px 20px -12px rgba(14,53,61,.2);display:block}
+.andre-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.andre-card h3{font-size:1rem;font-weight:800;margin-bottom:.35rem}
+.andre-card p{font-size:.88rem;color:var(--grey);line-height:1.6;margin-bottom:.8rem}
+.andre-card .link{font-size:.9rem;font-weight:700;color:var(--blue)}
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:46px}
+.footer-grid h4{font-size:.9rem;text-transform:uppercase;letter-spacing:.08em;color:var(--yellow);margin-bottom:1.2rem}
+.footer-grid a{display:block;color:rgba(255,255,255,.78);padding:.32em 0;font-size:.97rem;transition:color .2s,padding-left .2s}
+.footer-grid a:hover{color:#fff;padding-left:6px}
+.footer-brand p{color:rgba(255,255,255,.62);font-size:.95rem;max-width:30ch}
+.socials{display:flex;gap:12px;margin-top:1.2rem}
+.socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center;color:#fff;transition:background .2s,transform .2s}
+.socials a svg{width:18px;height:18px}
+.socials a:hover{background:var(--blue);transform:translateY(-3px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.55);font-size:.88rem}
+.footer-bottom a:hover{color:#fff}
+
+@media(max-width:900px){.content-grid{grid-template-columns:1fr;gap:36px}.info-cards-grid{grid-template-columns:1fr 1fr}.quotes{grid-template-columns:1fr 1fr}.andre-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}nav.desktop{display:none}.burger{display:flex}.kontakt-form .row3,.kontakt-form .row2{grid-template-columns:1fr}.kontakt-box{padding:30px 24px}.kontakt-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.info-cards-grid,.andre-grid,.footer-grid,.quotes{grid-template-columns:1fr}.cta-box{padding:40px 24px}}
+.lang-btn{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:.82rem;background:none;border:none;cursor:pointer;padding:.3em .55em;border-radius:6px;color:var(--ink);opacity:.4;transition:opacity .15s,background .15s}
+.lang-btn:hover{opacity:.75}
+.lang-btn.active{opacity:1;background:rgba(14,53,61,.1)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo"><img src="Billeder til hjemmeside/FISKENs logo/forenings_logo.png" alt="Foreningen FISKEN"></a>
+    <nav class="desktop">
+      <a href="index.html">Forside</a>
+      <div class="nav-dropdown">
+        <a href="index.html#tilbud">Tilbud ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="fritidsjob.html">Fritidsjob</a>
+          <a href="mentor.html">Mentorordning</a>
+          <a href="ungerummet.html">Ungerummet</a>
+          <a href="make-my-friday.html">Make My Friday</a>
+          <a href="opholdstilladelse.html">Opholdstilladelse</a>
+          <a href="socialfaglig-raadgivning.html">Socialfaglig rådgivning</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#vaermed" class="active">Vær med ▾</a>
+        <div class="nav-dropdown-menu">
+          <a href="bliv-frivillig.html">Bliv frivillig</a>
+          <a href="bliv-samarbejdspartner.html">Bliv samarbejdspartner</a>
+          <a href="fiskeven.html">Bliv virksomhedsmedlem</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#book-oplaeg">Book et oplæg ▾</a>
+        <div class="nav-dropdown-menu" style="min-width:260px"><a href="oplaeg-fritidsjob-uddannelse.html">Oplæg om fritidsjob og uddannelse</a><a href="oplaeg-statsborgerskab-opholdstilladelse.html">Oplæg om statsborgerskab og opholdstilladelse</a></div>
+      </div>
+      <div class="nav-dropdown">
+        <a href="index.html#om">Om FISKEN ▾</a>
+        <div class="nav-dropdown-menu"><a href="om-os.html">Om os</a><a href="find-en-fisk.html">Find en fisk</a></div>
+      </div>
+      <a href="index.html#kontakt">Kontakt</a>
+      <div style="display:flex;align-items:center;gap:2px;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(14,53,61,.2)">
+        <button class="lang-btn" data-lang="da">DA</button>
+        <span style="color:rgba(14,53,61,.3);font-size:.75rem;user-select:none">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </nav>
+    <a href="index.html#vaermed" class="btn btn-coral nav-cta" data-da="Støt FISKEN" data-en="Support FISKEN">Støt FISKEN</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Forside</a>
+  <a href="index.html#tilbud">Tilbud</a>
+  <a href="fritidsjob.html" style="font-size:1.4rem;color:var(--blue)">↳ Fritidsjob</a>
+  <a href="mentor.html" style="font-size:1.4rem;color:var(--blue)">↳ Mentorordning</a>
+  <a href="ungerummet.html" style="font-size:1.4rem;color:var(--blue)">↳ Ungerummet</a>
+  <a href="make-my-friday.html" style="font-size:1.4rem;color:var(--blue)">↳ Make My Friday</a>
+  <a href="opholdstilladelse.html" style="font-size:1.4rem;color:var(--blue)">↳ Opholdstilladelse</a>
+  <a href="socialfaglig-raadgivning.html" style="font-size:1.4rem;color:var(--blue)">↳ Socialfaglig rådgivning</a>
+  <a href="index.html#vaermed">Vær med</a>
+  <a href="bliv-frivillig.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv frivillig</a>
+  <a href="bliv-samarbejdspartner.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv samarbejdspartner</a>
+  <a href="fiskeven.html" style="font-size:1.4rem;color:var(--blue)">↳ Bliv virksomhedsmedlem</a>
+  <a href="index.html#om">Om FISKEN</a>
+  <a href="om-os.html" style="font-size:1.4rem;color:var(--blue)">↳ Om os</a>
+  <a href="find-en-fisk.html" style="font-size:1.4rem;color:var(--blue)">↳ Find en fisk</a>
+  <a href="index.html#kontakt">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="wrap">
+    <h1 data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</h1>
+    <p class="lead" data-da="Styrk jeres virksomhed, og hjælp unge godt på vej. Sammen med FISKEN skaber I muligheder, der gør en forskel – for alle parter." data-en="Strengthen your business and help young people on their way. Together with FISKEN you create opportunities that make a difference – for them and for you.">Styrk jeres virksomhed, og hjælp unge godt på vej. Sammen med FISKEN skaber I muligheder, der gør en forskel – for alle parter.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section class="content-section">
+  <div class="wrap">
+    <div class="content-grid">
+      <div class="content-img">
+        <img src="Billeder til hjemmeside/Photoshoot 2025/bordfodbold2.jpg" alt="Samarbejde med FISKEN">
+      </div>
+      <div class="content-text">
+        <span class="sec-tag" data-da="Samarbejd med FISKEN" data-en="Partner with FISKEN">Samarbejd med FISKEN</span>
+        <h2 data-da="En ekstra hånd – og en investering i fremtiden" data-en="An extra hand – and an investment in the future">En ekstra hånd – og en investering i fremtiden</h2>
+        <p data-da="Hos FISKEN forbinder vi virksomheder med unge, der er klar til at tage deres første eller næste skridt ind på arbejdsmarkedet. De unge har mod på at lære, lyst til at bidrage og kan blive en værdifuld del af jeres hverdag. Sammen skaber vi muligheder for både jer og dem – enkelt, overskueligt og med stort potentiale." data-en="At FISKEN we connect businesses with young people who are ready to take their first step into the labour market. They are eager to learn, keen to contribute and can become a valuable part of your everyday life. Together we create opportunities for both you and them – simple, manageable and full of potential.">Hos FISKEN forbinder vi virksomheder med unge, der er klar til at tage deres første eller næste skridt ind på arbejdsmarkedet. De unge har mod på at lære, lyst til at bidrage og kan blive en værdifuld del af jeres hverdag. Sammen skaber vi muligheder for både jer og dem – enkelt, overskueligt og med stort potentiale.</p>
+        <p data-da="De unge kommer frivilligt ned i FISKEN, netop for at finde deres første, næste eller fremtidige arbejdsplads  –  De er motiverede, nysgerrige og klar til at lære, og vi sørger for, at de er godt forberedte, og at de matcher jeres behov." data-en="The young people we work with can help with many practical tasks – from cleaning and tidying to customer service, courier duties and administrative work. They are motivated, curious and ready to learn, and we make sure they are well prepared and match your needs.">De unge kommer frivilligt ned i FISKEN, netop for at finde deres første, næste eller fremtidige arbejdsplads  –  De er motiverede, nysgerrige og klar til at lære, og vi sørger for, at de er godt forberedte, og at de matcher jeres behov.</p>
+        <ul>
+          <li data-da="Vi matcher kun de unge med jer, hvis det giver mening" data-en="Practical, everyday help that frees up time for your permanent staff">Vi matcher kun de unge med jer, hvis det giver mening</li>
+          <li data-da="En investering i fremtiden – måske jeres næste lærling eller fremtidige leder" data-en="An investment in the future – perhaps your next apprentice or leader">En investering i fremtiden – måske jeres næste lærling eller fremtidige leder</li>
+          <li data-da="Tag socialt ansvar og skab en mangfoldig, inkluderende arbejdsplads" data-en="Take social responsibility and create a diverse, inclusive workplace">Tag socialt ansvar og skab en mangfoldig, inkluderende arbejdsplads</li>
+          <li data-da="Styrk jeres ESG-indsats, og dokumentér ansvarligheden i jeres rapportering" data-en="Strengthen your ESG efforts and document your responsibility in your reporting">Styrk jeres ESG-indsats, og dokumentér ansvarligheden i jeres rapportering</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO CARDS -->
+<section class="info-cards">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Hvorfor FISKEN?" data-en="Why FISKEN?">Hvorfor FISKEN?</span>
+      <div style="display:inline-block">
+        <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Det får jeres virksomhed ud af det" data-en="What your business gets out of it">Det får jeres virksomhed ud af det</h2>
+        <svg viewBox="0 0 200 12" preserveAspectRatio="none" style="display:block;width:100%;height:10px;margin:.6rem 0 0"><path d="M2 3 C50 10, 150 10, 198 4" stroke="var(--coral)" stroke-width="5" fill="none" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="info-cards-grid">
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-user-check"></i></span>
+        <h3 data-da="Rekruttering uden besvær" data-en="Recruitment without the hassle">Rekruttering uden besvær</h3>
+        <p data-da="I slipper for at sortere hundredvis af ansøgninger. Vi matcher jer med unge, der reelt giver mening for jeres virksomhed – og I får en rigtig medarbejder, ikke bare ekstra hænder." data-en="Skip sorting through a thousand applications. We match you with young people who genuinely make sense for your business – a real employee, not just an extra pair of hands.">I slipper for at sortere hundredvis af ansøgninger. Vi matcher jer med unge, der reelt giver mening for jeres virksomhed – og I får en rigtig medarbejder, ikke bare ekstra hænder.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-flame"></i></span>
+        <h3 data-da="Motivation, I kan mærke" data-en="Motivation you can feel">Motivation, I kan mærke</h3>
+        <p data-da="De unge kommer frivilligt ned til os – ingen har tvunget dem. De drømmer om at stå på egne ben og om at blive den voksne, de selv vil være. Den drivkraft tager de med ind på jeres arbejdsplads." data-en="These young people come to us by choice – no one made them. They dream of their first paycheck, of standing on their own two feet and becoming the adult they want to be. That drive is what they bring with them to your workplace.">De unge kommer frivilligt ned til os – ingen har tvunget dem. De drømmer om at stå på egne ben og om at blive den voksne, de selv vil være. Den drivkraft tager de med ind på jeres arbejdsplads.</p>
+      </div>
+      <div class="info-card">
+        <span class="icon"><i class="ti ti-leaf"></i></span>
+        <h3 data-da="Styrk jeres ESG-indsats" data-en="Strengthen your ESG efforts">Styrk jeres ESG-indsats</h3>
+        <p data-da="Tag socialt ansvar, skab en mangfoldig arbejdsplads, og dokumentér jeres indsats i ESG-rapporteringen – med løbende sparring fra FISKEN hele vejen." data-en="Take social responsibility, build a diverse workplace, and document your effort in your ESG reporting – with ongoing support from FISKEN all the way.">Tag socialt ansvar, skab en mangfoldig arbejdsplads, og dokumentér jeres indsats i ESG-rapporteringen – med løbende sparring fra FISKEN hele vejen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMARBEJDSPARTNERE: udtalelser + logoer -->
+<section class="samarbejde">
+  <div class="wrap">
+    <div style="text-align:center" class="sec-head">
+      <span style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Det siger vores partnere" data-en="What our partners say">Det siger vores partnere</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Vi løfter i flok" data-en="Better together">Vi løfter i flok</h2>
+    </div>
+    <div class="quotes" style="margin-top:2.5rem">
+      <div class="quote">
+        <span class="mark">”</span>
+        <p data-da="Samarbejdet med FISKEN har givet os engagerede unge, der tager ansvar fra dag ét. Det er en lettelse i en presset hverdag." data-en="Our partnership with FISKEN has given us committed young people who take responsibility from day one. It's a relief in a busy everyday life.">Samarbejdet med FISKEN har givet os engagerede unge, der tager ansvar fra dag ét. Det er en lettelse i en presset hverdag.</p>
+        <span class="who">Netto<small data-da="Samarbejdspartner siden 2021" data-en="Partner since 2021">Samarbejdspartner siden 2021</small></span>
+      </div>
+      <div class="quote">
+        <span class="mark">”</span>
+        <p data-da="Vi har ansat flere af vores fritidsjobbere fast efter samarbejdet med FISKEN. Det er enkel og meningsfuld rekruttering." data-en="We've hired several of our part-time workers permanently after partnering with FISKEN. It's simple and meaningful recruitment.">Vi har ansat flere af vores fritidsjobbere fast efter samarbejdet med FISKEN. Det er enkel og meningsfuld rekruttering.</p>
+        <span class="who">Bilka<small data-da="Samarbejdspartner siden 2019" data-en="Partner since 2019">Samarbejdspartner siden 2019</small></span>
+      </div>
+      <div class="quote">
+        <span class="mark">”</span>
+        <p data-da="At tage socialt ansvar behøver ikke være kompliceret. FISKEN gør det nemt, og vi kan se den positive forskel hos de unge." data-en="Taking social responsibility doesn't have to be complicated. FISKEN makes it easy, and we can see the positive difference in the young people.">At tage socialt ansvar behøver ikke være kompliceret. FISKEN gør det nemt, og vi kan se den positive forskel hos de unge.</p>
+        <span class="who">Royal Arena<small data-da="Samarbejdspartner siden 2022" data-en="Partner since 2022">Samarbejdspartner siden 2022</small></span>
+      </div>
+    </div>
+    <div class="logo-ticker" id="logoTicker">
+      <div class="logo-track" id="logoTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKTFORMULAR -->
+<section class="kontakt-form-section">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:2.2rem">
+      <span class="sec-tag" style="font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--coral);margin-bottom:.6rem;display:block" data-da="Lad os samarbejde" data-en="Let's work together">Lad os samarbejde</span>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800" data-da="Kontakt os og bliv en del af FISKEN" data-en="Become a partner with FISKEN">Kontakt os og bliv en del af FISKEN</h2>
+      <p style="color:var(--grey);font-size:1.05rem;max-width:56ch;margin:.6rem auto 0" data-da="Uanset jeres virksomheds størrelse kan vi finde den rigtige løsning, der giver værdi for både jer og de unge." data-en="Fill out the form and tell us a bit about your business – we'll get back to you as soon as possible and find the right solution together.">Uanset jeres virksomheds størrelse kan vi finde den rigtige løsning, der giver værdi for både jer og de unge.</p>
+    </div>
+    <div class="kontakt-grid">
+      <div class="kontakt-box">
+        <form class="kontakt-form" id="samarbejdspartnerForm">
+          <div class="row3">
+            <input type="text" id="sp-navn" placeholder="Dit navn" data-da-ph="Dit navn" data-en-ph="Your name" required>
+            <input type="email" id="sp-email" placeholder="Din e-mail" data-da-ph="Din e-mail" data-en-ph="Your email" required>
+            <input type="tel" id="sp-tlf" placeholder="Dit telefonnummer" data-da-ph="Dit telefonnummer" data-en-ph="Your phone number" required>
+          </div>
+          <div class="row2">
+            <input type="text" id="sp-stilling" placeholder="Din stilling" data-da-ph="Din stilling" data-en-ph="Your position" required>
+            <input type="text" id="sp-virksomhed" placeholder="Virksomhed / institution" data-da-ph="Virksomhed / institution" data-en-ph="Company / institution" required>
+          </div>
+          <textarea id="sp-besked" placeholder="Skriv lidt om jeres virksomhed, og hvordan I kunne tænke jer at samarbejde med os…" data-da-ph="Skriv lidt om jeres virksomhed, og hvordan I kunne tænke jer at samarbejde med os…" data-en-ph="Tell us a bit about your business and how you'd like to partner with us…"></textarea>
+          <button class="btn btn-blue" type="submit" data-da="Send →" data-en="Send →">Send →</button>
+        </form>
+      </div>
+      <div class="kontakt-person">
+        <img class="foto" src="Billeder til hjemmeside/Billeder af medarbejdere/Billede Pernille.png" alt="Pernille Høier">
+        <p class="lead-text" data-da="Eller ring til vores virksomhedskonsulent Pernille, og hør nærmere om mulighederne for et samarbejde." data-en="Or call our business consultant Pernille and hear more about the possibilities for a partnership.">Eller ring til vores virksomhedskonsulent Pernille, og hør nærmere om mulighederne for et samarbejde.</p>
+        <div class="navn">Pernille Høier</div>
+        <div class="stilling" data-da="Virksomhedskonsulent" data-en="Business Consultant">Virksomhedskonsulent</div>
+        <div class="kontakt-linje">
+          <a href="mailto:pernille@fisken.org">pernille@fisken.org</a><br>
+          <a href="tel:+4522424130">22 42 41 30</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SE OGSÅ -->
+<section class="andre-tilbud" style="margin-top:90px">
+  <div class="wrap">
+    <h2 data-da="Lær FISKEN bedre at kende" data-en="Get to know FISKEN better">Lær FISKEN bedre at kende</h2>
+    <div class="andre-grid">
+      <a href="fritidsjob.html" class="andre-card">
+        <h3 data-da="Fritidsjob" data-en="Part-time job">Fritidsjob</h3>
+        <p data-da="Læs om vores fritidsjobordning, og hvordan unge bliver klædt på til arbejdsmarkedet." data-en="Read about our part-time job programme and how young people get ready for the labour market.">Læs om vores fritidsjobordning, og hvordan unge bliver klædt på til arbejdsmarkedet.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="bliv-frivillig.html" class="andre-card">
+        <h3 data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</h3>
+        <p data-da="Vil du selv gøre en forskel? Læs om at blive frivillig mentor eller jobvejleder." data-en="Want to make a difference yourself? Read about becoming a volunteer mentor or job advisor.">Vil du selv gøre en forskel? Læs om at blive frivillig mentor eller jobvejleder.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+      <a href="find-en-fisk.html" class="andre-card">
+        <h3 data-da="Find en fisk" data-en="Find a fish">Find en fisk</h3>
+        <p data-da="Mød teamet bag FISKEN – de ansatte og frivillige, der gør det hele muligt." data-en="Meet the team behind FISKEN – the staff and volunteers who make it all possible.">Mød teamet bag FISKEN – de ansatte og frivillige, der gør det hele muligt.</p>
+        <span class="link" data-da="Læs mere →" data-en="Read more →">Læs mere →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="Billeder til hjemmeside/FISKENs logo/forenings_logo_hvid (1).png" alt="Foreningen FISKEN" style="height:140px;width:auto;margin-bottom:.6rem;display:block">
+        <p data-da="Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer." data-en="Every young person deserves a great youth. We build bridges through part-time jobs, community and relationships.">Alle unge har ret til et godt ungdomsliv. Vi bygger bro gennem fritidsjob, fællesskab og relationer.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/foreningenfisken/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.4-3H14V4.2c0-.9.3-1.5 1.6-1.5h1.6V0C16.9 0 15.8 0 14.7 0 12.3 0 10.7 1.4 10.7 4.1V6H8v3h2.7v9H14Z"/></svg></a>
+          <a href="https://www.instagram.com/foreningen_fisken/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/foreningen-fisken" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V24h-4zm7.5 0h3.8v2.1h.05c.53-1 1.83-2.1 3.77-2.1 4.03 0 4.78 2.65 4.78 6.1V24h-4v-8.6c0-2.05-.04-4.7-2.86-4.7-2.87 0-3.31 2.24-3.31 4.55V24H8z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 data-da="Om FISKEN" data-en="About FISKEN">Om FISKEN</h4>
+        <a href="index.html#om" data-da="Historien" data-en="Our Story">Historien</a>
+        <a href="index.html#om" data-da="Mission og værdier" data-en="Mission &amp; Values">Mission og værdier</a>
+        <a href="index.html#om" data-da="Hvem er vi" data-en="Who we are">Hvem er vi</a>
+        <a href="index.html#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      </div>
+      <div>
+        <h4 data-da="Tilbud" data-en="Programs">Tilbud</h4>
+        <a href="fritidsjob.html" data-da="Fritidsjob" data-en="Part-time Job">Fritidsjob</a>
+        <a href="ungerummet.html" data-da="Ungerummet" data-en="Youth Space">Ungerummet</a>
+        <a href="mentor.html" data-da="Mentor" data-en="Mentor">Mentor</a>
+        <a href="socialfaglig-raadgivning.html" data-da="Rådgivning" data-en="Counselling">Rådgivning</a>
+        <a href="opholdstilladelse.html" data-da="Opholdstilladelse" data-en="Residence Permit">Opholdstilladelse</a>
+      </div>
+      <div>
+        <h4 data-da="Vær med" data-en="Get Involved">Vær med</h4>
+        <a href="bliv-frivillig.html" data-da="Bliv frivillig" data-en="Become a volunteer">Bliv frivillig</a>
+        <a href="bliv-samarbejdspartner.html" data-da="Bliv samarbejdspartner" data-en="Become a partner">Bliv samarbejdspartner</a>
+        <a href="fiskeven.html" data-da="Bliv virksomhedsmedlem" data-en="Become a corporate member">Bliv virksomhedsmedlem</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foreningen FISKEN · Ingerslevsgade 108, 1705 København V · CVR 29 14 50 67</span>
+      <a href="privatlivspolitik.html" data-da="Privatlivspolitik" data-en="Privacy Policy">Privatlivspolitik</a>
+      <span data-da="Lavet med ♥ til byens unge" data-en="Made with ♥ for the city's youth">Lavet med ♥ til byens unge</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const burger=document.getElementById('burger');
+const menu=document.getElementById('mobileMenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');menu.classList.toggle('open')});
+
+document.getElementById('samarbejdspartnerForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const navn = document.getElementById('sp-navn').value;
+  const email = document.getElementById('sp-email').value;
+  const tlf = document.getElementById('sp-tlf').value;
+  const stilling = document.getElementById('sp-stilling').value;
+  const virksomhed = document.getElementById('sp-virksomhed').value;
+  const besked = document.getElementById('sp-besked').value;
+  const subject = encodeURIComponent('Interesse i samarbejde – ' + virksomhed);
+  const body = encodeURIComponent(
+    'Navn: ' + navn + '\n' +
+    'Stilling: ' + stilling + '\n' +
+    'Virksomhed: ' + virksomhed + '\n' +
+    'E-mail: ' + email + '\n' +
+    'Telefon: ' + tlf + '\n\n' +
+    'Besked:\n' + (besked || '-')
+  );
+  window.location.href = 'mailto:Pernille@fisken.org?subject=' + subject + '&body=' + body;
+});
+
+// ── Logo-ticker ─────────────────────────────────────────────
+const tickerLogos=[
+  "Billeder til hjemmeside/partner-logoer/Faetter-br-logo.png",
+  "Billeder til hjemmeside/partner-logoer/GoBoat-logo-off-black.png",
+  "Billeder til hjemmeside/partner-logoer/KK-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Netto-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Parken-Logo.png",
+  "Billeder til hjemmeside/partner-logoer/Royal_Arena_logo.png",
+  "Billeder til hjemmeside/partner-logoer/Salling-group-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Vega-logo.png",
+  "Billeder til hjemmeside/partner-logoer/Villa-Copenhagen-Logo.png",
+  "Billeder til hjemmeside/partner-logoer/admiral-hotel-logo.png",
+  "Billeder til hjemmeside/partner-logoer/bilka-logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/fotex-logo.png",
+  "Billeder til hjemmeside/partner-logoer/frak-logo.png",
+  "Billeder til hjemmeside/partner-logoer/hvidovre-kommune-logo.png",
+  "Billeder til hjemmeside/partner-logoer/jagger_copenhagen_logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/kaffeKarma_logo_.png",
+  "Billeder til hjemmeside/partner-logoer/logo-normal.jpg",
+  "Billeder til hjemmeside/partner-logoer/maximum-logo.png",
+  "Billeder til hjemmeside/partner-logoer/nordisk-film-biografer-logo.jpg",
+  "Billeder til hjemmeside/partner-logoer/real-care-logo.png",
+  "Billeder til hjemmeside/partner-logoer/sosuH-logo.png",
+  "Billeder til hjemmeside/partner-logoer/starbucks-logo.png",
+  "Billeder til hjemmeside/partner-logoer/ych-pizza-logo.png"
+];
+const tickerTrack=document.getElementById('logoTrack');
+if(tickerTrack){
+  [...tickerLogos,...tickerLogos].forEach(src=>{
+    const div=document.createElement('div');
+    div.className='logo-item';
+    const img=document.createElement('img');
+    img.src=src; img.alt='';
+    div.appendChild(img);
+    tickerTrack.appendChild(div);
+  });
+  let pos=0;
+  function animateTicker(){
+    pos-=0.5;
+    const trackWidth=tickerTrack.scrollWidth/2;
+    if(Math.abs(pos)>=trackWidth) pos=0;
+    tickerTrack.style.transform='translateX('+pos+'px)';
+    requestAnimationFrame(animateTicker);
+  }
+  requestAnimationFrame(animateTicker);
+}
+</script>
+<script src="lang.js"></script>
+<script src="search.js"></script>
+</body>
+</html>
